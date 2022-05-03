@@ -1,0 +1,20 @@
+---
+permalink: reference-smi-s-agent-takes-a-long-time-to-start.html 
+sidebar: sidebar 
+keywords: netapp smi-s provider 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= NetApp SMI-S Provider需要很長時間才能啟動
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *說明*
++
+在Windows系統上、如果儲存系統已在管理中、當您使用「mis cimserver」命令啟動NetApp SMI-S Provider時、命令不會傳回、直到提供者填入本機快取為止。快取記憶體填入時、系統最多會等待15分鐘、而且您必須等到NetApp SMI-S Provider傳回後才能使用。
+
++
+建議使用「mis cimserver」命令來啟動NetApp SMI-S Provider。
+
+

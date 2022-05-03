@@ -1,0 +1,51 @@
+---
+permalink: task-enable-or-disable-authentication-for-smi-s-provider.html 
+sidebar: sidebar 
+keywords: smi-s provider, authentication, enable, errors, system, disable 
+summary: 依預設、SMI-S Provider會啟用驗證。如果驗證導致系統發生錯誤、您可以選擇停用驗證。如果已停用驗證、而您想要重新啟用驗證、您可以這麼做。 
+---
+= 啟用或停用NetApp SMI-S Provider驗證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+依預設、SMI-S Provider會啟用驗證。如果驗證導致系統發生錯誤、您可以選擇停用驗證。如果已停用驗證、而您想要重新啟用驗證、您可以這麼做。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入。
+* 任何用戶端、包括System Center Virtual Machine Manager（SCVMM）、都必須使用CIMDUser和cimpassword連線至供應商。
+
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 設定SMI-S Provider驗證：
++
+[cols="2*"]
+|===
+| 行動 | 命令 
+
+
+ a| 
+*如果先前已停用、請啟用驗證*
+ a| 
+「* cimconfig -p -s enableAuthentication=true*」
+
+
+
+ a| 
+*停用驗證*
+ a| 
+「* cimconfig -p -s enableAuthentication=假*」
+
+|===
++
+CIMOM不使用Windows驗證。
+
+. 重新啟動NetApp SMI-S Provider：
++
+‘* SMI cimserver REALT*’
+
+

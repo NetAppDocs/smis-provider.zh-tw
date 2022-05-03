@@ -1,0 +1,14 @@
+---
+permalink: concept-prepare-for-deployment-overview.html 
+sidebar: sidebar 
+keywords: netapp, smi-s provider, verify, supported, operating system, platform, licenses, minimum, requirements 
+summary: 在部署NetApp SMI-S Provider之前、您必須確認您擁有支援的作業系統與平台、是否擁有必要的授權、以及主機是否符合最低需求。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+在部署NetApp SMI-S Provider之前、您必須確認您擁有支援的作業系統與平台、是否擁有必要的授權、以及主機是否符合最低需求。

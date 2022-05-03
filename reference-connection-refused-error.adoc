@@ -1,0 +1,34 @@
+---
+permalink: reference-connection-refused-error.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 連線遭拒
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *訊息*
++
+「連線遭拒」
+
+* *原因*
++
+尚未啟動CIM伺服器。
+
+* *修正行動*
++
+瀏覽至安裝NetApp SMI-S Provider的目錄中的「bin」目錄、然後輸入下列命令、確認已啟動CIM伺服器：
+
++
+「mis cimserver Status」
+
++
+如果未執行CIM伺服器、請輸入下列命令：
+
++
+"mis cimserver start"
+
+

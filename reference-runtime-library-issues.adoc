@@ -1,0 +1,22 @@
+---
+permalink: reference-runtime-library-issues.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 執行時間程式庫問題
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+:pp: &#43;&#43;
+
+
+* *問題*
++
+您會遇到執行時間程式庫問題。
+
+* *修正行動*
++
+從www.microsoft.com安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。
+
+

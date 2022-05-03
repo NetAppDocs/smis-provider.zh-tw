@@ -1,0 +1,16 @@
+---
+permalink: concept-deployment-workflow.html 
+sidebar: sidebar 
+keywords: manage, monitor, storage, systems, smi-s provider, software, validate, preliminary, configuration 
+summary: 您必須先安裝SMI-S Provider軟體、並驗證初始組態、才能使用SMI-S Provider來管理及監控儲存系統。 
+---
+= 部署工作流程
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您必須先安裝SMI-S Provider軟體、並驗證初始組態、才能使用SMI-S Provider來管理及監控儲存系統。
+
+image::../media/smi_s_provider_workflow.gif[SMI的供應商工作流程]

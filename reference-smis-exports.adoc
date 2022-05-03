@@ -1,0 +1,38 @@
+---
+permalink: reference-smis-exports.html 
+sidebar: sidebar 
+keywords: smis exports, command display, network attached storage 
+summary: 「SI匯出」命令會顯示儲存系統的網路附加儲存設備（NAS）匯出。 
+---
+= 匯出SI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis exports」（匯出）命令會顯示儲存系統的網路附加儲存設備（NAS）匯出。
+
+SMI匯出「-t {* http *|* https *｝」
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+「mis exports（匯出）”命令及其輸出：
+
+[listing]
+----
+smis exports
+ONTAP_LogicalFile.CreationClassName="ONTAP_LogicalFile",CSCreationClassName="ONTAP_StorageSystem",CSName="ONTAP:68f6b3c0-923a-11e2-a856-123478563412",FSCreationClassName="ONTAP_LocalFS",FSName="/vol/NAS_vol/TestCFS0528",Name="/vol/NAS_vol/TestCFS0528"
+ONTAP_Qtree.CreationClassName="ONTAP_Qtree",CSCreationClassName="ONTAP_StorageSystem",CSName="ONTAP:68f6b3c0-923a-11e2-a856-123478563412",FSCreationClassName="ONTAP_LocalFS",FSName="nilesh_vserver_rootvol",Id="nilesh_vserver_rootvol:0",Name=""
+ONTAP_Qtree.CreationClassName="ONTAP_Qtree",CSCreationClassName="ONTAP_StorageSystem",CSName="ONTAP:68f6b3c0-923a-11e2-a856-123478563412",FSCreationClassName="ONTAP_LocalFS",FSName="NAS_vol",Id="NAS_vol:0",Name=""
+ONTAP_Qtree.CreationClassName="ONTAP_Qtree",CSCreationClassName="ONTAP_StorageSystem",CSName="ONTAP:68f6b3c0-923a-11e2-a856-123478563412",FSCreationClassName="ONTAP_LocalFS",FSName="NAS_vol",Id="NAS_vol:1",Name=""
+----

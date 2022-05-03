@@ -1,0 +1,41 @@
+---
+permalink: reference-smis-pools.html 
+sidebar: sidebar 
+keywords: smis pools, command, list, storage, pools 
+summary: SMI Pools命令會列出儲存系統的儲存資源池。 
+---
+= SI集區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis Pools」命令會列出儲存系統的儲存資源池。
+
+'池資源池'
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+「mis Pools（資源池）”命令及其縮寫輸出：
+
+[listing]
+----
+smis pools
+ONTAP_ConcretePool.InstanceID="ONTAP:0084259609:d46de7f0-3925-11df-8516-00a0980558ea"
+ONTAP_ConcretePool.InstanceID="ONTAP:0084259609:51927ab0-28b5-11df-92b2-00a0980558ea"
+ONTAP_DiskPrimordialPool.InstanceID="ONTAP:0084259609:Spare"
+ONTAP_DiskPrimordialPool.InstanceID="ONTAP:0084259609:Other"
+ONTAP_DiskPrimordialPool.InstanceID="ONTAP:0084259609:Present"
+----

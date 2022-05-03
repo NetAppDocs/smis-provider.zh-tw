@@ -1,0 +1,55 @@
+---
+permalink: task-enable-or-disable-audit-log-for-smi-s-commands.html 
+sidebar: sidebar 
+keywords: incoming smi-s command, record, log files, auditor, wbem client 
+summary: 所有傳入的SMI-S命令都會記錄在稽核記錄檔中、讓稽核員能夠追蹤有關WBEM用戶端作業和供應商使用的活動。您可以設定動態組態屬性、來啟用或停用這些傳入命令的記錄。 
+---
+= 啟用或停用SMI-S命令的稽核記錄
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+所有傳入的SMI-S命令都會記錄在稽核記錄檔中、讓稽核員能夠追蹤有關WBEM用戶端作業和供應商使用的活動。您可以設定動態組態屬性、來啟用或停用這些傳入命令的記錄。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+稽核日誌資料可提供有關存取、活動和組態變更的記錄、以供CIM伺服器使用。稽核檔案的內容包括命令的發出內容、命令的發出者、以及命令的發出時間。
+
+動態組態內容「enableAuditLog」可在執行時間啟用或停用稽核記錄。預設情況下、enableAuditLog設為true。
+
+一般做法是讓稽核記錄保持啟用狀態。
+
+稽核記錄檔（「cimserver_uditlog」）儲存在PEGUSGPEGAN記錄目錄（「C:\Program Files（x86）\NetApp\SMI\PEGUS\logs」）中。
+
+稽核記錄檔的大小上限為10 MB。達到上限後、檔案會重新命名為「cimserver_auditlog.0」、並建立新的「cimserver auditlog」檔案、以收集較新的稽核記錄資訊。
+
+NetApp SMI-S Provider維護六個最新的稽核記錄檔：「cimserver_auditlog.0」到「cimserver_auditlog.5」。
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 在執行時間設定SMI-S命令的稽核記錄：
++
+[cols="2*"]
+|===
+| 行動 | 命令 
+
+
+ a| 
+*啟用SMI-S稽核記錄*
+ a| 
+"*cimconfig -s enableAuditLog=true*
+
+
+
+ a| 
+*停用SMI-S稽核記錄*
+ a| 
+"*cimconfig -s enableAuditLog=假*
+
+|===
+

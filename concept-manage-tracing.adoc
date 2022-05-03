@@ -1,0 +1,14 @@
+---
+permalink: concept-manage-tracing.html 
+sidebar: sidebar 
+keywords: configure, smi-s provider, trace, files, components, trace, write, trace, file location 
+summary: 您可以設定SMI-S Provider管理追蹤檔案的方式、例如指定要追蹤的元件、要寫入追蹤訊息的目標、追蹤層級、以及追蹤檔案位置。 
+---
+= 管理追蹤
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以設定SMI-S Provider管理追蹤檔案的方式、例如指定要追蹤的元件、要寫入追蹤訊息的目標、追蹤層級、以及追蹤檔案位置。

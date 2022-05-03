@@ -1,0 +1,39 @@
+---
+permalink: reference-warning-26130.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 警告26130
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== 訊息
+
+「警告（26130）儲存資源池已分配給主機群組、主機群組中沒有任何主機可存取儲存陣列。
+
+
+
+== 說明
+
+當您分配儲存容量並將陣列存取權授予主機群組中的主機時、就會發生此錯誤。有了這項警告、就不可能將虛擬機器放在儲存系統上。
+
+
+
+== 修正行動
+
+. 在每台主機上、將每個儲存系統的IP位址新增至iSCSI啟動器應用程式。
+. 如有需要、請在每個儲存系統上、針對每個主機建立一個獨特的igroup、並從對應的主機建立適當的iSCSI節點名稱。
+. 針對每部連線Data ONTAP 至物件的主機、開啟MPIO應用程式並新增下列硬體ID：
++
+** 對於叢集Data ONTAP 式的實體、請輸入「* NetApp LUN C-Mode*」。
+
+
+. 重新啟動主機。
+. 移除供應商。
+. 再次設定儲存資源池。
+

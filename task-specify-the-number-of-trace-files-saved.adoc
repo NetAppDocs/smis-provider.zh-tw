@@ -1,0 +1,33 @@
+---
+permalink: task-specify-the-number-of-trace-files-saved.html 
+sidebar: sidebar 
+keywords: trace, enable, seven trace file, pegasus trace file num, system, space 
+summary: 如果啟用追蹤、預設會儲存七個追蹤檔。如果需要儲存更多追蹤檔、您可以設定環境變數PEGAS_TRACE_file_NUM來增加儲存的追蹤檔數量上限。如果您增加所儲存的追蹤檔案數目上限、則必須確保系統的硬碟空間足以容納追蹤檔案。 
+---
+= 指定儲存的追蹤檔案數目
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+如果啟用追蹤、預設會儲存七個追蹤檔。如果需要儲存更多追蹤檔、您可以設定環境變數「PEGAS_TRACE_file_NUM」來增加儲存的追蹤檔數量上限。如果您增加所儲存的追蹤檔案數目上限、則必須確保系統的硬碟空間足以容納追蹤檔案。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+如果啟用追蹤、追蹤資訊會寫入「cimserver.TRC」檔案。追蹤檔案會旋轉。當「cimserver.TRC」達到最大追蹤檔案大小時、其內容會移至「cimserver.TRC」檔案。依預設、「n」是介於0到5之間的值。如果您需要儲存更多追蹤檔、請增加「_n_」的值。
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 使用新儲存的追蹤檔數建立名為「PEGAS_TRACE_file_NUM」的系統或使用者環境變數。
++
+_Windows文件_有更多關於建立環境變數的資訊。
+
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

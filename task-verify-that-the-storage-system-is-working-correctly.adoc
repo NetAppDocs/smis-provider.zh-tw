@@ -1,0 +1,86 @@
+---
+permalink: task-verify-that-the-storage-system-is-working-correctly.html 
+sidebar: sidebar 
+keywords: smi-s provider, configure, least storage, cimom repository storage, working, correctly 
+summary: 在設定SMI-S Provider之前、您必須先將至少一個儲存系統新增至CIMOM儲存庫、然後確認儲存系統運作正常。 
+---
+= 驗證儲存系統是否正常運作
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+在設定SMI-S Provider之前、您必須先將至少一個儲存系統新增至CIMOM儲存庫、然後確認儲存系統運作正常。
+
+.開始之前
+* 您必須已以系統管理員身分登入。
+* 您必須已存取SMI-S Provider。
+
+
+.步驟
+. 將至少一個儲存系統新增至CIMOM儲存庫：
++
+[cols="2*"]
+|===
+| 若要新增儲存系統... | 輸入此命令... 
+
+
+ a| 
+供應商與儲存系統之間的HTTP連線
+ a| 
+`* SI新增_storage（儲存）sys儲存空間_sys_user_*
+
+
+
+ a| 
+提供者與儲存系統之間的HTTPS連線
+ a| 
+'* SI可增加安全的_storage儲存系統_sys_user_*
+
+|===
++
+命令最多會等待15分鐘、讓供應商更新快取並回應。
+
+. 驗證下列命令的輸出：
++
+[cols="2*"]
+|===
+| 對於此命令... | 確認... 
+
+
+ a| 
+《名單》
+ a| 
+項目數量符合所管理的儲存系統數量。
+
+
+
+ a| 
+'磁碟機'
+ a| 
+磁碟數量符合所有儲存系統上的磁碟總數。
+
+
+
+ a| 
+' LUN錯誤'
+ a| 
+LUN數量與所有儲存系統上的LUN總數相符。
+
+
+
+ a| 
+'池資源池'
+ a| 
+ONTAP的數量與所有儲存系統上的集合體總數相符。
+
+
+
+ a| 
+'磁碟區'
+ a| 
+磁碟區數量符合所有儲存系統上的磁碟區總數。
+
+|===
+

@@ -1,0 +1,50 @@
+---
+permalink: reference-hardware-requirements.html 
+sidebar: sidebar 
+keywords: smi-s provider, smi-s agent 
+summary: 您必須先確認Windows主機符合最低硬體需求、才能安裝NetApp SMI-S Provider。 
+---
+= 硬體需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您必須先確認Windows主機符合最低硬體需求、才能安裝NetApp SMI-S Provider。
+
+[cols="2*"]
+|===
+| 硬體 | 需求 
+
+
+ a| 
+記憶體
+ a| 
+* 4 GB RAM（最低）
+* 8 GB RAM（建議）
+
+
+
+
+ a| 
+磁碟空間
+ a| 
+* 1 GB（最低）
+* 4 GB（建議）
+
+
+啟用記錄和追蹤需要額外的磁碟空間、最多1 GB、視記錄和追蹤檔案旋轉設定而定。
+
+您必須有100 MB的暫用磁碟空間可供安裝。
+
+
+
+ a| 
+CPU
+ a| 
+* 雙核心2.0 GHz（最低）
+* 四核心2.0 GHz（建議）
+
+
+|===

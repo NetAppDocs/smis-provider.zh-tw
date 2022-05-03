@@ -1,0 +1,50 @@
+---
+permalink: task-verify-the-cim-server-status.html 
+sidebar: sidebar 
+keywords: install, netapp smi-s provider, verify, cim server, automatic, access 
+summary: 安裝NetApp SMI-S Provider之後、您必須確認在存取SMI-S Provider之後、自動啟動了CIM伺服器。 
+---
+= 驗證CIM伺服器狀態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+安裝NetApp SMI-S Provider之後、您必須確認在存取SMI-S Provider之後、自動啟動了CIM伺服器。
+
+您必須已擁有系統管理員的登入認證。
+
+.步驟
+. 以系統管理員身分登入。
+. 請瀏覽至可執行檔所在的目錄、以存取NetApp SMI-S Provider：
++
+[cols="2*"]
+|===
+| 如果您使用... | 然後執行此動作... 
+
+
+ a| 
+命令提示字元（具有提高的管理權限）
+ a| 
+瀏覽至「C:\Program Files（x86）\NetApp\SMI\PEGUS\bin」
+
+
+
+ a| 
+*開始*>*程式集*功能表
+ a| 
+右鍵單擊* NetApp SMI-S Provider*並選擇"Run as Administrator（以管理員身份運行）"。
+
+|===
+. 檢視CIM伺服器狀態：
++
+‘* SMI cimserver STATUS*’
+
++
+如果已啟動CIM伺服器、則會顯示下列訊息：
+
++
+「NetApp SMI-S Provider正在執行。
+
+

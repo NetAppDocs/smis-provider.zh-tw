@@ -1,0 +1,68 @@
+---
+permalink: reference-cimconfig-command-options.html 
+sidebar: sidebar 
+keywords: cimconfig, command, cimom configuration, settings, variable, mis cimserver restart command 
+summary: 您可以使用cimconfig命令來管理CIMOM組態設定。輸入cimconfig命令或為NetApp SMI-S Provider組態值建立環境變數之後、您必須使用SMI cimserver重新啟動命令重新啟動CIM伺服器。 
+---
+= cimconfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用「cimconfig」命令來設定CIMOM設定、例如啟用和停用HTTP和HTTPS、以及變更HTTP和HTTPS連接埠號碼。輸入「cimconfig」命令或為NetApp SMI-S Provider組態值建立環境變數之後、您必須使用「mis cimserver restart」命令重新啟動CIM伺服器。
+
+"cimconfig _options_"
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+.選項
+* *至c *
++
+指定組態設定適用於目前的CIMOM組態。
+
+* *至d*
++
+指定組態設定適用於預設的CIOM組態。
+
+* *- g*
++
+取得指定組態內容的值。
+
+* *小時、-協助*
++
+顯示cimconfig命令的說明。
+
+* *-l*
++
+列出所有的CIMOM組態內容。
+
+* *：p *
++
+指定下次啟動CIM伺服器時套用組態設定。
+
+* *至*
++
+設定指定的組態內容值。
+
+* *-u*
++
+將組態內容重設為預設值。
+
+* *版本*
++
+顯示CIM伺服器的版本。
+
+
+
+將記錄檔大小上限變更為15000 KB：
+
+[listing]
+----
+cimconfig -s maxLogFileSizeKBytes=15000
+Current value for the property maxLogFileSizeKBytes is set to "15000" in CIMServer.
+smis cimserver restart
+----

@@ -1,0 +1,41 @@
+---
+permalink: reference-smis-licensed.html 
+sidebar: sidebar 
+keywords: smis licensed, command, lists, licensed, storage systems 
+summary: SMI授權命令會列出儲存系統的授權功能。 
+---
+= 已授權的SI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis licensed」命令會列出儲存系統的授權功能。
+
+已授權的SI
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+「已授權的指令及其縮寫輸出：
+
+[listing]
+----
+smis licensed
+ONTAP_SoftwareIdentity.InstanceID="ONTAP:0084259609:cifs"
+ONTAP_SoftwareIdentity.InstanceID="ONTAP:0084259609:cluster"
+ONTAP_SoftwareIdentity.InstanceID="ONTAP:0084259609:fcp"
+ONTAP_SoftwareIdentity.InstanceID="ONTAP:0084259609:iscsi"
+ONTAP_SoftwareIdentity.InstanceID="ONTAP:0084259609:nfs"
+----

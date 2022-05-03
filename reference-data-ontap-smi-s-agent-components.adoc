@@ -1,0 +1,34 @@
+---
+permalink: reference-data-ontap-smi-s-agent-components.html 
+sidebar: sidebar 
+keywords: smi-s provider 
+summary: NetApp SMI-S Provider包含三個元件、可讓您管理及監控儲存系統：CIOM、供應商物件及儲存庫。 
+---
+= NetApp SMI-S Provider元件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp SMI-S Provider包含三個元件、可讓您管理及監控儲存系統：CIOM、供應商物件及儲存庫。
+
+* * CIIMOM*
++
+這是NetApp SMI-S Provider的基礎。CIMOM會收集、驗證及驗證每個應用程式要求、然後回應應用程式。它會叫用適當的供應商來處理每個要求、成為每個要求的處理通道。
+
+* *提供者物件*
++
+當主機向SMI-S Provider發出命令或查詢時、CIMOM會載入共用程式庫物件、啟動該物件以處理要求、並將產生的資訊傳回主機。
+
++
+[NOTE]
+====
+Windows主機使用的是DLL物件。
+
+====
+* *儲存庫*
++
+CIMOM使用平面檔案資料庫作為儲存庫。它會儲存在CIM層級所需的持續資料。
+
+

@@ -1,0 +1,34 @@
+---
+permalink: reference-no-response-from-the-server.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 伺服器沒有回應
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *問題*
++
+查詢時、伺服器沒有回應。
+
+* *原因*
++
+此問題發生於未將儲存系統新增至CIMOM儲存庫的情況。
+
+* *修正行動*
++
+輸入下列命令以驗證是否已新增儲存系統：
+
++
+《名單》
+
++
+如果未列出儲存系統、請輸入下列命令新增儲存系統：
+
++
+'新增_storage？sys storage？sys儲存設備_sys使用者儲存設備_sys _pwd_
+
+

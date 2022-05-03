@@ -1,0 +1,35 @@
+---
+permalink: task-specify-the-maximum-number-of-threads-per-message-service-queue.html 
+sidebar: sidebar 
+keywords: default, smi-s provider, 80 threads, per message, service queue, machine performance 
+summary: 依預設、SMI-S Provider允許每個訊息服務佇列有80個執行緒。您可以將最大執行緒值指定為1到5000。增加最大執行緒數量可能會影響SMI-S Provider機器的效能、因此請仔細考慮是否需要增加此值。 
+---
+= 指定每個訊息服務佇列的執行緒數目上限
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+依預設、SMI-S Provider允許每個訊息服務佇列有80個執行緒。您可以將最大執行緒值指定為1到5000。增加執行緒的最大數量可能會影響SMI-S Provider機器的效能、因此請仔細考慮是否需要增加此值。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+如果您的追蹤檔顯示許多行「資源不足」輸出、您必須以500為增量來增加執行緒數量。
+
+如果您使用「* cimcli -n root/ONTAP Niall*」命令將執行緒的最大數量設定為少於20個、則提供者將無回應、並在追蹤檔中傳回「執行緒集區不足」訊息。如果發生這種情況、您必須以500為增量增加執行緒數量、然後重新啟動提供者。
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 使用新的最大執行緒值建立名為「PEGAS_MAX_討論 串_PER_SVC_佇 列」的系統或使用者環境變數。
++
+如需建立環境變數的相關資訊、請參閱Windows文件。
+
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

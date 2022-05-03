@@ -1,0 +1,38 @@
+---
+permalink: task-add-cim-server-users.html 
+sidebar: sidebar 
+keywords: validate, storage systems, cim user, cim server 
+summary: 在驗證儲存系統之前、您必須先新增獲授權使用CIM伺服器的CIM使用者。 
+---
+= 新增一個CIM伺服器使用者
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+在驗證儲存系統之前、您必須先新增獲授權使用CIM伺服器的CIM使用者。
+
+.開始之前
+* 您必須已以系統管理員身分登入。
+* 您必須已存取SMI-S Provider。
+
+
+.步驟
+. 建立本機使用者帳戶。
+. 將使用者新增至「系統管理員」群組。
++
+如需詳細資訊、請參閱_System documentation。
+
+. 新增一個CIM伺服器使用者：
++
+"* CIMUser -A -u _user_name_*
+
++
+例如、若要新增名為「'Chris」的CIM伺服器使用者：
+
++
+「* CIMDUser -A -u Chris *」
+
+. 出現提示時、輸入並重新輸入密碼。
+

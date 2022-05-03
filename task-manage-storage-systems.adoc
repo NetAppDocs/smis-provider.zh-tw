@@ -1,0 +1,128 @@
+---
+permalink: task-manage-storage-systems.html 
+sidebar: sidebar 
+keywords: smi-s provider, commands, add, delete, list, storage, systems, cimom repository 
+summary: 您可以使用NetApp SMI-S Provider命令來新增、刪除及列出CIMOM儲存庫中的儲存系統。您也可以列出儲存系統的NFS和CIFS匯出及匯出LUN。 
+---
+= 管理儲存系統
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用NetApp SMI-S Provider命令來新增、刪除及列出CIMOM儲存庫中的儲存系統。您也可以列出儲存系統的NFS和CIFS匯出及匯出LUN。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+對於SVM、您必須為SVM指定管理IP位址、而非為叢集IP位址、而且必須提供vsadmin使用者的認證資料。ONTAPSMI-S Provider不支援叢集IP位址或節點管理IP位址、也不支援節點管理或節點SVM。
+
+[NOTE]
+====
+將管理LIF新增至SMI-S Provider時、您應該將其資料傳輸協定值設為「無」。
+
+====
+.步驟
+. 存取NetApp SMI-S Provider。
+. 請完成下列其中一項動作：
++
+[cols="3*"]
+|===
+| 行動 | 命令 | 其他資訊 
+
+
+ a| 
+在供應商與儲存系統之間新增具有HTTP連線的儲存系統
+ a| 
+`* SI新增_storage（儲存）sys儲存空間_sys_user_*
+ a| 
+命令最多會等待15分鐘、讓供應商更新快取並回應。
+
+
+
+ a| 
+在供應商與儲存系統之間新增具有HTTPS連線的儲存系統
+ a| 
+'* SI可增加安全的_storage儲存系統_sys_user_*
+ a| 
+命令最多會等待15分鐘、讓供應商更新快取並回應。
+
+
+
+ a| 
+列出儲存系統的NFS和CIFS匯出
+ a| 
+’* SMI exports *’（匯出*）
+ a| 
+無
+
+
+
+ a| 
+列出CIMOM儲存庫的儲存系統
+ a| 
+‘* SMI list*’
+ a| 
+在新增或刪除儲存系統之前、您可以執行此命令來驗證CIMOM儲存庫中的儲存系統。
+
+
+
+ a| 
+列出已匯出的儲存系統LUN
+ a| 
+‘* SMI LUN*’
+ a| 
+無
+
+
+
+ a| 
+從CIMOM儲存庫刪除儲存系統
+ a| 
+‘* SI刪除_storage _sys_*
+ a| 
+如果不再需要管理儲存系統、您可以從CIMOM儲存庫中刪除它。
+
+由於SMI-S Provider會從CIMOM儲存庫中的所有儲存系統收集資訊、因此您應該從儲存庫中刪除未使用的儲存系統、以維持最佳效能。
+
+
+
+ a| 
+列出目前的CIM伺服器組態資訊
+ a| 
+「* SI組態顯示*」
+ a| 
+無
+
+
+
+ a| 
+列出儲存系統的FC和iSCSI連接埠資訊
+ a| 
+‘* SMI啟動器*’
+ a| 
+無
+
+
+
+ a| 
+列出儲存系統的儲存資源池
+ a| 
+‘* SMI Poolso*’
+ a| 
+無
+
+
+
+ a| 
+列出儲存系統的傳統和彈性磁碟區
+ a| 
+‘* SMI Volumes *’
+ a| 
+無
+
+|===
+

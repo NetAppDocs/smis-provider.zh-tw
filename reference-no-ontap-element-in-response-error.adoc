@@ -1,0 +1,25 @@
+---
+permalink: reference-no-ontap-element-in-response-error.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 檔案管理器退貨：ONTAP 沒有回應的元素
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *訊息*
++
+「Filer退貨：ONTAP 沒有反應的元素」。
+
+* *說明*
++
+當ONTAPI API逾時時時、就會出現此訊息。預設的ONTAPI API逾時時間為60秒、在某些情況下可能太短。
+
+* *修正行動*
++
+設定環境變數「ONTAPI_timeout_SEC」、然後重新啟動SMI-S Provider、將ONTAPI API逾時變更為大於60秒的值。
+
+

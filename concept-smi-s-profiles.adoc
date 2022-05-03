@@ -1,0 +1,14 @@
+---
+permalink: concept-smi-s-profiles.html 
+sidebar: sidebar 
+keywords: smi-s provider, profile, subprofile, comply, smis-s v1.7 
+summary: SMI-S Provider使用符合SMI-S v1.7的設定檔和子設定檔。如需SMI-S v1.7的相關資訊、請參閱SNIA：技術標準與軟體頁面。 
+---
+= SMI-S設定檔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+SMI-S Provider使用符合SMI-S v1.7的設定檔和子設定檔。如需SMI-S v1.7的相關資訊、請參閱SNIA：技術標準與軟體頁面。

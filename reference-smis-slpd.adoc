@@ -1,0 +1,37 @@
+---
+permalink: reference-smis-slpd.html 
+sidebar: sidebar 
+keywords: smis slpd, command, start, stop, slp daemon 
+summary: SMI slpd命令會啟動或停止slp精靈。 
+---
+= SMI slpd
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+"mis slpd"命令會啟動或停止slp精靈。
+
+《Mis slpd》
+
+「{*start*|* stop *｝」
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+啟動slp精靈：
+
+[listing]
+----
+smis slpd start
+SLPD started.
+----
+停止slp守護程序：
+
+[listing]
+----
+smis slpd stop
+SLPD (15564) was successfully stopped.
+----

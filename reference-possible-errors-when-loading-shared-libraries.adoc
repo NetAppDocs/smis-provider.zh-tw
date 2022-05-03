@@ -1,0 +1,35 @@
+---
+permalink: reference-possible-errors-when-loading-shared-libraries.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 載入共用程式庫時可能發生錯誤
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *訊息*
++
+「載入共享程式庫時發生錯誤：libssl.so 1.1.0：無法開啟共享的物件檔案：沒有此類檔案或目錄。
+
++
+"mis cimserver"狀態顯示cimserver正在正常運行，但所有其他的"usr/NetApp/SMIs/pagus/bin/cim"命令都顯示各種故障訊息。
+
++
+例如、執行「cimserver」時、您可能會收到「cimserver not running」訊息、或者您可能會收到訊息「/usr/neta/SMIs/pagus/bin/ cimcli：symbol LOOKUP錯誤：/user/SMIs/pagus/bin/cimcli：未定義符號：_ZN7pus16StringConvertion21timalkcli執行「kimalkcli」時、請執行「kim64To64Toint64Rcli」。這些範例並非全包式的。
+
+* *說明*
++
+當「LD_LIBRARY_PATH'環境未設定至安裝目錄時、會出現此訊息（及類似訊息）。
+
+* *修正行動*
++
+輸入下列命令之一、將「LD_LIBRARY_PATH]環境變數設定為安裝目錄：
+
+
+
+「匯出LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/NetApp/SMIs/PEGS/Lib」
+
+「etenv LD_LIBRAR_PATH=$LD_LIBRARY_PATH:/usr/NetApp/SMIs/PEGS/Lib」

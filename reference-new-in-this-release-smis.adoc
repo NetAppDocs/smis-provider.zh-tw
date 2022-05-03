@@ -1,0 +1,21 @@
+---
+permalink: reference-new-in-this-release-smis.html 
+sidebar: sidebar 
+keywords: new, release 
+summary: 此版本的新功能 
+---
+= 此版本的新功能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* SMI-S Provider 5.2.5沒有可用的升級路徑。
+* 您必須將SMI-S Provider 5.2.5部署為新安裝。
+
+
+*適用於Windows使用者：*
+
+* 此版本與Windows Server 2012或System Center Virtual Machine Manager（SCVMM）2012不相容。
+* SMI-S Provider 5.2.5支援Windows Server 2016、Windows Server 2019、SCVMM 2016和SCVMM 2019。
+

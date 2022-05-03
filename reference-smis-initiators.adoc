@@ -1,0 +1,39 @@
+---
+permalink: reference-smis-initiators.html 
+sidebar: sidebar 
+keywords: smis initiators, display, fibre channel, iscsi, storage systems 
+summary: 「SI啟動器」命令會顯示儲存系統的Fibre Channel和iSCSI連接埠資訊。 
+---
+= SI啟動器
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis啟動器」命令會顯示儲存系統的光纖通道和iSCSI連接埠資訊。
+
+SI啟動器
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+「mis initiator（啟動器））”命令及其縮寫輸出：
+
+[listing]
+----
+smis initiators
+ONTAP_StorageHardwareID.InstanceID="ONTAP:0084259609:iqn.1991-05.com.microsoft:sf-tpc1"
+ONTAP_StorageHardwareID.InstanceID="ONTAP:0084259609:21:00:00:e0:8b:86:f2:89"
+ONTAP_StorageHardwareID.InstanceID="ONTAP:0084259609:iqn.1991-05.com.microsoft:went2k3x32-01"
+----

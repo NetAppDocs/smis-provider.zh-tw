@@ -1,0 +1,86 @@
+---
+permalink: reference-smis-add.html 
+sidebar: sidebar 
+keywords: smis addsecure, smis add, storage system, http connection, configuration 
+summary: SI add命令可將具有HTTP連線的儲存系統新增至您的組態、以供您管理及監控裝置。除非有必要、否則您應該使用SMI addsecure、而非新增SMI。 
+---
+= 新增的SI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis add」命令會將具有HTTP連線的儲存系統新增至您的組態、以便您管理及監控裝置。除非有必要、否則您應該使用「sis addSecure」而非「sis add」。
+
+"新增"
+
+？？"_storage（儲存設備）_sys storage（儲存設備）_sys_user_"+"-t｛* http *|* https *｝""
+
+[NOTE]
+====
+使用美國以外語言的作業系統英文版無法使用「add」命令。
+
+====
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+.參數
+* ？
++
+您要新增之儲存系統的名稱或IP位址
+
++
+如果您要指定IP位址、可以使用IPV4或IPV6。同時支援壓縮和完整的IPv6位址、例如：「* 1001:0002：0000:0000:0000:0000:0003：0004*」或「* 1001:2：3：4*」。
+
+* ？
++
+管理您要新增之儲存系統的管理員使用者名稱
+
+* ？
++
+選用：管理您要新增之儲存系統的管理員密碼
+
++
+最佳實務做法是、基於安全理由、請勿使用此參數。此參數僅供自動化和向下相容使用。
+
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+
+
+== 儲存系統代理程式與代理程式用戶端傳輸協定
+
+'smis add'和'sis add安全'命令決定了儲存系統與供應商之間使用的傳輸協定。「-t {* http *|* https *｝]」參數可決定供應商與用戶端之間使用的傳輸協定。
+
+'sis addseced'命令和'-t {*https*}]參數使用SSL加密進行連接，不允許未加密的流量。不需使用SSL加密、即可連線「mis add」命令和「-t {*http*}]」參數、並允許未加密的流量。
+
+在停用SSL加密連線之前、您應該先考量環境的安全需求。
+
+透過HTTP使用IP位址10.32.1.4的IPV4新增儲存系統：
+
+[listing]
+----
+smis add 10.32.1.4 user2
+----
+此時會出現一則確認訊息、指出儲存系統已成功新增。如果發生錯誤、會出現錯誤訊息。
+
+使用IPv6 over HTTP新增儲存系統：
+
+[listing]
+----
+smis add 1001:0002:0000:0000:0000:0000:0003:0004 user2
+smis add 1001:2::3:4 user2
+----
+此時會出現一則確認訊息、指出儲存系統已成功新增。如果發生錯誤、會出現錯誤訊息。
+
+在非英文系統上、透過HTTP新增IP位址為10.32.1.4的儲存系統：
+
+[listing]
+----
+cimcli -n root/ontap ci ontap_filerdata hostname="10.32.1.4" username="vsadmin" password="PasSw0Rd" port=80 comMechanism="HTTP" --timeout 180
+----

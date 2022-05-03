@@ -1,0 +1,72 @@
+---
+permalink: reference-editing-the-slp-conf-file.html 
+sidebar: sidebar 
+keywords: 'slp.conf, configuration, additional options, manage, service location,daemon (SLPD) server' 
+summary: SLP.conf組態檔提供其他選項、可讓您管理服務位置傳輸協定精靈（slpd）伺服器。 
+---
+= slp.conf檔案管理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「slp.conf"組態檔提供其他選項、可讓您管理服務位置傳輸協定精靈（slpd）伺服器。
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\cfg/」
+
+具有有效使用者名稱和密碼的使用者
+
+
+
+== 說明
+
+使用「slp.conf]組態檔、您可以變更主機接聽的SLP要求介面數量、以及主機用於多點傳送的IP位址數量。
+
+使用文字編輯器開啟「shlp.conf"。
+
+.參數
+* *「介面」*
++
+指定主機可接聽的最大IP位址數、以利處理slp要求。
+
+* *《最後文件》*
++
+指定主機可用於多點傳送的IP位址數目上限。在多重主目錄系統上設定slp多點傳送流量的介面時、請使用此參數。
+
+* *「BroadcastOnly」*
++
+透過SLP傳送訊息時、強制使用廣播選項、而非使用多點傳送選項。
+
+* *「已啟用最新功能」*
++
+為收到的URL和屬性清單提供安全性。
+
+
+
+以下是"shlp.conf"組態檔的簡短範例：
+
+[listing]
+----
+
+################################################################
+# OpenSLP configuration file
+# Format and contents conform to specification in IETF RFC 2614 so
+the comments use the language of the RFC. In OpenSLP, SLPD
+operates as an SA and a DA. The SLP UA functionality is
+encapsulated by SLPLIB.
+################################################################
+
+#-----------------------------------------------------------------
+# Static Scope and DA Configuration
+#-----------------------------------------------------------------
+# This option is a comma delimited list of strings indicating the
+only scopes a UA or SA is allowed when making requests or
+registering or the scopes a DA must support. (default value is
+"DEFAULT");net.slp.useScopes = myScope1, myScope2, myScope3
+
+# Allows administrator to force UA and SA agents to use specific
+DAs. If this setting is not used dynamic DA discovery will be used
+to determine which DAs to use. (Default is to use dynamic DA
+discovery)
+----

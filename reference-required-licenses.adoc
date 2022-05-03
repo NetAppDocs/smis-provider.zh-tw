@@ -1,0 +1,21 @@
+---
+permalink: reference-required-licenses.html 
+sidebar: sidebar 
+keywords: smi-s provider, required, license 
+summary: 若要使用NetApp SMI-S Provider、您必須擁有必要的授權。 
+---
+= 必要的授權
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+若要使用NetApp SMI-S Provider、您必須擁有必要的授權。
+
+NetApp SMI-S Provider需要下列授權：
+
+* 在儲存系統上建立LUN時、需要FCP、iSCSI或兩者的FCP和iSCSI授權。
+* 在支援ONTAP 的功能區儲存系統上建立檔案共用時、需要CIFS授權。
+* 需要FlexClone授權、才能在執行支援ONTAP 的版本的叢集式儲存系統上建立LUN複製。
+

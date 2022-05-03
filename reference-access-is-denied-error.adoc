@@ -1,0 +1,35 @@
+---
+permalink: reference-access-is-denied-error.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 存取遭拒錯誤
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *訊息*
++
+「存取遭拒。
+
+* *說明*
++
+此訊息會在兩種可能的情況下出現：
+
++
+** 如果您在從「開始」功能表捷徑存取SMI-S Provider時未以系統管理員身分登入
+** 如果SMI-S Provider目錄未指向「C:\Program Files（x86）\NetApp\SMI\PEGUS\bin」
+
+
+* *修正行動*
++
+完成符合下列情況的行動：
+
++
+** 以系統管理員層級的權限登入、然後從「開始」功能表重新開啟SMI-S Provider、或按一下滑鼠右鍵並選取「*以系統管理員身分執行*」。
+** 以系統管理員層級的權限登入、然後手動將目錄變更為「C:\Program Files（x86）\NetApp\SMI\PEGUS\bin」。
+
+
+

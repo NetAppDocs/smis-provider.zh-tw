@@ -1,0 +1,43 @@
+---
+permalink: reference-slptool-command-options.html 
+sidebar: sidebar 
+keywords: slptool, command 
+summary: 您可以將這些選項與slptool命令搭配使用。 
+---
+= slptool
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用「shlptool」命令來顯示有關WBEM服務的資訊。
+
+「lpdool [選項]_子 命令_」
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+.選項
+* *-I*
++
+指定一個或多個介面。
+
+* *-l*
++
+指定語言標記。
+
+* *至*
++
+指定範圍清單（以逗號分隔）。
+
+* *-u*
++
+指定一個介面。
+
+* *-v*
++
+顯示"slptool"和OpenSLP"的版本。
+
+

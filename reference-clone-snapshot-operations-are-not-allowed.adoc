@@ -1,0 +1,25 @@
+---
+permalink: reference-clone-snapshot-operations-are-not-allowed.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 不允許複製/快照作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *訊息*
++
+「當磁碟區中的LUN實體複製分割作業正在進行時、不允許複製/快照作業。請稍候、然後再試一次
+
+* *說明*
++
+如果您嘗試在LUN複製分割期間執行Snapshot作業、就會發生此錯誤。如果LUN正在分割的磁碟區正在背景執行LUN複製分割、則無法在該磁碟區中執行Snapshot作業。
+
+* *修正行動*
++
+請在LUN分割後嘗試Snapshot作業。
+
+

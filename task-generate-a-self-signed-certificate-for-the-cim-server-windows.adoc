@@ -1,0 +1,45 @@
+---
+permalink: task-generate-a-self-signed-certificate-for-the-cim-server-windows.html 
+sidebar: sidebar 
+keywords: ssl authentication, enable, cim server, installation, self-signed certificate 
+summary: 根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在pus目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。 
+---
+= 為CIM伺服器產生自我簽署的憑證
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在「PEGASGUSS」目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。
+
+.開始之前
+* 您必須已以系統管理員身分登入。
+* 您必須已存取SMI-S Provider。
+
+
+.步驟
+. 產生私密金鑰：
++
+「* openssl genrsa -out cimom.key 2048*」
+
+. 產生憑證要求：
++
+「* openssl req -new -key cimom.key -out CIMOM.csr*」
+
+. 出現提示時、請輸入您的憑證要求資訊。
+. 產生自我簽署的憑證：
++
+"* openssl x509 -in CIMOM.csr -out CIMOM.cert -req -signkey cimom.key -days 1095*
+
++
+您可以提供憑證有效的不同天數。
+
+. 將「CIMOM.key」和「CIMOM.CERT」檔案複製到「PEGASGUSE」目錄（Windows：「C:\Program Files（x86）\NetApp\SMI\PEGUSE'）。
+
+
+
+
+== 結果
+
+憑證日期範圍從目前日期開始、並在指定的天數內執行。

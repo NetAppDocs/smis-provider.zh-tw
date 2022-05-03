@@ -1,0 +1,68 @@
+---
+permalink: reference-smis-config-show.html 
+sidebar: sidebar 
+keywords: smis config show, list, current cim server, configuration, information 
+summary: SMI config show命令會列出目前的CIM伺服器組態資訊。 
+---
+= 顯示SMI組態
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis config show」命令會列出目前的CIM伺服器組態資訊。
+
+「組態顯示」
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+「mis config show（組態顯示）”及其輸出：
+
+[listing]
+----
+smis config show
+slp:
+Current value: true
+
+tracelevel:
+Current value: 4
+
+traceComponents:
+Current value: XmlIO,Thread, IndicationGeneration, DiscardedData, CMPIProvider, LogMessages, ProviderManager, SSL, Authentication, Authorization
+
+traceFilePath:
+Current value: traces/cimserver.trc
+
+enableAuditLog:
+Current value: true
+
+logLevel:
+Current value: WARNING
+
+sslKeyFilePath:
+Current value: cimom.key
+
+sslCertificateFilePath:
+Current value: cimom.cert
+
+passwordFilePath:
+Current value: cimserver.passwd
+
+enableHttpConnection:
+Current value: true
+
+enableHttpsConnection:
+Current value: true
+
+httpPort:
+Current value: 5988
+
+httpsPort:
+Current value: 5989
+
+enableAuthentication:
+Current value: true
+----

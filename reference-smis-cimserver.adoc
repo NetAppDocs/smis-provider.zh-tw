@@ -1,0 +1,41 @@
+---
+permalink: reference-smis-cimserver.html 
+sidebar: sidebar 
+keywords: smis cimserver, command, start, stop, restart, cim server 
+summary: SMI cimserver命令會啟動、停止、重新啟動或取得CIM伺服器的狀態。 
+---
+= SMI cimserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis cimserver」命令會啟動、停止、重新啟動或取得CIM伺服器的狀態。
+
+"mis cimserver"
+
+「{* start*|* stop *|* start*|* STATUS*｝」
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+.參數
+* *開始*
++
+啟動CIM伺服器。
+
+* *停止*
++
+停止CIM伺服器。
+
+* *重新啟動*
++
+重新啟動CIM伺服器。
+
+* *狀態*
++
+取得CIM伺服器的狀態。
+
+

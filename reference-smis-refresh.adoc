@@ -1,0 +1,41 @@
+---
+permalink: reference-smis-refresh.html 
+sidebar: sidebar 
+keywords: smi-s provider, automatic, information, storage systems 
+summary: 依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系統取得資訊。您可以使用「SI重新整理」命令手動重新整理特定的儲存系統。 
+---
+= SMIS重新整理
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系統取得資訊。您可以使用「mis refresh」命令手動重新整理特定的儲存系統。
+
+「重新整理_storage、system、ip_」
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」「*」「*」「_storage」「system」「ip_*」
++
+重新整理特定的儲存系統。
+
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+「mis refresh'命令及其輸出：
+
+[listing]
+----
+smis refresh 10.32.1.4
+Return Value= 0
+----

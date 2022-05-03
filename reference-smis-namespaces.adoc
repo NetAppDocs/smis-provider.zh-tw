@@ -1,0 +1,41 @@
+---
+permalink: reference-smis-namespaces.html 
+sidebar: sidebar 
+keywords: smis namespace, command, list, registered, namespace, cimom 
+summary: 「SI命名空間」命令會列出CIMOM的登錄命名空間。 
+---
+= SI命名空間
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis命名空間」命令會列出CIMOM的登錄命名空間。
+
+SI命名空間
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+* Windows：「C：\Program Files（x86）\NetApp\SMI\PEGUS\bin」
+
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+命令"mis命名空間"及其縮寫輸出：
+
+[listing]
+----
+smis namespaces
+interop
+root/ontap
+----

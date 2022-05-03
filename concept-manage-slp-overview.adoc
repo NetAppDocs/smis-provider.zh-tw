@@ -1,0 +1,16 @@
+---
+permalink: concept-manage-slp-overview.html 
+sidebar: sidebar 
+keywords: slp, service broadcasts, wbem services, slp, ebable, client, application, discover, cimom, configuration, settings 
+summary: 該SLP服務會廣播WBEM服務。當啟用了SLP服務時、用戶端應用程式可以探索CIMOM伺服器。您也可以使用slp..conf檔案來指定slp組態設定。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+該SLP服務會廣播WBEM服務。當啟用了SLP服務時、用戶端應用程式可以探索CIMOM伺服器。您也可以使用「slp.conf]檔案來指定slp組態設定。
+
+如果尚未啟用該slp服務、您可以使用「smis slpd start」命令來啟動該slp服務。若要停止slp服務、請使用「mis slpd stop」命令。

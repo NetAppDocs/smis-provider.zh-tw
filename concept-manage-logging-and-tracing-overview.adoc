@@ -1,0 +1,14 @@
+---
+permalink: concept-manage-logging-and-tracing-overview.html 
+sidebar: sidebar 
+keywords: configure, smi-s provider, trace files, specify, levels, message logging, component, trace, file location 
+summary: 您可以設定SMI-S Provider管理記錄檔和追蹤檔的方式、例如指定要記錄的訊息層級和儲存記錄的目錄。您也可以指定要追蹤的元件、要寫入追蹤訊息的目標、追蹤層級、以及追蹤檔案位置。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以設定SMI-S Provider管理記錄檔和追蹤檔的方式、例如指定要記錄的訊息層級和儲存記錄的目錄。您也可以指定要追蹤的元件、要寫入追蹤訊息的目標、追蹤層級、以及追蹤檔案位置。

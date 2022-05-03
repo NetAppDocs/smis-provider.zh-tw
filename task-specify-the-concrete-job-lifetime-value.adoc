@@ -1,0 +1,26 @@
+---
+permalink: task-specify-the-concrete-job-lifetime-value.html 
+sidebar: sidebar 
+keywords: smi-s provider, asynchronous, operation, concrete job, increase, lifetime, 60 minutes, 24 hours 
+summary: SMI-S Provider會建立具體工作、以追蹤非同步作業的進度。您可以將具體的工作壽命從預設的60分鐘（3、600秒）增加到86400秒（24小時）。 
+---
+= 指定具體的工作壽命值
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+SMI-S Provider會建立_具體 工作_來追蹤非同步作業的進度。您可以將具體的工作壽命從預設的60分鐘（3、600秒）增加到86400秒（24小時）。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+.步驟
+. 使用新的生命週期值（以秒為單位）建立名為「job_lete_SEC」的系統或使用者環境變數。
++
+如需建立環境變數的相關資訊、請參閱Windows文件。
+
+

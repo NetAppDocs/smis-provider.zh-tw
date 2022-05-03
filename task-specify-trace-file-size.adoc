@@ -1,0 +1,31 @@
+---
+permalink: task-specify-trace-file-size.html 
+sidebar: sidebar 
+keywords: trace, enable, trace, file, size, environment, variable, 10 mb 
+summary: 如果啟用追蹤、預設追蹤檔案大小上限為100 MB。您可以設定環境變數PEGON_TRAD_file_SIZE來增加或減少追蹤檔案的最大大小。追蹤檔案大小的值可以是10 MB到2 GB。 
+---
+= 指定追蹤檔案大小
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+如果啟用追蹤、預設追蹤檔案大小上限為100 MB。您可以設定環境變數「PEGAS_TRAD_file_Size'」來增加或減少追蹤檔案大小上限。追蹤檔案大小的值可以是10 MB到2 GB。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 建立名為「PEGUS_TRAD_file_SIZE」的系統或使用者環境變數、並以位元組為單位建立新的追蹤檔案大小。
++
+_Windows文件_有更多關於建立環境變數的資訊。
+
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

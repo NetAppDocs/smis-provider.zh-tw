@@ -1,0 +1,48 @@
+---
+permalink: reference-smis-luns.html 
+sidebar: sidebar 
+keywords: smis luns, command, display, lun information, storage system 
+summary: 「SI LUN」命令會顯示儲存系統的LUN資訊。 
+---
+= SI LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis LUNs」命令會顯示儲存系統的LUN資訊。
+
+SI LUN
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+命令"mis LUN"及其縮寫輸出：
+
+[listing]
+----
+smis luns
+ONTAP_StorageVolume.CreationClassName="ONTAP_StorageVolume",DeviceID
+="ef805c0d-5269-47c6-ba0fd9cdbf5e2515",
+SystemCreationClassName="ONTAP_StorageSystem",SystemNa
+me="ONTAP:68f6b3c0-923a-11e2-a856-123478563412"
+ONTAP_StorageVolume.CreationClassName="ONTAP_StorageVolume",DeviceID
+="f81cb3bf-2f16-467c-8e30-88bae415ab05",SystemCreationClassName="ONT
+AP_StorageSystem",SystemName="ONTAP:68f6b3c0-923a-11e2-
+a856-123478563412"
+ONTAP_StorageVolume.CreationClassName="ONTAP_StorageVolume",DeviceID
+="684f5fb9-0fdd-4b97-8678-188774bdcdd0",SystemCreationClassName="ONT
+AP_StorageSystem",SystemName="ONTAP:68f6b3c0-923a-11e2-
+a856-123478563412"
+----

@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+  <block id="2f46f994932279267adf63af53ef8631" category="summary">NetApp SMI-S Provider遇到的問題。</block>
+  <block id="d6bea59fb7c3e2297074e152f32b36f6" category="doc">系統資源不足、無法完成要求的服務</block>
+  <block id="2dd9a9fa1ac0d7911deb623eb2417bf4" category="list-text">*訊息*</block>
+  <block id="1b2080b95253a31b0613cac1d0668d19" category="paragraph">「系統資源不足、無法完成所要求的服務」</block>
+  <block id="f14c276c07197ebef1394a5a219087a1" category="list-text">*說明*</block>
+  <block id="cacae407bef798b0ffb4a0aaf4589632" category="paragraph">當在SCVMM的單一檔案共用區上配置大量VM時、每個連線已達到相同使用者的使用者工作階段上限時、就會出現此訊息。</block>
+  <block id="0fcdaa0a55ef934e3b57b5a56bf3ad77" category="paragraph">SCVMM會在每個Hyper-V主機上建立一個TCP連線、每個連線都會與兩個使用者建立許多工作階段：Hyper-V主機的電腦名稱（Computer$）和SCVMM「Run as Account（以帳戶執行）」。使用Computer$的工作階段數目恰好是部署在該Hyper-V主機上的虛擬硬碟數目之一。</block>
+  <block id="944631318e78936297a14bd8d2370d37" category="paragraph">「每個連線的相同使用者工作階段」的預設值為50。此限制會封鎖使用SCVMM的大規模VM部署。如果您在每個Hyper-V主機上部署超過50個VM、就會遇到這個問題。</block>
+  <block id="9bcbf7a68cf7f81d5bf448a2e12ab26a" category="list-text">*修正行動*</block>
+  <block id="186e5f3f14e60a14d11887c54d58b891" category="paragraph">增加控制相同CIFS傳輸協定之相同連線上工作階段數目上限的計數器。例如、下列命令會將相同連線上的使用者工作階段上限從預設值50變更為100：</block>
+  <block id="09f22fe040ed35c7bad3a8c149131588" category="paragraph">「* SVM：：：***&gt; CIFS作業修改-max-se-user-s階段 作業/每個連線100*」</block>
+  <block id="6e1e06b9c119062f2ede1998cc7b9468" category="summary">首次使用SMI-S Provider之前、您必須先驗證初始組態。</block>
+  <block id="3b878279a04dc47d60932cb294d96259" category="doc">總覽</block>
+  <block id="29944d7af445a05d44714ef748be90ac" category="paragraph">使用SMI-S Provider之前、請先執行下列工作：</block>
+  <block id="b856d55ad330a5df7fa9ba7e17ff436c" category="list-text">從NetApp SMI-S Provider驗證是否已啟動CIM伺服器。</block>
+  <block id="979599cef27365d55cce847bb7cdb1cf" category="list-text">新增一個CIM伺服器使用者。</block>
+  <block id="99c567f7cf0aab2dcea271bea1f6658f" category="list-text">為SMI-S Provider至少新增一個儲存系統、以驗證儲存系統的管理。</block>
+  <block id="10cd97be66aefff3103667d3f8ac3c6f" category="list-text">*選用：*產生CIOM的自我簽署憑證。</block>
+  <block id="6270237a9076186973431ea76de9f106" category="paragraph">依預設、SMI-S Provider會啟用驗證。</block>
+  <block id="f7531e8856965a9e9423683a715b9a00" category="paragraph">成功執行此驗證之後、您就可以開始使用NetApp SMI-S Provider來管理儲存系統。</block>
+  <block id="4f7eb33e0173b575543f5ee3f5f22d4c" category="summary">該SLP服務會廣播WBEM服務。當啟用了SLP服務時、用戶端應用程式可以探索CIMOM伺服器。您也可以使用slp..conf檔案來指定slp組態設定。</block>
+  <block id="65032cd61cc49eeb6b42b865ec92f41a" category="paragraph">該SLP服務會廣播WBEM服務。當啟用了SLP服務時、用戶端應用程式可以探索CIMOM伺服器。您也可以使用「slp.conf]檔案來指定slp組態設定。</block>
+  <block id="52e2b316a698c2d06e88f1a6b5cd1321" category="paragraph">如果尚未啟用該slp服務、您可以使用「smis slpd start」命令來啟動該slp服務。若要停止slp服務、請使用「mis slpd stop」命令。</block>
+  <block id="583c4d073cc3317c5b46f6634c9d3aa5" category="summary">「SI刪除」命令會刪除儲存系統。</block>
+  <block id="4626aae750bda7d774fce094fd95bfa9" category="doc">刪除SI</block>
+  <block id="04ee2ab63171bb9c6e32e8c20ad19aa0" category="paragraph">「mis DELETE」命令會刪除儲存系統。</block>
+  <block id="35d73d5c8283c2ca26c11f2557e37117" category="paragraph">'刪除錯誤'</block>
+  <block id="4030de93f608cf4bf29f0f3cce172cd3" category="paragraph">儲存系統</block>
+  <block id="156f23c674849579c407d5cecbca0755" category="paragraph">[-t {* http *|* https *｝]</block>
+  <block id="cd6755b2c9f54bad96cb3bc8b5a98590" category="paragraph">「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」</block>
+  <block id="eb569f08830457ab3c7049a3b391c4b6" category="paragraph">系統管理員（Windows）</block>
+  <block id="3225a10b07f1580f10dee4abc3779e6c" category="list-title">參數</block>
+  <block id="2d96be9b2363a30b3a05f05eaa92f13f" category="list-text">？</block>
+  <block id="94356b1930203a1c97fd0c20651e6079" category="paragraph">您要新增之儲存系統的名稱或IP位址</block>
+  <block id="7bd03536986773d36c70ec1b56ba369b" category="list-text">「*」[-t｛http | https｝]*</block>
+  <block id="cf5409b8ffde932c63f101760e4f30c1" category="paragraph">要使用的傳輸協定：HTTPS（預設）或HTTP</block>
+  <block id="e7fd075d5a29ee2639c769e84ed366d6" category="paragraph">刪除標示mgt-1的儲存系統：</block>
+  <block id="bb0064a365e0e5fa58dc065c696055f2" category="paragraph">‘* SI刪除mgt-1*’</block>
+  <block id="bb290eb2165b820851730c836c287af8" category="paragraph">如果未顯示錯誤訊息、表示儲存系統已成功刪除。</block>
+  <block id="aeedef3ee0a5af62ec32d9683a92b534" category="doc">SCVMM重新掃描作業無法找到SMI-S Provider或與其通訊</block>
+  <block id="9ff702207c5c34d0a659bd2093b21d08" category="list-text">*問題*</block>
+  <block id="9a2320278c975e09624eeb12c0ed80dd" category="paragraph">在極少數情況下、SCVMM無法找到SMI-S Provider。</block>
+  <block id="3bef6104c92bf17bdfdf66c9a257bbfc" category="list-text">*原因*</block>
+  <block id="7cad355a706b81e0e0fa33d6480aa45f" category="paragraph">如果使用新的GPO更新安全性基礎架構、就可能發生此問題。當SMI-S Provider主機重新開機後生效時、SCVMM主機可能不信任SMI-S Provider或主機。</block>
+  <block id="4cd0860930e09cd27dfcee8471ac354b" category="list-text">解除安裝SMI-S Provider、然後重新安裝。</block>
+  <block id="f77f4c33944f06bd53375ca2dde35154" category="list-text">在SCVMM中執行SMI-S Provider的重新掃描作業。</block>
+  <block id="2d1e9e9f04a42d01a160053c1a2e23b3" category="doc">非預設防火牆必須手動將連接埠新增為例外狀況</block>
+  <block id="d72daabf8627a25a9288cb90a2cd5716" category="paragraph">如果您使用的防火牆不是預設的Windows防火牆、可能會遇到下列問題：</block>
+  <block id="15af186fb800e41ac88aadacefe052d3" category="list-text">SMI-S Provider無法與移除的SMI-S用戶端通訊。</block>
+  <block id="bedbf316c4e9c42cb19e2e057e09844a" category="list-text">SMI-S用戶端無法接收SMI-S Provider的指示。</block>
+  <block id="ed484e3a89e7fe3bb50364a4369a35a6" category="paragraph">如果您使用預設Windows防火牆以外的防火牆、而不先手動新增必要的連接埠做為例外狀況、就會發生此問題。</block>
+  <block id="852512112e45567ec54871b9e051498c" category="paragraph">將連接埠（427、5988和5989）新增為防火牆的例外項目。</block>
+  <block id="c3cb8bf1ed7183e77f46d5e7e662b2c1" category="summary">說明如何安裝及管理NetApp SMI-S Provider、這是偵測及管理NetApp儲存系統的命令型介面。</block>
+  <block id="b51493aaf7964eeecd1d7dfd7e847d13" category="doc">NetApp SMI-S Provider文件</block>
+  <block id="3222e2c38626bc2823512833cc493f15" category="paragraph">歡迎使用NetApp SMI-S Provider資訊庫。您可在此找到NetApp SMI-S Provider軟體的文件、包括如何安裝及管理NetApp SMI-S Provider、這是偵測及管理NetApp儲存系統的命令型介面。</block>
+  <block id="9d2169c1c2855b78a7aeaa4f42d27dc7" category="inline-link">NetApp 支援網站</block>
+  <block id="1456d67be31dd1251336fefc3219f261" category="paragraph">如需舊版NetApp SMI-S Provider的文件、請參閱<block ref="c1cc34bfdb0a4a31c8960c236e9f731a" category="inline-link-rx"></block>。</block>
+  <block id="55843a00fdaf57b905dd3ba051deb6d5" category="summary">新增託管儲存系統之後、您應該確認可以在NetApp SMI-S Provider中看到所有重要的邏輯和實體物件。</block>
+  <block id="493f5a2c964a2ae41d8b304e4124f7b5" category="doc">確認重要物件的可見度</block>
+  <block id="29539de2349a0b046366e6908d8fa691" category="paragraph">您可以使用「mis」命令查看NetApp SMI-S Provider CIMOM儲存庫中的物件。例如、使用「mis list」來顯示新增的儲存系統、並使用「mis LUNs」來顯示LUN資訊。</block>
+  <block id="d5669bc7c911b2b3c8f75b894a919008" category="doc">不允許複製/快照作業</block>
+  <block id="9cbc1225817bd939d40c0d42c4c6415d" category="paragraph">「當磁碟區中的LUN實體複製分割作業正在進行時、不允許複製/快照作業。請稍候、然後再試一次</block>
+  <block id="db024fb93861c1136e5beea60c5e05ac" category="paragraph">如果您嘗試在LUN複製分割期間執行Snapshot作業、就會發生此錯誤。如果LUN正在分割的磁碟區正在背景執行LUN複製分割、則無法在該磁碟區中執行Snapshot作業。</block>
+  <block id="4cf5c508c533fc55ad0aa127819488aa" category="paragraph">請在LUN分割後嘗試Snapshot作業。</block>
+  <block id="f7f67a4b989755c831e2703c64ac314b" category="summary">「Thesmis disks」命令會顯示儲存系統的磁碟資訊。僅當與Data ONTAP VMware 7-Mode控制器搭配使用時、SI磁碟才會運作。</block>
+  <block id="001e1f541b1e42bd39ea2ea40c19ea63" category="doc">SMI磁碟</block>
+  <block id="d21c1931b01f62c3b9c02c100019a202" category="paragraph">'mis disks'命令顯示儲存系統的磁碟資訊。「Mis disks」（磁碟機）僅適用於Data ONTAP 搭配使用VMware 7-Mode控制器的情況。</block>
+  <block id="59ce60cbfbc99e9cb8dc6496fa7b9c6f" category="paragraph">具有有效使用者名稱和密碼的使用者</block>
+  <block id="1ac1bc188887b49a916919759fa511f6" category="paragraph">命令"mis disks"及其縮寫輸出：</block>
+  <block id="e65f5d35820fbe9f192146e7ff748f73" category="summary">您可以使用SMI-S Provider來新增和移除已授權使用CIM伺服器的CIM使用者。您也可以列出所有目前的CIM使用者、並修改其密碼。</block>
+  <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">開始之前</block>
+  <block id="994bc0ff42c205594c4814030a17efe0" category="list-text">您必須已擁有系統管理員的登入認證。</block>
+  <block id="26773937c2e2d4c88812921132664b11" category="list-text">您必須已以系統管理員身分登入主機系統。</block>
+  <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步驟</block>
+  <block id="56b362d7bdbaa18e1b3561d819b06f58" category="list-text">存取NetApp SMI-S Provider。</block>
+  <block id="aed9b77a9a67fc43c87c9ca0c42c9428" category="list-text">建立本機使用者帳戶。</block>
+  <block id="3ca235b5f2673c57408f7e128d006783" category="list-text">將使用者新增至「系統管理員」群組。</block>
+  <block id="7b43cd03e1de1085a4fc8332e21b48da" category="paragraph">如需詳細資訊、請參閱_System documentation。</block>
+  <block id="55c56e656fc1262386c75014fc91126a" category="list-text">請完成下列其中一項動作：</block>
+  <block id="004bf6c9a40003140292e97330236c53" category="cell">行動</block>
+  <block id="ee97be03cb04119af45014d815621ce1" category="cell">命令</block>
+  <block id="0f68b904e33d9ac04605aecc958bcf52" category="cell">其他資訊</block>
+  <block id="d41d8cd98f00b204e9800998ecf8427e" category="doc"></block>
+  <block id="02f7d5953ada54fa94eba6972733b55b" category="paragraph">新增一個CIM伺服器使用者</block>
+  <block id="b05c53b2d5c68261a900383863bdb0b4" category="paragraph">"* CIMUser -A -u _user_name_*</block>
+  <block id="fd80aa72b01980a364a235774524abe7" category="paragraph">輸入命令後、請在出現提示時輸入並重新輸入密碼。</block>
+  <block id="633f8729597919152468792a57812e5b" category="paragraph">列出目前獲授權使用CIM伺服器的使用者</block>
+  <block id="b3975567b3a00145d083012b3ebd6862" category="paragraph">「* CIMUser -l*」</block>
+  <block id="d4cd0dabcf4caa22ad92fab40844c786" category="paragraph">不適用</block>
+  <block id="d83ea15db4245c8ec9d005939d2c44fd" category="paragraph">變更CIM伺服器使用者的密碼</block>
+  <block id="6882933cb2e39e9a9c51bf4e291f7fe0" category="paragraph">"* CIMUser -m -u _user_name_*</block>
+  <block id="d0d3da0bfe81cf41faa253bed53f77bf" category="paragraph">輸入命令後、請在出現提示時輸入並重新輸入新舊密碼。</block>
+  <block id="fe23c5d73b81ce01111fcebd092a273b" category="paragraph">移除未獲授權使用CIM伺服器的CIM伺服器使用者</block>
+  <block id="7835aa7d3bbc0bcc39ce2fd1e83071c4" category="paragraph">"* CIMUser -r -u _user_name_*</block>
+  <block id="f4c8242274a5433176fc6575733f6559" category="summary">「SI Volume」命令會列出儲存系統的傳統和彈性磁碟區。</block>
+  <block id="0f44b667bbfb5498165b4f0f5ca52339" category="doc">SI磁碟區</block>
+  <block id="b78d25f27659bc706823fea082d9eb72" category="paragraph">「mis volume」命令會列出儲存系統的傳統和彈性磁碟區。</block>
+  <block id="72191377bb33379ad51587a7a17190c6" category="paragraph">'磁碟區'</block>
+  <block id="30789a6a7e76c03ee51006ffbbdd390c" category="paragraph">若要使用叢集Data ONTAP 式的功能、您必須使用「資源池」命令、而非使用「資源池」命令。</block>
+  <block id="0f2d51f976100876529d8e039c4b9c36" category="paragraph">「mis volume（磁碟區）”命令及其縮寫輸出：</block>
+  <block id="a7387d599b27b31a0efcb181897773ea" category="summary">依預設、SMI-S Provider會啟用驗證。如果驗證導致系統發生錯誤、您可以選擇停用驗證。如果已停用驗證、而您想要重新啟用驗證、您可以這麼做。</block>
+  <block id="3bdc3404174f074f29da198dfe0c3458" category="doc">啟用或停用NetApp SMI-S Provider驗證</block>
+  <block id="e52a780420ec86f52f5ede036dc0863b" category="list-text">您必須已以系統管理員身分登入。</block>
+  <block id="273604a153d57c4352780e584d9492ba" category="list-text">任何用戶端、包括System Center Virtual Machine Manager（SCVMM）、都必須使用CIMDUser和cimpassword連線至供應商。</block>
+  <block id="96069ac79fff99505f55b19d291dc1a5" category="list-text">設定SMI-S Provider驗證：</block>
+  <block id="26cc88432e85743edadd4fb6124388c5" category="paragraph">*如果先前已停用、請啟用驗證*</block>
+  <block id="c0b1f07637b1f3d1efbbe5b0b5b5931f" category="paragraph">「* cimconfig -p -s enableAuthentication=true*」</block>
+  <block id="6369b05ecce0b23d441c6ad55c3c7107" category="paragraph">*停用驗證*</block>
+  <block id="b37f8506075e54bd0ae03877d2850cd1" category="paragraph">「* cimconfig -p -s enableAuthentication=假*」</block>
+  <block id="c880addc662009ce18b1b48f14772dae" category="paragraph">CIMOM不使用Windows驗證。</block>
+  <block id="ac11777a55a2c2d51a742766d5985b84" category="list-text">重新啟動NetApp SMI-S Provider：</block>
+  <block id="127244f141478553012a969bb50d8169" category="paragraph">‘* SMI cimserver REALT*’</block>
+  <block id="31275bcc2d5db0fe6bf063d9eb9bee90" category="summary">SLP.conf組態檔提供其他選項、可讓您管理服務位置傳輸協定精靈（slpd）伺服器。</block>
+  <block id="2b8ebb70af929508181247896882c9bd" category="doc">slp.conf檔案管理</block>
+  <block id="835376d40913a770b6afbedee870d08d" category="paragraph">「slp.conf"組態檔提供其他選項、可讓您管理服務位置傳輸協定精靈（slpd）伺服器。</block>
+  <block id="d09e7ed0d3d5bcf9b4d891eb75068566" category="paragraph">「C：\Program Files（x86）\NetApp\SMI\PEGUS\cfg/」</block>
+  <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="section-title">說明</block>
+  <block id="c27013a5a91be7a7f811990b4c345c0c" category="paragraph">使用「slp.conf]組態檔、您可以變更主機接聽的SLP要求介面數量、以及主機用於多點傳送的IP位址數量。</block>
+  <block id="8a89bc88abd7f83c0aa84b1d5d0d605d" category="paragraph">使用文字編輯器開啟「shlp.conf"。</block>
+  <block id="a49a968397d3eea3b27de92643158cbc" category="list-text">*「介面」*</block>
+  <block id="e14a37b48112f37a804ec03c140c064a" category="paragraph">指定主機可接聽的最大IP位址數、以利處理slp要求。</block>
+  <block id="8423702607bab52f36dd74e369cc82b7" category="list-text">*《最後文件》*</block>
+  <block id="46d96f3ede6f7349de4d8b75869e8e02" category="paragraph">指定主機可用於多點傳送的IP位址數目上限。在多重主目錄系統上設定slp多點傳送流量的介面時、請使用此參數。</block>
+  <block id="403f2c456f1a4a103a84452b3b49b561" category="list-text">*「BroadcastOnly」*</block>
+  <block id="30c27cffa11c90b50aca6aadb75ca1bd" category="paragraph">透過SLP傳送訊息時、強制使用廣播選項、而非使用多點傳送選項。</block>
+  <block id="4394c1c9677b993b84d961f7bb18bf5f" category="list-text">*「已啟用最新功能」*</block>
+  <block id="3dfb3bf4c92bfb4c88b522eeda68f2ee" category="paragraph">為收到的URL和屬性清單提供安全性。</block>
+  <block id="f1481b88ec73ef72260ea756192ce7d8" category="paragraph">以下是"shlp.conf"組態檔的簡短範例：</block>
+  <block id="ab5f12da21733b0c908a54fc6c8afeab" category="summary">安裝NetApp SMI-S Provider之後、您必須確認在存取SMI-S Provider之後、自動啟動了CIM伺服器。</block>
+  <block id="26578636423c50e0cbadb8e4def77602" category="doc">驗證CIM伺服器狀態</block>
+  <block id="7e2a994657c3cb1b74140df49210abda" category="list-text">以系統管理員身分登入。</block>
+  <block id="8dd21edf6c559186c42e2f5ef8509060" category="list-text">請瀏覽至可執行檔所在的目錄、以存取NetApp SMI-S Provider：</block>
+  <block id="7fc17decf9554a362d80ff8052528439" category="cell">如果您使用...</block>
+  <block id="9792a4eebc59c44369f1f98f9d27237a" category="cell">然後執行此動作...</block>
+  <block id="9f402a26d9bfb7dca9aac07fc73ebc0d" category="paragraph">命令提示字元（具有提高的管理權限）</block>
+  <block id="50c032414fa21328d8fdb4023722b56c" category="paragraph">瀏覽至「C:\Program Files（x86）\NetApp\SMI\PEGUS\bin」</block>
+  <block id="caf73c044721486cfa86f1634881d532" category="paragraph">*開始*&gt;*程式集*功能表</block>
+  <block id="5cbd8aecf01f5364affe082b2eef475a" category="paragraph">右鍵單擊* NetApp SMI-S Provider*並選擇"Run as Administrator（以管理員身份運行）"。</block>
+  <block id="c4a83ee5991dce0b4555c474d32679c5" category="list-text">檢視CIM伺服器狀態：</block>
+  <block id="d7742d75613ee225270c8eb9150e81b8" category="paragraph">‘* SMI cimserver STATUS*’</block>
+  <block id="3ad2edd8ea9cf578e52754d637befd85" category="paragraph">如果已啟動CIM伺服器、則會顯示下列訊息：</block>
+  <block id="cd0961a3af19616ad066d6455a90f4f9" category="paragraph">「NetApp SMI-S Provider正在執行。</block>
+  <block id="928c1baab03e0230f3715e3de77b083f" category="summary">此版本的新功能</block>
+  <block id="bd94701c8c3439968ac328f6961957c3" category="list-text">SMI-S Provider 5.2.5沒有可用的升級路徑。</block>
+  <block id="c55ff83f0b706c2e4f6784a3eea0d431" category="list-text">您必須將SMI-S Provider 5.2.5部署為新安裝。</block>
+  <block id="4dcc4ed93f208d25fc9635019b96fb17" category="paragraph">*適用於Windows使用者：*</block>
+  <block id="3073a5fe9dd6b21d2236fe4d631b4b80" category="list-text">此版本與Windows Server 2012或System Center Virtual Machine Manager（SCVMM）2012不相容。</block>
+  <block id="0ccb5ab6332965b00555d89124eca6f4" category="list-text">SMI-S Provider 5.2.5支援Windows Server 2016、Windows Server 2019、SCVMM 2016和SCVMM 2019。</block>
+  <block id="035209d5aa4411b244c45d329ab7709c" category="summary">警示、檔案系統配額和生命週期指示預設為停用。您可以將環境變數PEGAS_disable_in適應 設為假、以啟用這些指示。</block>
+  <block id="0c3f164f1b784b68c85112aee98dcfe7" category="doc">啟用SMI-S Provider中的指示</block>
+  <block id="1e8acbda82c541bb421787ed83b44b61" category="paragraph">警示、檔案系統配額和生命週期指示預設為停用。您可以將環境變數「PEGASUS_disable_適應 症」設定為「假」、以啟用這些指示。</block>
+  <block id="2c490b3eac6005d8eb9fbc14dbe36f9c" category="paragraph">當「PEGASUS_disable_適應 症」設定為「假」時、NetApp SMI-S Provider會啟用警示（「ONTAP_Alert Indexing」）、檔案系統配額（「ONTAP_FSQuotaIndexing」）和生命週期指示。</block>
+  <block id="ccf6fa61cfac4827cab18b713647f22c" category="list-text">將「PEGASUS_disable_適應 症」環境變數設為「假」。</block>
+  <block id="303b50921b53d3609d0e06a97d955426" category="list-text">重新啟動CIM伺服器：</block>
+  <block id="18ee0f99deeb67b9b7a6ef5a3679a09d" category="summary">您可以使用CIMUser選項來新增、移除、修改及列出CIM伺服器使用者。</block>
+  <block id="b07eb8a32f2cf3bb81c70d37e7d0aaba" category="doc">CIMUser</block>
+  <block id="5a70b73b0330c1b99f99d9417a0348a0" category="paragraph">您可以使用「CIMUser」命令來新增、移除、刪除、修改及列出CIM伺服器使用者、以及管理他們的密碼。</block>
+  <block id="9552caf388402734ab598332ecd8156b" category="paragraph">「CIMUser _options_」</block>
+  <block id="dae8ace18bdcbcc6ae5aece263e14fe8" category="list-title">選項</block>
+  <block id="53c04e8ac52d6bd33683c9dbf79535ac" category="list-text">*- a *</block>
+  <block id="88553736fbb741bf0629274dee170888" category="paragraph">新增一個CIM使用者。</block>
+  <block id="72bf4945e9f5ad48e98b8a86e61be5ec" category="list-text">*小時、-協助*</block>
+  <block id="df226aab2a5f4773107a98185d4df812" category="paragraph">顯示「CIMUser」命令的說明。</block>
+  <block id="19bdfe66b2e730fdec9300e2aab67acd" category="list-text">*-l*</block>
+  <block id="c58450c085069315fdcdc932127ea1da" category="paragraph">列出CIM使用者。</block>
+  <block id="366b7d52fe189c2f2a9685595e258d52" category="list-text">*- m*</block>
+  <block id="f11218e14da099365f5c4d12ed55d147" category="paragraph">修改CIM使用者的密碼。密碼長度可介於4到32個字元之間。</block>
+  <block id="74aa310e918089bd2b7b43ef52918065" category="list-text">*- n*</block>
+  <block id="b4868d506c4565aeff541aa867e6a9dc" category="paragraph">為指定的使用者建立新密碼。密碼長度可介於4到32個字元之間。</block>
+  <block id="eef69bfef1d377d2939407214f8e0670" category="list-text">*至r*</block>
+  <block id="5e2eee8218b8e5df74d6942632a9f6d5" category="paragraph">移除指定的CIM使用者。</block>
+  <block id="a54c2c1c20d7ee39ebf2b69ccef598be" category="list-text">*-u*</block>
+  <block id="94dee2df9c611ec270bccaa83239df08" category="paragraph">指定一個CIM使用者名稱。</block>
+  <block id="28acac94ac9a552a494172af4f078a18" category="list-text">*版本*</block>
+  <block id="188c6e396a6269f7d0955f2cb23fc967" category="paragraph">顯示CIM伺服器的版本。</block>
+  <block id="9b7ed744183c5809967cae82003fd53b" category="list-text">*-w*</block>
+  <block id="819a823f6306b9bc4da7b85ec4faacc1" category="paragraph">指定指定使用者的密碼。</block>
+  <block id="16aba3c6b0ae11e31224bc8fb95fe52f" category="paragraph">使用密碼1建立名為Sydney的CIM使用者：</block>
+  <block id="5df91904e284b02eadf3bef23d5a41d4" category="summary">根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在pus目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。</block>
+  <block id="706bd7f5dc0fd11f32957fcfe95a1d86" category="doc">為CIM伺服器產生自我簽署的憑證</block>
+  <block id="ddf96c0ef94c04177aac4c565af47742" category="paragraph">根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在「PEGASGUSS」目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。</block>
+  <block id="704fb07605281ded06af349fa2c6a42e" category="list-text">您必須已存取SMI-S Provider。</block>
+  <block id="ce1605c578adffb355881da427936cf6" category="list-text">產生私密金鑰：</block>
+  <block id="ee01244ad0458fc0bceca3ca21a19bcf" category="paragraph">「* openssl genrsa -out cimom.key 2048*」</block>
+  <block id="d1cc3793bab6382471940558e1237709" category="list-text">產生憑證要求：</block>
+  <block id="ba777a1ebf7a5d9ce1cca956ee4926bb" category="paragraph">「* openssl req -new -key cimom.key -out CIMOM.csr*」</block>
+  <block id="854ca9ad8b9606a4ced8f8f325760049" category="list-text">出現提示時、請輸入您的憑證要求資訊。</block>
+  <block id="07fcc01ed277fcbb9f299bc089599ef6" category="list-text">產生自我簽署的憑證：</block>
+  <block id="408e6c1ad2bfdc436dcaf7eca6bff555" category="paragraph">"* openssl x509 -in CIMOM.csr -out CIMOM.cert -req -signkey cimom.key -days 1095*</block>
+  <block id="e20a939355820d858108eeabb6d3c69a" category="paragraph">您可以提供憑證有效的不同天數。</block>
+  <block id="cdad05d7e587588dab5f4295a9f45d9a" category="list-text">將「CIMOM.key」和「CIMOM.CERT」檔案複製到「PEGASGUSE」目錄（Windows：「C:\Program Files（x86）\NetApp\SMI\PEGUSE'）。</block>
+  <block id="8eea62084ca7e541d918e823422bd82e" category="section-title">結果</block>
+  <block id="5e22e2207ecdd0a04ad8b25271bfdc17" category="paragraph">憑證日期範圍從目前日期開始、並在指定的天數內執行。</block>
+  <block id="44f8fbce4489a6c5b317b3f8b2f2121a" category="summary">安裝SMI-S Provider之前、您必須確認Windows主機執行的是支援的作業系統。</block>
+  <block id="8a83ea3699cafca0e6d30e8c5ffb9259" category="doc">支援的作業系統版本</block>
+  <block id="696c660ff8d9323e55146a6dbd4e4088" category="cell">作業系統</block>
+  <block id="2e5d14f7919ff3c6138e7845aec4f915" category="cell">支援的版本</block>
+  <block id="f592a2e060abc83e0626259e25824b4e" category="cell">必要的用戶端軟體</block>
+  <block id="aea23489ce3aa9b6406ebb28e0cda430" category="paragraph">Windows</block>
+  <block id="74dd40aa9a6635d79204e610e8324c38" category="list-text">Microsoft Windows Server 2016</block>
+  <block id="1ee2c5253c485a81cfff8c8e3e23a23f" category="list-text">Microsoft Windows Server 2019</block>
+  <block id="89ff2866e74db001ea07e0b7fdde9ac5" category="paragraph">Microsoft Visual C｛pp｝2010執行時間程式庫會在SMI-S Provider安裝期間自動安裝。若要避免與執行時間程式庫相關的潛在問題、您必須安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。從下列位置：<block ref="b7a41ff45868862feefaef480db2df7e" category="inline-link-rx"></block></block>
+  <block id="dc917e4fa1217c63d38aa1b4aacbe7ba" category="section-title">SCVMM 2016 ur 2.1需求</block>
+  <block id="13601f1842a061432974c3d2a9141b74" category="paragraph">需要System Center Virtual Machine Manager（SCVMM）2016更新彙總套件（ur）2.1、才能使用NetApp SMI-S Provider 5.2.4及更新版本來管理NetApp檔案伺服器。</block>
+  <block id="10d506f406f3b135deaa62f78cfd5476" category="paragraph">如果沒有這份報告、SCVMM 2016會針對NetApp檔案伺服器中現有的檔案共用、將「Total Capacity（總容量）」和「Available Capacity（可用容量）」選項的值顯示為「* 0 GB*」。</block>
+  <block id="05dbd63393cf525e41d034d5de449c98" category="paragraph">若要執行SMI-S Provider、供應商主機必須符合下列規格：</block>
+  <block id="fd72eadfdaeb4e69b5477af765434a93" category="list-text">供應商主機無法用於裝載Hyper-V節點。</block>
+  <block id="b74c30689c8afa829d128cf3e62d6817" category="list-text">SCVMM不得在供應商主機上執行。</block>
+  <block id="b821588d84782d0b1d55c19cfdb5b9b4" category="list-text">供應商主機不得執行記憶體密集的其他程式。</block>
+  <block id="e7a61d9bf7f995d12bec06e5dc826433" category="list-text">供應商主機不得執行任何其他廠商的SMI-S供應商。</block>
+  <block id="9e6a91e446af633c638f982317104862" category="paragraph">支援下列Hypervisor：</block>
+  <block id="aac0de225be44800bd6bac76c5eb4a63" category="list-text">Microsoft Windows Server 2016 Hyper-V</block>
+  <block id="be90425df543f66a8660032f3bec11ea" category="list-text">VMware ESX 5.0</block>
+  <block id="ced23abf6261326792853710d17c1e64" category="list-text">VMware ESX 5.1</block>
+  <block id="1c34588d8157e46be3e3ed89163e2d36" category="list-text">VMware ESX 5.5</block>
+  <block id="c3b86f2f3b5685e4fd42669ba402e8d2" category="list-text">VMware ESX 6.0</block>
+  <block id="fe419fa3a5c24e1ad318d60e15e01d31" category="summary">SMI CRP命令說明NetApp SMI-S Provider支援的已登錄CIM的設定檔、包括NetApp SMI-S Provider設定檔。</block>
+  <block id="3511331323e2467f659c7701860dfcce" category="doc">SMI CRP</block>
+  <block id="dfc5700a5f8a123c6cb251019e112215" category="paragraph">「mis crp」命令說明NetApp SMI-S Provider支援的已登錄CIM設定檔、包括NetApp SMI-S Provider設定檔。</block>
+  <block id="d6c91fd45a3f72b697c88257bcd8a911" category="paragraph">「mis crp（錯誤CRP）指令及其輸出：</block>
+  <block id="e805a7074bd5f3f2f6002db7b0f11fd5" category="summary">「SI LUN」命令會顯示儲存系統的LUN資訊。</block>
+  <block id="ecb4091a0d7fe12a01800c4c519c074d" category="doc">SI LUN</block>
+  <block id="1b955e277f0738f3bdd0b7a18e1a7ecd" category="paragraph">「mis LUNs」命令會顯示儲存系統的LUN資訊。</block>
+  <block id="d1a0d4852e62844a3ab6d7da1573e44b" category="paragraph">命令"mis LUN"及其縮寫輸出：</block>
+  <block id="3deb3409d8a2d7ecc43a7b6cde93dd79" category="summary">SMI Pools命令會列出儲存系統的儲存資源池。</block>
+  <block id="9f0928f5c491149e0d68d561ecf558bc" category="doc">SI集區</block>
+  <block id="e55ce96d304db611d57e6232a6ce3daa" category="paragraph">「mis Pools」命令會列出儲存系統的儲存資源池。</block>
+  <block id="7364533b754121bf41370be42b4bb25b" category="paragraph">'池資源池'</block>
+  <block id="f226424578973a3c629f8591092096b5" category="paragraph">「mis Pools（資源池）”命令及其縮寫輸出：</block>
+  <block id="3e3944372596c51dc61c2fe5a9f8063d" category="summary">SMI list命令會顯示要新增的儲存系統。</block>
+  <block id="83d793b4ffc76972ddb8695c302c33bf" category="doc">SI清單</block>
+  <block id="a8ae413db4c3acedc05683a8bc1b559b" category="paragraph">「mis list」命令會顯示新增的儲存系統。</block>
+  <block id="dbf1cd6747595ed9cb8894d9eed535a6" category="paragraph">「mis list」命令及其輸出：</block>
+  <block id="7379ebb6b8630c14b864b4d46e315c94" category="doc">存取遭拒錯誤</block>
+  <block id="3330b82e78f9fa2566cd61f87d85e1eb" category="paragraph">「存取遭拒。</block>
+  <block id="acc86bed5a3cbee4c10612afddcbd9b8" category="paragraph">此訊息會在兩種可能的情況下出現：</block>
+  <block id="524e454803a7d0bafc27c9f8070d4590" category="list-text">如果您在從「開始」功能表捷徑存取SMI-S Provider時未以系統管理員身分登入</block>
+  <block id="88b9251d27bb29763aadf0feaa033d3c" category="list-text">如果SMI-S Provider目錄未指向「C:\Program Files（x86）\NetApp\SMI\PEGUS\bin」</block>
+  <block id="de1eea833bb1fa644c57d5d047cc5af7" category="paragraph">完成符合下列情況的行動：</block>
+  <block id="162b410b000aa710281fb5f8adedc818" category="list-text">以系統管理員層級的權限登入、然後從「開始」功能表重新開啟SMI-S Provider、或按一下滑鼠右鍵並選取「*以系統管理員身分執行*」。</block>
+  <block id="8dbf896c4a2bdf9598521ada5abaae3d" category="list-text">以系統管理員層級的權限登入、然後手動將目錄變更為「C:\Program Files（x86）\NetApp\SMI\PEGUS\bin」。</block>
+  <block id="f82d8520c4ff1fabe883e81ff945126f" category="summary">「SI匯出」命令會顯示儲存系統的網路附加儲存設備（NAS）匯出。</block>
+  <block id="0e9399f4b71116079d9243ed16264d69" category="doc">匯出SI</block>
+  <block id="141339cbccc89afa9496752732fa16d1" category="paragraph">「mis exports」（匯出）命令會顯示儲存系統的網路附加儲存設備（NAS）匯出。</block>
+  <block id="dfca38e26098a8c39e2f08466a92c941" category="paragraph">SMI匯出「-t {* http *|* https *｝」</block>
+  <block id="c903d8f52838546de2a64817a9f29020" category="paragraph">「mis exports（匯出）”命令及其輸出：</block>
+  <block id="75689bc80badc11e91de5ed6dc4cb19f" category="doc">輸入包含特殊字元的密碼時出現問題</block>
+  <block id="afcc8cf3e739ed38537061abd7b4b2ee" category="paragraph">在英文作業系統中、使用含有特殊字元的密碼搭配「mis」命令、在Windows環境中無法運作。此問題尚未通過非英文作業系統的測試。</block>
+  <block id="88f8f973bf3ba54f3d05c0b8d01247c0" category="paragraph">在Windows中、下列字元加上任何空格均視為特殊字元、如果密碼未以引號括住、則會導致密碼輸入失敗：</block>
+  <block id="9ac98bbf4f8ec840aa64d2034f1e5e3a" category="paragraph">、&amp;'&lt;；|=｛caret｝"</block>
+  <block id="18cecf738083c90194a2e37fde9866b9" category="paragraph">如果密碼包含空格或特殊字元、請在使用「mis」命令時、以雙引號（""）括住密碼。請注意、報價字元（"）是特殊字元、請勿用於您的密碼。</block>
+  <block id="8b5bff5c198642f24c6523cc9d279890" category="section-title">使用特殊字元發出密碼</block>
+  <block id="dd5e79a97efb4f2ad3d7d60c6014519d" category="paragraph">「Mis add 1.2.3.4 Administrator "pass word"」</block>
+  <block id="649cbaa5aee6f0411518757a4f958cae" category="paragraph">「Mis add 1.2.3.4 Administrator "pass&amp;Word（密碼與字）"</block>
+  <block id="4ca8f8dc1b36b9c411697fcb2f505c44" category="summary">您可以設定SMI-S Provider管理追蹤檔案的方式、例如指定要追蹤的元件、要寫入追蹤訊息的目標、追蹤層級、以及追蹤檔案位置。</block>
+  <block id="ff33a03ec388f99378211d1528ffde50" category="doc">管理追蹤</block>
+  <block id="475d549be2964d0228a25ed173ba7b08" category="summary">安裝NetApp SMI-S Provider之前、您必須從NetApp支援網站下載軟體套件。</block>
+  <block id="f2efbfa9469f6b1841c97b04674b1de4" category="doc">下載NetApp SMI-S Provider軟體套件</block>
+  <block id="09ea0908fbfc4cde85bf416e35dc55c8" category="inline-link">NetApp支援</block>
+  <block id="e94fec40412aa1b4fcd813ed2df33d2b" category="paragraph">您必須從建立NetApp支援網站帳戶<block ref="eb2c61027d5e6c8b35692c1e74187026" category="inline-link-rx"></block>。</block>
+  <block id="3216e7de5d3f564ce249ad07b5cb6fbd" category="list-text">請前往NetApp支援網站上的* Downloads *&gt;* Software*頁面。</block>
+  <block id="fddaf38eab11f354a96b9bcf234fd609" category="list-text">找到SMI-S Provider（前身Data ONTAP 為支援SSMI-S的Agent）並選取Windows作業系統、然後按一下「* Go！*」。</block>
+  <block id="0b680d2d590fdfd0519ad3a20f11a7cb" category="list-text">按一下*「View &amp; Download*（檢視與下載*）」、選取要下載的版本。</block>
+  <block id="e4d1a86ba6339b10a2f0742efd1a8880" category="list-text">在*軟體下載*區段中、按一下*繼續*。</block>
+  <block id="cc82620cbb43c7f8476563c901f49e8b" category="list-text">閱讀並接受終端使用者授權合約。</block>
+  <block id="f202f2d520c5b69c8a949f516b8f9faf" category="list-text">選取軟體套件檔案、然後將其儲存至您想要的位置。</block>
+  <block id="84d19bb0bac8dc1170a89ce09efbcc16" category="summary">您可以指定記錄的訊息類型（例如、您只想記錄嚴重的系統訊息）。</block>
+  <block id="d7fe94a97701791841b519021d6eb8b7" category="doc">記錄層級</block>
+  <block id="516f888b3f6d9fd9b210883c0298e11e" category="paragraph">您可以將記錄層級設定為下列其中一項：</block>
+  <block id="d276f73244d895db812ec23e2685caca" category="list-text">*追蹤*</block>
+  <block id="ad5ddf6d9cf8190347986bf098d3c215" category="paragraph">將追蹤訊息儲存在cimserver_standard記錄檔中。</block>
+  <block id="b36f044cf79f9ec0bbefe2c840fcbbe7" category="list-text">*資訊*</block>
+  <block id="4e81926677a1b0cb964215701fccaec7" category="paragraph">記錄所有（資訊、警告、嚴重和致命）系統訊息。</block>
+  <block id="c1ee2a5bb3aaa6a978640bbafe313fb7" category="list-text">*警告*</block>
+  <block id="4da7c4dccb8c85cfed2d1e994a8fc6af" category="paragraph">記錄警告、嚴重和嚴重的系統訊息。</block>
+  <block id="1e9b7964a8845d69fe33ed3d223a3670" category="list-text">*嚴重*</block>
+  <block id="f387191bc275b97c2237486aacf692ab" category="paragraph">記錄嚴重和嚴重的系統訊息</block>
+  <block id="98d0f8524669b090e9dab037437a4f95" category="list-text">*致命*</block>
+  <block id="32c22d2c31069b202fd8280ee7a064ea" category="paragraph">僅記錄嚴重系統訊息。</block>
+  <block id="614714555eebe379fefeaf79263f3919" category="summary">SI add命令可將具有HTTP連線的儲存系統新增至您的組態、以供您管理及監控裝置。除非有必要、否則您應該使用SMI addsecure、而非新增SMI。</block>
+  <block id="8645387467d22d196cc56c467878c801" category="doc">新增的SI</block>
+  <block id="0cccb7d63e81e909a5116d63ff5fad22" category="paragraph">「mis add」命令會將具有HTTP連線的儲存系統新增至您的組態、以便您管理及監控裝置。除非有必要、否則您應該使用「sis addSecure」而非「sis add」。</block>
+  <block id="4c32ad2d0f781d8300c3c0ace5573542" category="paragraph">"新增"</block>
+  <block id="fd4584b3f82c019d620b7a6fcda2d3ba" category="paragraph">？？"_storage（儲存設備）_sys storage（儲存設備）_sys_user_"+"-t｛* http *|* https *｝""</block>
+  <block id="f3a819b7972171226d19607a440c063b" category="paragraph">使用美國以外語言的作業系統英文版無法使用「add」命令。</block>
+  <block id="10fe7c8109501e37d414ef63bb9cb32e" category="paragraph">您要新增之儲存系統的名稱或IP位址</block>
+  <block id="edc907a1885716130a1f3549ae6717ff" category="paragraph">如果您要指定IP位址、可以使用IPV4或IPV6。同時支援壓縮和完整的IPv6位址、例如：「* 1001:0002：0000:0000:0000:0000:0003：0004*」或「* 1001:2：3：4*」。</block>
+  <block id="4a99e32179670d244ad470fbf4f5b921" category="list-text">？</block>
+  <block id="032a1eeda63d365ea5e8310a70caaafd" category="paragraph">管理您要新增之儲存系統的管理員使用者名稱</block>
+  <block id="127e24c4124d253ca995aea7f8f6c8d2" category="list-text">？</block>
+  <block id="86107286d99ae2ea068920c9348ed0e2" category="paragraph">選用：管理您要新增之儲存系統的管理員密碼</block>
+  <block id="b6409054275b25ac4a2a18cd9da3b34b" category="paragraph">最佳實務做法是、基於安全理由、請勿使用此參數。此參數僅供自動化和向下相容使用。</block>
+  <block id="c12c5aa52b7c2cd66b46b90196265ef8" category="section-title">儲存系統代理程式與代理程式用戶端傳輸協定</block>
+  <block id="aa65b8c8fa31c5c3baff46c6fcb37f72" category="paragraph">'smis add'和'sis add安全'命令決定了儲存系統與供應商之間使用的傳輸協定。「-t {* http *|* https *｝]」參數可決定供應商與用戶端之間使用的傳輸協定。</block>
+  <block id="8ad73dfc4c57d7019c1491a7584b3e1d" category="paragraph">'sis addseced'命令和'-t {*https*}]參數使用SSL加密進行連接，不允許未加密的流量。不需使用SSL加密、即可連線「mis add」命令和「-t {*http*}]」參數、並允許未加密的流量。</block>
+  <block id="8fcf8b2db24000917ad33d28cbe83309" category="paragraph">在停用SSL加密連線之前、您應該先考量環境的安全需求。</block>
+  <block id="4a9485793f5d4b5d5d14e45c388d9ed8" category="paragraph">透過HTTP使用IP位址10.32.1.4的IPV4新增儲存系統：</block>
+  <block id="f6a7f54d7c484a28262cd0daf880ef10" category="paragraph">此時會出現一則確認訊息、指出儲存系統已成功新增。如果發生錯誤、會出現錯誤訊息。</block>
+  <block id="81b3dca7aa8cd7cc37f0ac28818db216" category="paragraph">使用IPv6 over HTTP新增儲存系統：</block>
+  <block id="a1487ab3029c50caa0f2e79e20ab56df" category="paragraph">在非英文系統上、透過HTTP新增IP位址為10.32.1.4的儲存系統：</block>
+  <block id="15edb1059f99e2228e68e3675566c5dd" category="summary">您可以將這些選項與slptool命令搭配使用。</block>
+  <block id="782cf12ad9621d4dbedc43983800f6e7" category="doc">slptool</block>
+  <block id="44875d713d6680857ff840765882108e" category="paragraph">您可以使用「shlptool」命令來顯示有關WBEM服務的資訊。</block>
+  <block id="4842f8fa99c29d1241eea4652830125e" category="paragraph">「lpdool [選項]_子 命令_」</block>
+  <block id="c8d42e70f0c04701557a2f55998b89c4" category="list-text">*-I*</block>
+  <block id="ba5f3a961b76734c0de9fadefea37630" category="paragraph">指定一個或多個介面。</block>
+  <block id="0e5e3c6017ad094538f03467f046aae2" category="paragraph">指定語言標記。</block>
+  <block id="4e94e09878d0d8b8c202138d2e5ee71d" category="list-text">*至*</block>
+  <block id="bdf7f3055a02bb504553d4a142bdab6e" category="paragraph">指定範圍清單（以逗號分隔）。</block>
+  <block id="3409d1fd2b59a21419fcf39d2c4ed451" category="paragraph">指定一個介面。</block>
+  <block id="5d1a2e253b3e1015078e73b9612048ff" category="list-text">*-v*</block>
+  <block id="bffde628bf79cfe9c51d3916acaf8a9d" category="paragraph">顯示"slptool"和OpenSLP"的版本。</block>
+  <block id="11db62ef1b82524e398ad3812618f7ea" category="doc">NetApp SMI-S Provider需要很長時間才能啟動</block>
+  <block id="a3519a79e1fa4e9109ec373b28d1609d" category="paragraph">在Windows系統上、如果儲存系統已在管理中、當您使用「mis cimserver」命令啟動NetApp SMI-S Provider時、命令不會傳回、直到提供者填入本機快取為止。快取記憶體填入時、系統最多會等待15分鐘、而且您必須等到NetApp SMI-S Provider傳回後才能使用。</block>
+  <block id="f9ac0617143317e28bbf839b5d2db80a" category="paragraph">建議使用「mis cimserver」命令來啟動NetApp SMI-S Provider。</block>
+  <block id="473ab4388e8df55d75c3b31f2ec1ef00" category="summary">所有傳入的SMI-S命令都會記錄在稽核記錄檔中、讓稽核員能夠追蹤有關WBEM用戶端作業和供應商使用的活動。您可以設定動態組態屬性、來啟用或停用這些傳入命令的記錄。</block>
+  <block id="0129ab79a515722f48b24df8938bed7f" category="doc">啟用或停用SMI-S命令的稽核記錄</block>
+  <block id="285029cea7cf6db90d61ed15fdfbcb4d" category="paragraph">稽核日誌資料可提供有關存取、活動和組態變更的記錄、以供CIM伺服器使用。稽核檔案的內容包括命令的發出內容、命令的發出者、以及命令的發出時間。</block>
+  <block id="d69a4eb5ea05d141fe9e8d1a929e983a" category="paragraph">動態組態內容「enableAuditLog」可在執行時間啟用或停用稽核記錄。預設情況下、enableAuditLog設為true。</block>
+  <block id="3a1c45941ab5d753a927b9fcf7e597d8" category="paragraph">一般做法是讓稽核記錄保持啟用狀態。</block>
+  <block id="e2bcb9268b8957b2c5eba66b5eb8f90a" category="paragraph">稽核記錄檔（「cimserver_uditlog」）儲存在PEGUSGPEGAN記錄目錄（「C:\Program Files（x86）\NetApp\SMI\PEGUS\logs」）中。</block>
+  <block id="3cd4ca28842e0a47bcadc6562454f097" category="paragraph">稽核記錄檔的大小上限為10 MB。達到上限後、檔案會重新命名為「cimserver_auditlog.0」、並建立新的「cimserver auditlog」檔案、以收集較新的稽核記錄資訊。</block>
+  <block id="afea46fce2cf62caf4a83255652fe519" category="paragraph">NetApp SMI-S Provider維護六個最新的稽核記錄檔：「cimserver_auditlog.0」到「cimserver_auditlog.5」。</block>
+  <block id="29c5eb80d8d4774289d69253a8df1a2f" category="list-text">在執行時間設定SMI-S命令的稽核記錄：</block>
+  <block id="9928b3502fa328f5816ec89397731f30" category="paragraph">*啟用SMI-S稽核記錄*</block>
+  <block id="79ac7012d3f9251ff1fd9e56306e1b37" category="paragraph">"*cimconfig -s enableAuditLog=true*</block>
+  <block id="0aeb9f4ab3a6152506a2c906fafe7412" category="paragraph">*停用SMI-S稽核記錄*</block>
+  <block id="3434f57b0eae0c97485e9a92c949bab6" category="paragraph">"*cimconfig -s enableAuditLog=假*</block>
+  <block id="58c8d351ba9d95afd9752aa88bf6e0f7" category="doc">SMB共享區大小在SCVMM中降至0</block>
+  <block id="d19b0ea77723113b53c5f3b5bcfc71cb" category="paragraph">在System Center Virtual Machine Manager（SCVMM）中、新的或現有的SMB 3.0共用大小可降至0。</block>
+  <block id="286cd1d6f9ece4f567a343b0e19efe60" category="paragraph">當配額重新初始化因為Data ONTAP I/O太重、而導致很長時間無法完成時、在SCVMM中、新的或現有的SMB 3.0共享區大小可能會降至0、就會發生此問題。因此、新的VM無法在新的或現有的SMB 3.0共用區上進行資源配置。</block>
+  <block id="cc5ade6a333e0665a7013fb0305400d6" category="list-text">關閉配額。</block>
+  <block id="448805fdc8b90fe55f76dbffe9cd446f" category="list-text">在裝載SMB共用的每個磁碟區上、新增一種類型為「樹狀結構」的預設配額規則。</block>
+  <block id="4d2cce1528ba318942044838d5da6b76" category="list-text">開啟新增預設配額規則的磁碟區配額、然後重新啟動SMI-S Provider。</block>
+  <block id="90ea26a5dffb6c8ff46feb3c93850548" category="summary">依預設、SMI-S Provider允許每個訊息服務佇列有80個執行緒。您可以將最大執行緒值指定為1到5000。增加最大執行緒數量可能會影響SMI-S Provider機器的效能、因此請仔細考慮是否需要增加此值。</block>
+  <block id="d55eae07e248eb9322a596dd90d407c2" category="doc">指定每個訊息服務佇列的執行緒數目上限</block>
+  <block id="6592a678a898e48d050a94c96e27ebe0" category="paragraph">依預設、SMI-S Provider允許每個訊息服務佇列有80個執行緒。您可以將最大執行緒值指定為1到5000。增加執行緒的最大數量可能會影響SMI-S Provider機器的效能、因此請仔細考慮是否需要增加此值。</block>
+  <block id="2193868d521a35a0a4589af5ed55c943" category="paragraph">如果您的追蹤檔顯示許多行「資源不足」輸出、您必須以500為增量來增加執行緒數量。</block>
+  <block id="eb193834564df8c3b7bc536be0693bbe" category="paragraph">如果您使用「* cimcli -n root/ONTAP Niall*」命令將執行緒的最大數量設定為少於20個、則提供者將無回應、並在追蹤檔中傳回「執行緒集區不足」訊息。如果發生這種情況、您必須以500為增量增加執行緒數量、然後重新啟動提供者。</block>
+  <block id="a7e26385d9486e52af1a9bc2ff989ea4" category="list-text">使用新的最大執行緒值建立名為「PEGAS_MAX_討論 串_PER_SVC_佇 列」的系統或使用者環境變數。</block>
+  <block id="aad463b23b363623e052a9e7fa57eb28" category="paragraph">如需建立環境變數的相關資訊、請參閱Windows文件。</block>
+  <block id="ecbbc7fd5d4edead7344ce7d3e700f9d" category="summary">在驗證儲存系統之前、您必須先新增獲授權使用CIM伺服器的CIM使用者。</block>
+  <block id="86f2d37730c5ca8c974df95b4ae767a1" category="list-text">新增一個CIM伺服器使用者：</block>
+  <block id="992f99e76d782026d10813b89cf90cdc" category="paragraph">例如、若要新增名為「'Chris」的CIM伺服器使用者：</block>
+  <block id="c506910979386a24184c6dbf0c3e93da" category="paragraph">「* CIMDUser -A -u Chris *」</block>
+  <block id="dcca715816190ebf9dcab8ec1989cd39" category="list-text">出現提示時、輸入並重新輸入密碼。</block>
+  <block id="46e0d6cd9511768516cffae18f3cb5bc" category="summary">根據預設、所有系統訊息都會記錄下來。此外、根據預設、系統訊息記錄檔位於安裝NetApp SMI-S Provider的記錄目錄中。您可以變更寫入至CIM伺服器記錄的系統訊息位置和層級。例如、您可以選擇將記錄儲存在指定的目錄中、而且只有致命的系統訊息會寫入到CIM伺服器記錄中。</block>
+  <block id="2a6456b036bc8393c319f1d0851d9f9e" category="doc">設定記錄設定</block>
+  <block id="d634faa051c67370dd5de1d5ef4225c4" category="paragraph">根據預設、所有系統訊息都會記錄下來。此外、根據預設、系統訊息記錄位於安裝NetApp SMI-S Provider的目錄中的「logs」目錄中。您可以變更寫入至CIM伺服器記錄的系統訊息位置和層級。例如、您可以選擇將記錄儲存在指定的目錄中、而且只有致命的系統訊息會寫入到CIM伺服器記錄中。</block>
+  <block id="b92c67c0f4c56bc1e4db299b1e051b4b" category="paragraph">變更系統訊息記錄層級</block>
+  <block id="c4afd30587ca8f49404c77204b2d133f" category="paragraph">"*cimconfig -s loglevel=_new_log_level_-p*</block>
+  <block id="c38aefb099fb15d8787010ba78216358" category="paragraph">例如、如果您想要將記錄層級變更為「information」、您可以輸入以下命令：+'*cimconfig -s loglevel=information -p*</block>
+  <block id="0bab75a61937b38c1a7acc2ff1841e00" category="paragraph">變更系統訊息記錄目錄</block>
+  <block id="651259a98991e0b35e4f51aa4d4a4319" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s logdir=new_log_directory-p*。如果"_new_log_directory_"包含空格，則必須用引號（"_new log directory_"）括起來。</block>
+  <block id="6f37785193648cc0fab41c9b222a7a2f" category="paragraph">例如、如果您想要將記錄目錄變更為「sherverlogs」、您可以輸入下列命令：</block>
+  <block id="882d7437047d18007764dd5615ed4aba" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s logdir=serverlogs -p*</block>
+  <block id="3e24f09af977e3a1af1e1cc6f13f637c" category="doc">執行時間程式庫問題</block>
+  <block id="dc1ea37bf28d57aab9a40d7069475d46" category="paragraph">您會遇到執行時間程式庫問題。</block>
+  <block id="8f0d9a411b41d0b986920c85c2535cd2" category="paragraph">從www.microsoft.com安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。</block>
+  <block id="a276b571413c6c0fe3cdc0eb1cca1726" category="doc">無法連線至localhost:5989</block>
+  <block id="827b9bc4b32550f8d2723db104129cfc" category="paragraph">“無法連接到localhost：5989。連線失敗。正在嘗試連線至localhost：5989</block>
+  <block id="f0387aea6f47f0a81ccd8cd4a09d5f2b" category="paragraph">當HTTPS連線停用或HTTPS連接埠未設定為5989、或供應商已停止運作並保持掛起狀態時、就會出現此訊息。</block>
+  <block id="01ee3cc9148ee09987b7b4f7702f7588" category="paragraph">確認「enablehttps Connection」和「https Port」的值是否正確：</block>
+  <block id="3e929c060e464a0e6307f7e53081f70a" category="paragraph">「cimconfig -g enablehttps Connection」</block>
+  <block id="e4a8d153bf5febb975e968932ffcc085" category="paragraph">「cimconfig -g https連接埠」</block>
+  <block id="61c8a62a6bea3fc3f3efa8e10430c1e4" category="paragraph">如果未將"enablehttps Connection"設置爲"'true"，請輸入以下命令：</block>
+  <block id="87975c2d3b51afd3b76c0ef66be0fd89" category="paragraph">「cimconfig -s enablehttps Connection -p」</block>
+  <block id="78af1ec33901fcba23650f6cdf8fa047" category="paragraph">"mis cimserver重新啟動"</block>
+  <block id="39886d4eb2e3e0df0226ae521aff498d" category="paragraph">如果「https連接埠」未設定為5989、請輸入下列命令：</block>
+  <block id="a844ae38553a46283a09852e419c1e3b" category="paragraph">「cimconfig -s https連接埠= 5989 -p」</block>
+  <block id="8ba2aeabfaeefcb034351a0847a41488" category="paragraph">如果供應商已停止運作並保持掛起狀態、請開啟「工作管理員」並結束程序、然後重新啟動供應商。</block>
+  <block id="6b0fd0a659080ed97cfc94fb21d6fc96" category="summary">您可以使用SMI-S Provider來管理CIMOM組態、例如啟用或停用HTTP和HTTPS連線、以及變更HTTP和HTTPS連接埠號碼。預設會啟用HTTP連線、讓用戶端無需使用SSL加密即可連線至CIM伺服器。</block>
+  <block id="16d818bdfd52f3614e92671e0206fa1b" category="doc">管理CIMOM組態設定</block>
+  <block id="7d6b3d18bec2ce6be3374ea0a9815106" category="paragraph">如果您的環境需要加密的流量往返於CIM伺服器、您必須先停用HTTP連線、然後確認已啟用用於該CIM伺服器的HTTPS連線。</block>
+  <block id="b307ea9422b5dae5cf2fd6ec3ea015d5" category="paragraph">啟用HTTP連線</block>
+  <block id="3b6593154fba535b06482c0db1cc8054" category="paragraph">"*cimconfig -s enableHttpConnection=true -p*</block>
+  <block id="895d8d369254f940a4ddaf2468995697" category="paragraph">停用HTTP連線</block>
+  <block id="70b1caebdb7847b1009459e31d55fb48" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s enableHttpConnection=假-p*</block>
+  <block id="17d5471eeaa6165fa51a91e11a966cce" category="paragraph">啟用HTTPS連線</block>
+  <block id="5536aaa29736c81d197b42aace111279" category="paragraph">"*cimconfig -s enablehttps Connection=true -p*</block>
+  <block id="f77bdc0e1e1bf0471dfe0f770eb6626d" category="paragraph">停用HTTPS連線</block>
+  <block id="0b3ee0d6b6e9221d924f8aece81f97b0" category="paragraph">"*cimconfig -s enableHttpsConnection=false -p*</block>
+  <block id="a2b94489ad6b32120a328eec86854d63" category="paragraph">修改HTTP連接埠號碼</block>
+  <block id="40f5296c4e2d5bd8a49e9f4572b53dce" category="paragraph">"*cimconfig -s http Port=_new_port_number_-p*</block>
+  <block id="829a8aee66a41170874965d9e691c04e" category="paragraph">根據預設、HTTP連接埠號碼為5988。例如、如果您想要將其變更為5555、您可以輸入下列命令：</block>
+  <block id="5048fd5a308e67e37d331e393f3eee8c" category="paragraph">"*cimconfig -s http Port=5555 -p*</block>
+  <block id="06a0613012b6debabc4eabfde639529d" category="paragraph">修改HTTPS連接埠號碼</block>
+  <block id="03604fdc09e6487a20bbfc88a271734f" category="paragraph">"*cimconfig -s https連接埠=_new_port_number_-p*</block>
+  <block id="90898c193396dd9a264c9451c9d788d8" category="paragraph">根據預設、HTTP連接埠號碼為5989。例如、如果您想要將其變更為5556、請輸入下列命令：</block>
+  <block id="86bb67cb5a15d1e42ce1716ea8249d24" category="paragraph">"*cimconfig -s https Port=5556 -p*</block>
+  <block id="b71369c2ed824034280dcb480153b41a" category="summary">啟用追蹤功能對於收集疑難排解資訊非常重要。不過、啟用追蹤功能可能會影響效能、因此請仔細考慮必須追蹤的項目、以及啟用追蹤功能所需的時間。</block>
+  <block id="53af5324cc8ef40b65085e6267c7de4e" category="doc">指定追蹤設定</block>
+  <block id="214b2ac7f49d473e4ea319a71f712e51" category="list-text">視情況指定各種追蹤設定：</block>
+  <block id="f1da07ca6432396ea2971c8f6398fc30" category="paragraph">指定要追蹤的元件</block>
+  <block id="849f8dae21d2b62a8dfa5d45d8ccc2c0" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s traceComponents=_Components_-p*"</block>
+  <block id="d582392eadc397a588b31a2f38cc8b46" category="paragraph">指定追蹤功能</block>
+  <block id="55740e969f74c0b03b2a7da365274ef5" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s traceFacility =_Facility _-p*</block>
+  <block id="4775231bef508af32ec6486ac135bd52" category="paragraph">指定追蹤檔的位置</block>
+  <block id="5e08cdbde654caf3bd2f2a44804504f0" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s traceFilePath=_path_name_-p*</block>
+  <block id="2400ec1d446b474fb9789a8fb4e85990" category="paragraph">指定追蹤層級</block>
+  <block id="e314fdf016e34edd80f4c12690e6ef42" category="paragraph">Check Alignment of PHs&gt;"*cimconfig -s tracelevel=_level_-p*</block>
+  <block id="fb44665cf49d63acda1cdb213857d17b" category="doc">無法使用非預設HTTP或HTTPS連接埠新增儲存系統</block>
+  <block id="a1324d13680ad51ed3e3b999a3eca7f8" category="paragraph">您無法在非預設連接埠上新增執行HTTP或HTTPS的儲存系統。</block>
+  <block id="23757d70053ecf2d608bdbac79c40aea" category="paragraph">根據預設、NetApp SMI-S Provider使用連接埠80透過HTTP與儲存系統通訊、並使用連接埠443透過HTTPS進行通訊。</block>
+  <block id="89e405c285e86048a6f405ef514df892" category="paragraph">使用下列命令新增使用80以外的連接埠進行HTTP流量的儲存系統、或使用連接埠443進行HTTPS流量的儲存系統：</block>
+  <block id="faebd45231096c3ebde760d214e010d6" category="paragraph">「cimcli CI -n root/ONTAP ONTAP_FilerData hostname=_storage系統_ip_address_ port=_non_default_port_ username=_storage系統使用者密碼=_storage系統密碼_sys_pwd_ commelism = HTTP -u _agent_user_-p _agent_pwd_llocalhost：5989 -s`</block>
+  <block id="dab3f43fc6e9009edb6f8d30d88f536d" category="paragraph">「-u」、「-p」、「-l」和「-s」是選用的參數。</block>
+  <block id="4c2f5b5cc7006ed56789fcfec26a070b" category="section-title">新增使用連接埠8000處理HTTP流量的儲存系統</block>
+  <block id="5224d2dafede32800eae18bf750c83eb" category="paragraph">cimcli CI -n root/ONTAP ONTAP_FilerData hostname=10.6.0.167.12 port=8000 username=root password=netapp1！comemonism = HTTP -u root -p netapp1！l localhost:5989 -s --timeout 180'</block>
+  <block id="24293140a3816d75c19d74064899984b" category="summary">NetApp SMI-S Provider 5.2.5可讓您管理及監控儲存系統、以及管理儲存系統的LUN和磁碟區、CIMOM組態設定和CIM伺服器使用者。</block>
+  <block id="c79b9638e429df89a219f67e64877677" category="paragraph">NetApp SMI-S Provider是以命令為基礎的介面、可偵測及管理執行ONTAP 支援程式的平台。SMI-S Provider使用Web型企業管理（WBEM）傳輸協定、可讓您管理、監控及報告儲存元素。</block>
+  <block id="a316d32069744858b73bc2472339bb1d" category="paragraph">NetApp SMI-S Provider遵循由兩個組織標準化的架構：</block>
+  <block id="ffb373b0246b03d37058c9917311f9ba" category="inline-link">分散式管理綜合小組（Distributed Management Task Force、簡稱DMT）</block>
+  <block id="3196a1e76b7eb51b7ff2baa784e99b4f" category="list-text"><block ref="3196a1e76b7eb51b7ff2baa784e99b4f" category="inline-link-rx"></block></block>
+  <block id="b3973a38d43f2f1fe906a50cc9911f34" category="inline-link">儲存網路產業協會（SNIA）</block>
+  <block id="6406ef7be2956ab22d718f61a164ac48" category="list-text"><block ref="6406ef7be2956ab22d718f61a164ac48" category="inline-link-rx"></block></block>
+  <block id="6409b577d21cd98c3caae687888555d6" category="paragraph">SMI-S Provider以單一物件導向模式取代多種託管物件模型、傳輸協定和傳輸、適用於儲存網路中的所有元件。</block>
+  <block id="44fc5eb40e0278cb133788f5469fbeec" category="summary">您可以使用NetApp SMI-S Provider命令來新增、刪除及列出CIMOM儲存庫中的儲存系統。您也可以列出儲存系統的NFS和CIFS匯出及匯出LUN。</block>
+  <block id="09b43df06bca0a261e4635991d6c8575" category="doc">管理儲存系統</block>
+  <block id="daa8304b1e5a9998369fb0061bbc76ab" category="paragraph">對於SVM、您必須為SVM指定管理IP位址、而非為叢集IP位址、而且必須提供vsadmin使用者的認證資料。ONTAPSMI-S Provider不支援叢集IP位址或節點管理IP位址、也不支援節點管理或節點SVM。</block>
+  <block id="ba6ecff2eef9a730af73909b60860b22" category="paragraph">將管理LIF新增至SMI-S Provider時、您應該將其資料傳輸協定值設為「無」。</block>
+  <block id="54f5714f71cdb7caea1dc20456fc6738" category="paragraph">在供應商與儲存系統之間新增具有HTTP連線的儲存系統</block>
+  <block id="50c7a9afe0967760d10de128338cc183" category="paragraph">`* SI新增_storage（儲存）sys儲存空間_sys_user_*</block>
+  <block id="f26914cdcb94f2fe1b7c417cf626e088" category="paragraph">命令最多會等待15分鐘、讓供應商更新快取並回應。</block>
+  <block id="89ccad88ba064cc88cf2ab134997a5dc" category="paragraph">在供應商與儲存系統之間新增具有HTTPS連線的儲存系統</block>
+  <block id="bee1cab1cf6efe6528bd95ea0052cb3e" category="paragraph">'* SI可增加安全的_storage儲存系統_sys_user_*</block>
+  <block id="1055041e911f7f81e1160cad7d6df87a" category="paragraph">列出儲存系統的NFS和CIFS匯出</block>
+  <block id="0b6849eeabb5662b0910994843c568dd" category="paragraph">’* SMI exports *’（匯出*）</block>
+  <block id="6adf97f83acf6453d4a6a4b1070f3754" category="paragraph">無</block>
+  <block id="0a2006cacb27cbdbeb32987483a1a84d" category="paragraph">列出CIMOM儲存庫的儲存系統</block>
+  <block id="6880c6a422f6270812bc038fa51514c5" category="paragraph">‘* SMI list*’</block>
+  <block id="12461db74e50f15fc71fe964e70c1c99" category="paragraph">在新增或刪除儲存系統之前、您可以執行此命令來驗證CIMOM儲存庫中的儲存系統。</block>
+  <block id="c6d5949ed7adf68861b2ceb4687571bf" category="paragraph">列出已匯出的儲存系統LUN</block>
+  <block id="18b578423744ef72802c13af961042a9" category="paragraph">‘* SMI LUN*’</block>
+  <block id="ca50f0102029c7874cbb4ed0b7e7eb50" category="paragraph">從CIMOM儲存庫刪除儲存系統</block>
+  <block id="d657fd401bd6ebe4d06082361f65af09" category="paragraph">‘* SI刪除_storage _sys_*</block>
+  <block id="822ff5cd301b3a58d645b47d8a73841f" category="paragraph">如果不再需要管理儲存系統、您可以從CIMOM儲存庫中刪除它。</block>
+  <block id="534b0391ec7ed02248d1f853510cf018" category="paragraph">由於SMI-S Provider會從CIMOM儲存庫中的所有儲存系統收集資訊、因此您應該從儲存庫中刪除未使用的儲存系統、以維持最佳效能。</block>
+  <block id="61aee31a29e1845c59f60239e23fed18" category="paragraph">列出目前的CIM伺服器組態資訊</block>
+  <block id="1a808d992fed9941455493ad0022017d" category="paragraph">「* SI組態顯示*」</block>
+  <block id="0ab763755587d142352bf7691e4791e4" category="paragraph">列出儲存系統的FC和iSCSI連接埠資訊</block>
+  <block id="96754da91a2648d4efd11d34e86a4b7e" category="paragraph">‘* SMI啟動器*’</block>
+  <block id="9a0da4fee3a57e231afbe9aa492ab02f" category="paragraph">列出儲存系統的儲存資源池</block>
+  <block id="dade3a1676c438edc6bc2f2ae34d5bba" category="paragraph">‘* SMI Poolso*’</block>
+  <block id="0ee29e1d52006a0075140e7aa5ae9ceb" category="paragraph">列出儲存系統的傳統和彈性磁碟區</block>
+  <block id="4e5aaa43ceec1507a8708c8e88e4c214" category="paragraph">‘* SMI Volumes *’</block>
+  <block id="37735049e65188a885df4388c67153a4" category="summary">當主機上的用戶端應用程式使用slp（透過HTTP的CIM-XML編碼）探索CIMOM伺服器時、用戶端接著會查詢CIMOM是否有共用物件（以CIM語言建模的物件）。CIMOM會使用裝置專屬的API來載入共用物件、並查詢儲存系統以取得所要求的資訊。</block>
+  <block id="9016abb1e0944872fd232fd72ca5bc80" category="doc">NetApp SMI-S Provider如何與主機互動</block>
+  <block id="14f75c43461428b4df3f6d3980b25d02" category="paragraph">下圖顯示當SMI-S Provider收到查詢或命令時、NetApp SMI-S Provider如何與WBEM管理用戶端互動。</block>
+  <block id="707facb1331bad235d191a85d3686ab2" category="image-alt">SMI的代理程式與主機互動</block>
+  <block id="66a3289f96876f734ca77db9ba9f9495" category="summary">SMI slpd命令會啟動或停止slp精靈。</block>
+  <block id="c602cda1d95d79b42121b73cb7b8e14f" category="doc">SMI slpd</block>
+  <block id="10a6036c2ece582c0c5dbea89b90e059" category="paragraph">"mis slpd"命令會啟動或停止slp精靈。</block>
+  <block id="d7ffbe6aa82f17f6c494b8a2c5abdaec" category="paragraph">《Mis slpd》</block>
+  <block id="e4648605cc721eb86095a823e23484a6" category="paragraph">「{*start*|* stop *｝」</block>
+  <block id="c62f38414344f92700e5e28c2e01987f" category="paragraph">啟動slp精靈：</block>
+  <block id="ab95c496c880e8dee57a3717606a9348" category="paragraph">停止slp守護程序：</block>
+  <block id="1eea025a2f056d31c6125d173c58f586" category="summary">SMI類命令列出有關指定類或所有類的信息。</block>
+  <block id="41baa3319f8fe6190c1bd12ca98cef92" category="doc">SMI類</block>
+  <block id="a0a3d55677c45b15e04f3e3060b58b90" category="paragraph">"mis class"命令會列出指定類別或所有類別的相關資訊。</block>
+  <block id="3599706a1331cd991db06e8979ec894e" category="paragraph">"等級錯誤"</block>
+  <block id="4d73a1c8df04167c17eeda931e5fe34d" category="paragraph">{* Niall*|{* ei*|* ni*|* gi*|* gC*｝_class_name_}[-t {* http *|* https *｝]</block>
+  <block id="0103a4ca85a3fb03c5a96dac8edad2e2" category="list-text">》*《名稱空間》*</block>
+  <block id="13e56ff4fe92971b0b42a20723ca7e10" category="paragraph">CIMOM支援的名稱空間</block>
+  <block id="e05ae9668c4f501686eefa33d6cf0d85" category="list-text">*尼亞爾*</block>
+  <block id="f90964c06de0551bddeba08d6e3c85a7" category="paragraph">列舉所有執行個體名稱</block>
+  <block id="b50b3c25f8403e6743fe7e576ca163f1" category="list-text">*井*</block>
+  <block id="b8271965d1aa3474bb36063b64ce97e0" category="paragraph">列舉類別的執行個體</block>
+  <block id="7c6c312ef61d70abe32852f2d8e0a6a2" category="list-text">*尼*</block>
+  <block id="79ee3dc4aa6b8eca399d7cfff9a0de77" category="paragraph">列舉類別的執行個體名稱</block>
+  <block id="544d04037d81be7bbc6be2aba7e3f864" category="list-text">*吉*</block>
+  <block id="133c9efda171df31e1a560c213a257dd" category="paragraph">取得類別的執行個體</block>
+  <block id="0e51f67d4920274b0fe227413b69ac26" category="list-text">* GC *</block>
+  <block id="3a7d7cfb4c1735fede1565b1a84d12aa" category="paragraph">取得類別名稱的類別</block>
+  <block id="d10e609c9f10971c9ad9a9e63ddc2439" category="list-text">*</block>
+  <block id="655546f65ee5fb9186411efa5747bec4" category="paragraph">您要取得資訊的類別名稱</block>
+  <block id="c807c0fac735539610e5b517945b000e" category="paragraph">命令"mis class"及其縮寫輸出：</block>
+  <block id="ff534e215c49794ee3d0d5e05049dcd4" category="summary">在Windows上使用檔案共用區（CIFS共用區）時、建立檔案共用區的磁碟區必須是僅限NTFS的磁碟區。</block>
+  <block id="67b404f9c9cd4ad8132819e162fa0801" category="doc">在Windows上使用檔案資源的需求</block>
+  <block id="224259077c913ae9e3aafcc643cf3e85" category="paragraph">如果您想要建立檔案網格並在Windows上使用、則建立檔案網格的磁碟區必須是僅限NTFS的磁碟區。這是為了避免存取檔案共享的認證資料發生問題。</block>
+  <block id="d22643507b9ae556d3eb1f90adc143e7" category="paragraph">在System Center 2016 Virtual Machine Manager（SCVMM）中、您只能在NTFS專屬磁碟區上建立的檔案資源上建立虛擬機器（VM）。不支援混合式和UNIX型磁碟區。</block>
+  <block id="7ce49ed6789cc13128b60ca9dde1cddc" category="section-title">建立要用於CIFS共用和SCVMM的磁碟區</block>
+  <block id="c0be971f28173e3439500ec62e8960fe" category="paragraph">建立要用於CIFS共用和System Center Virtual Machine Manager（SCVMM）的磁碟區時、磁碟區必須為NTFS類型。若要使用NTFS建立磁碟區、請輸入下列命令：「_vol create -vserver &lt;vserver_name&gt;-volume &lt;volage_name&gt;-Aggregate &lt;aggreg_name&gt;-size&lt;volVolume _Size&gt;-security-style ntfs_」</block>
+  <block id="d4bf895ddfa9ebbc5c3915e4cbd3583e" category="summary">slptool findattrs命令會尋找在網路上執行的WBEM屬性。</block>
+  <block id="3fc3c27aeb289e637225a3268d7ae21d" category="doc">slptool findattrs</block>
+  <block id="61362266f14322b3344151c0503f45dd" category="paragraph">"shlpsetool findattrs"命令會尋找在網路上執行的WBEM屬性。</block>
+  <block id="0172466b88a10651a0bc826057b3e072" category="paragraph">"lpsetool findattrs _service_"</block>
+  <block id="f6bc858e3262647738db6ac68ccd76ed" category="list-text">*服務_*</block>
+  <block id="3a97942f85eafc36eb848eea69fc7304" category="paragraph">指定服務類型。</block>
+  <block id="44f79575ca42f3951f78c8d876c9b0c1" category="paragraph">"shlpsetool findattrs"命令及其縮寫輸出：</block>
+  <block id="9b33f1a516dd355a272be3f15b6e0bd6" category="summary">SMI addSecure命令會將具有HTTPS連線的儲存系統新增至您的組態、讓您能夠管理及監控裝置。除非有必要、否則您應該使用SMI addsecure、而非新增SMI。</block>
+  <block id="3d8405e7c1d5f02ba446d1a50e9f20d1" category="doc">SMI更安全</block>
+  <block id="7982281010af1e5d6aae114f5b025693" category="paragraph">「smis addsecSecure」命令會將具有HTTPS連線的儲存系統新增至您的組態、讓您能夠管理及監控裝置。除非有必要、否則您應該使用「sis addSecure」而非「sis add」。</block>
+  <block id="23449bcc34f3e21c05e26cd130624d11" category="paragraph">"太安全了"</block>
+  <block id="3dfb26dbcdb47dafbe49b2b0fd66a2a2" category="paragraph">？？"_storage（儲存設備）_sys storage（儲存設備）_sys_user_"+"-t｛* http *|* https *｝""</block>
+  <block id="af625fdeacba296380d450557c4b2893" category="paragraph">使用美國以外語言的作業系統英文版無法使用「addsecSecure」命令。</block>
+  <block id="120eb40bdca64cb45bb214fc1a160f30" category="paragraph">如果您要指定IP位址、可以使用IPV4或IPV6。同時支援壓縮和完整的IPv6位址、例如「1001:0002：0000:0000:0000:0000:0003：0004」或「1001:2：3：4」。</block>
+  <block id="cf383d582978ebcce1c9ccb44e977fbf" category="paragraph">使用IP位址為10.32.1.4（透過HTTPS）的IPV4新增儲存系統：</block>
+  <block id="e26b9b1c6faf12ff6d58c8270f6e49ae" category="paragraph">使用IPv6 over HTTPS新增儲存系統：</block>
+  <block id="0cff628aebe5a638bdcbe3cc4bd8a03a" category="paragraph">在非英文系統上、透過HTTPS新增IP位址為10.32.1.4的儲存系統：</block>
+  <block id="24eff5a139d4097bd815d006e9a0d9ff" category="summary">您可以設定SMI-S Provider管理記錄檔和追蹤檔的方式、例如指定要記錄的訊息層級和儲存記錄的目錄。您也可以指定要追蹤的元件、要寫入追蹤訊息的目標、追蹤層級、以及追蹤檔案位置。</block>
+  <block id="0736d5e8d4330a3c6b848d8060b08979" category="summary">SMI CICIMOM命令說明了CIM物件管理程式。</block>
+  <block id="010b8a6f4de24501fdfcdd9022d7bed3" category="doc">SI CIMOM</block>
+  <block id="fba396a24b568c4db4fb55d41b66afc3" category="paragraph">「mis CIMOM」命令說明了CIM物件管理程式。</block>
+  <block id="958eb208a0881863ee089c6cd7dd4755" category="paragraph">SMI CIMIMOM[-t {* http *|* https *｝]</block>
+  <block id="5bac2206531e3a846f26add59d5a7c54" category="paragraph">「mis CIMOM指令及其輸出：</block>
+  <block id="6aa0506cbda045baaac42a33adf154bc" category="doc">警告26130</block>
+  <block id="4c2a8fe7eaf24721cc7a9f0175115bd4" category="section-title">訊息</block>
+  <block id="43314f297d1319987ae0a70ecfd97c2a" category="paragraph">「警告（26130）儲存資源池已分配給主機群組、主機群組中沒有任何主機可存取儲存陣列。</block>
+  <block id="7730b695d01e614f5ca99b68c96b377e" category="paragraph">當您分配儲存容量並將陣列存取權授予主機群組中的主機時、就會發生此錯誤。有了這項警告、就不可能將虛擬機器放在儲存系統上。</block>
+  <block id="57b854162d6caadf0053934ab77436cd" category="section-title">修正行動</block>
+  <block id="4937a7033ec39bd8589c2df73c921a89" category="list-text">在每台主機上、將每個儲存系統的IP位址新增至iSCSI啟動器應用程式。</block>
+  <block id="7d36242dbaa9912fc085b5ff7c002458" category="list-text">如有需要、請在每個儲存系統上、針對每個主機建立一個獨特的igroup、並從對應的主機建立適當的iSCSI節點名稱。</block>
+  <block id="f4a55e7cbbe39eb8f955afd704ea726a" category="list-text">針對每部連線Data ONTAP 至物件的主機、開啟MPIO應用程式並新增下列硬體ID：</block>
+  <block id="25c100de8cdfff7216dbf6a699030071" category="list-text">對於叢集Data ONTAP 式的實體、請輸入「* NetApp LUN C-Mode*」。</block>
+  <block id="ffd73db9cb7d1dec7d0b41031a0865f5" category="list-text">重新啟動主機。</block>
+  <block id="96ee3206e5a288b7c11d4de582d14ec9" category="list-text">移除供應商。</block>
+  <block id="0bc3df559d8caef1f69d55ee3c5b77e1" category="list-text">再次設定儲存資源池。</block>
+  <block id="e9c44bbfd795a5d63d74c6a77afee70d" category="summary">法律聲明提供版權聲明、商標、專利等存取權限。</block>
+  <block id="30d965eef5ba25c6b9998ae38270b43e" category="doc">法律聲明</block>
+  <block id="6016a2b341113bf496b719905398ecd2" category="section-title">版權</block>
+  <block id="09e95b77ffe81fe465a83ba99efad5c8" category="paragraph"><block ref="09e95b77ffe81fe465a83ba99efad5c8" category="inline-link-rx"></block></block>
+  <block id="126a02652da6de02962cf1b654fd6376" category="section-title">商標</block>
+  <block id="c4ce4761e466527d26b3e3d5ed1006fd" category="paragraph">NetApp 、 NetApp 標誌及 NetApp 商標頁面上列出的標章均為 NetApp 、 Inc. 的商標。其他公司與產品名稱可能為其各自所有者的商標。</block>
+  <block id="7aa531e9acfe2b98e34d2c92fe9846ff" category="paragraph"><block ref="7aa531e9acfe2b98e34d2c92fe9846ff" category="inline-link-rx"></block></block>
+  <block id="be89498d2f8a22ce47c02ba9795fe2af" category="section-title">專利</block>
+  <block id="d0b19d36be2c5f16e9aef46c8a452d3d" category="paragraph">如需最新的 NetApp 擁有專利清單、請參閱：</block>
+  <block id="d7f1fbcf9ce4e42f705add574d262b2c" category="paragraph"><block ref="d7f1fbcf9ce4e42f705add574d262b2c" category="inline-link-rx"></block></block>
+  <block id="56c34c6410dd45c5cec44149ad0ce037" category="section-title">隱私權政策</block>
+  <block id="fc248f74f5e36542f7f5627b8610e9a3" category="paragraph"><block ref="fc248f74f5e36542f7f5627b8610e9a3" category="inline-link-rx"></block></block>
+  <block id="24efa7ee4511563b16144f39706d594f" category="section-title">注意</block>
+  <block id="9b73989307c1975dfa4d5e1581e4afe8" category="paragraph">通知檔案提供有關 NetApp 軟體所使用之協力廠商版權與授權的資訊。</block>
+  <block id="e746749730e661dd557a1c067c4dbe7d" category="inline-link">NetApp SMI-S Provider注意事項</block>
+  <block id="de70f78d604c1f59e6de2a196d7084c8" category="paragraph"><block ref="de70f78d604c1f59e6de2a196d7084c8" category="inline-link-rx"></block></block>
+  <block id="9280dd1549bc07bba9817582d2b6288f" category="doc">無法連線至localhost:5988</block>
+  <block id="24f18f75923b26cdb12b920517712556" category="paragraph">“無法連接到localhost：5988。連線失敗。正在嘗試連線至localhost:5988'</block>
+  <block id="acd465815840c7454befc06f12a142b7" category="paragraph">當HTTPS連線停用或HTTPS連接埠未設定為5988、或供應商已停止運作並保持掛起狀態時、就會出現此訊息。</block>
+  <block id="58d08e1d82d361b99536cfa44f149071" category="paragraph">「cimconfig -g enableHttpConnection」</block>
+  <block id="cbd7f81531872331c59ceea7cf0e317f" category="paragraph">「cimconfig -g http連接埠」</block>
+  <block id="ce213e75a7f75f712f4be7e16112d770" category="paragraph">如果未將"enableHttpConnection"或"enablehttps Connection"設置爲"true"，請輸入以下命令：</block>
+  <block id="009569960b50be05ba080ec543734b9e" category="paragraph">「cimconfig -s enableHttpConnection -p」</block>
+  <block id="85a868f1991485654cbd5a04da48a9b3" category="paragraph">如果「http連接埠」未設定為5988、請輸入下列命令：</block>
+  <block id="d4e81f1c3845585320720d915738b5e1" category="paragraph">「cimconfig -s http連接埠=5988-p」</block>
+  <block id="1c8b1ceffcc2e5c41818948735527a7f" category="summary">您可以使用cimconfig命令來管理CIMOM組態設定。輸入cimconfig命令或為NetApp SMI-S Provider組態值建立環境變數之後、您必須使用SMI cimserver重新啟動命令重新啟動CIM伺服器。</block>
+  <block id="95cdbdc16fcdaafb435475409dea8c94" category="doc">cimconfig</block>
+  <block id="7944dd24fa0a41aefb89e769af345698" category="paragraph">您可以使用「cimconfig」命令來設定CIMOM設定、例如啟用和停用HTTP和HTTPS、以及變更HTTP和HTTPS連接埠號碼。輸入「cimconfig」命令或為NetApp SMI-S Provider組態值建立環境變數之後、您必須使用「mis cimserver restart」命令重新啟動CIM伺服器。</block>
+  <block id="ef64b539714bc207f3683e87baca5652" category="paragraph">"cimconfig _options_"</block>
+  <block id="b00916f5307aa32dbca536f03d14c7ff" category="list-text">*至c *</block>
+  <block id="1c31447f2eb1c48c57a46f3a61518e99" category="paragraph">指定組態設定適用於目前的CIMOM組態。</block>
+  <block id="3596befb239babb43d61b0d1d6e13246" category="list-text">*至d*</block>
+  <block id="fa40973fd93c512d13a6a1b6da4f489f" category="paragraph">指定組態設定適用於預設的CIOM組態。</block>
+  <block id="0b780b7e828595da22483355654404e0" category="list-text">*- g*</block>
+  <block id="e691af7c4ee7d01230cf805d206758ef" category="paragraph">取得指定組態內容的值。</block>
+  <block id="e3cfaac0d3377c6c896832368910130b" category="paragraph">顯示cimconfig命令的說明。</block>
+  <block id="df12ebb64d9b76df31938810dd27a569" category="paragraph">列出所有的CIMOM組態內容。</block>
+  <block id="045736a4d72d21b72d7778e61d9fd110" category="list-text">*：p *</block>
+  <block id="177603cfb13c45d563d1bc16904f084e" category="paragraph">指定下次啟動CIM伺服器時套用組態設定。</block>
+  <block id="33ffba2cd5bc02af414ee632e22fadf2" category="paragraph">設定指定的組態內容值。</block>
+  <block id="95b4c5d9e5ef6af33824e05b7ea2e5be" category="paragraph">將組態內容重設為預設值。</block>
+  <block id="14717f61d23f11c85970c509d3ce68de" category="paragraph">將記錄檔大小上限變更為15000 KB：</block>
+  <block id="35671582279b0a1d59acf722bbd8bdf6" category="doc">找不到網路路徑</block>
+  <block id="720e5e50ac2535c888ad67280e6a1be2" category="paragraph">「找不到網路路徑」</block>
+  <block id="178d8aae262f8d9ddc44d48c4e4c6d08" category="paragraph">此訊息反映DNS問題、當主機在DNS伺服器上沒有記錄時、在SMB共用區上部署VM時會發生此問題。</block>
+  <block id="2b7eb82612c80702139b0208e1335e20" category="paragraph">一般而言、網域DNS伺服器在網域中設定新主機時、應在24至48小時內自動更新主機記錄。不過、此更新並不一定會自動進行。</block>
+  <block id="5f67fee45257fdf425111301595cefd7" category="list-text">如果您是網域管理員、請手動更新DNS主機記錄。</block>
+  <block id="3da95846f2c2e8688baa4512b1bf8227" category="list-text">如果您不是網域管理員、請更新主機檔案（「C：\Windows\System32\drivers\etc\hosts」）。</block>
+  <block id="cd1d6fce4cd9d7a94e7850303787e1e8" category="paragraph">主機檔案沒有副檔名（`.txt'）。</block>
+  <block id="f8c2df449febf0b15707a09fd604e537" category="summary">SMI授權命令會列出儲存系統的授權功能。</block>
+  <block id="78a2498ace60e14c1d0b09368a648f49" category="doc">已授權的SI</block>
+  <block id="b7176b7af7596fbcc148db69f476bd3d" category="paragraph">「mis licensed」命令會列出儲存系統的授權功能。</block>
+  <block id="fd3c7c36ef880bba3bf94c0d0c419a93" category="paragraph">「已授權的指令及其縮寫輸出：</block>
+  <block id="36bc4391121621ccbd43a1d20890bbfb" category="summary">您可以安裝NetApp SMI-S Provider軟體、以便管理執行Data ONTAP 支援的儲存系統。根據預設、NetApp SMI-S Provider軟體安裝在C:\Program Files（x86）\NetApp\SMIs\pedus目錄中。</block>
+  <block id="b7ceff6488201ada2adc1183d4779baa" category="doc">在Windows主機上安裝NetApp SMI-S Provider</block>
+  <block id="b7c334318e075f9c3e093acfe23e8a85" category="paragraph">您可以安裝NetApp SMI-S Provider軟體、以便管理執行Data ONTAP 支援的儲存系統。不過、您無法還原或降級至舊版。根據預設、NetApp SMI-S Provider軟體會安裝在「C:\Program Files（x86）\NetApp\SMI\PEGUSEs」目錄中。</block>
+  <block id="e9c2e2fe706f7cb451b683459ed09ff9" category="paragraph">您必須已擁有下列認證與軟體：</block>
+  <block id="b08dc0dbe07b37cce50f2429165603b4" category="list-text">Windows系統管理員帳戶的登入認證</block>
+  <block id="99b057df2c522b2a7b89ebfdd2f864f4" category="list-text">NetApp SMI-S Provider軟體套件</block>
+  <block id="7b32869ae0948e84609377dc61f066f5" category="paragraph">安裝程序的結果是、CIMOM服務（在Service Control Manager中稱為「NetApp SMI-S Provider」）和SLp精靈（在Service Control Manager中稱為「Service Location Protocol」（服務位置通訊協定））會以自動服務的形式執行、即使在主機重新開機後也會自動啟動。</block>
+  <block id="919ab370119d447ad299b22fa2119901" category="paragraph">此安裝程序反映全新安裝。</block>
+  <block id="042d82ccad1ac2c11a524e73165165b9" category="list-text">瀏覽至包含NetApp SMI-S Provider軟體套件的目錄（「misprovider-_version _number_.msi」）、然後按兩下套件名稱。</block>
+  <block id="d4dc98bad1971071a05d9ff3f05d06f5" category="list-text">完成設定精靈中的步驟。</block>
+  <block id="28db71e92fe511a4f3a1c7ed3aa46bf5" category="paragraph">NetApp SMI-S Provider會在安裝程序結束時自動啟動。</block>
+  <block id="060f57a6a9e42af240800090a97dbbc2" category="summary">在部署NetApp SMI-S Provider之前、您必須確認您擁有支援的作業系統與平台、是否擁有必要的授權、以及主機是否符合最低需求。</block>
+  <block id="1484fccf8d24a7bab66c738879eeadcc" category="summary">使用SMI-S Provider時、您可以指派不同類型的使用者給使用者、以控制其對CIM伺服器的存取。</block>
+  <block id="641d6548d34af78dcc255faad011c29d" category="doc">類型的CIM使用者及相關作業</block>
+  <block id="6ed2645b4c43488812455affa1c466b3" category="paragraph">從本版本開始、網域使用者可以修改SMI-S Provider使用者資料庫及其他組態設定、做為本機系統管理員群組的網域使用者。</block>
+  <block id="ad783d2f4a2eb67767aaf7a10faf1c8b" category="paragraph">下表列出支援的CIM伺服器使用者、以及每種類型可以執行的作業。</block>
+  <block id="1335f6b6c0aef682a48880c2170a7b41" category="cell">使用者類型</block>
+  <block id="456d0deba6a86c9585590550c797502d" category="cell">營運</block>
+  <block id="d5b0bbcde4af8bf8600fb80e53cf57eb" category="paragraph">系統管理員群組的網域管理員</block>
+  <block id="7295dd4b89381e8f7a3983c3db4a5450" category="paragraph">SMI-S Provider組態和使用者管理、使用「cimconfig」和「CIMUser」命令。例如：</block>
+  <block id="76089b277d7c4637af557c363316ed6c" category="list-text">在SMI-S Provider的信任存放區中新增或移除使用者。</block>
+  <block id="befb009797d0d6459c03cb3c572a650c" category="list-text">啟用、停用或變更記錄層級和追蹤組態。</block>
+  <block id="28b3fd7b22a3433ee086df4989550e35" category="list-text">在SMI-S Provider中啟用或停用驗證引擎。</block>
+  <block id="356d3eb9e42345f0df80e3a290016e44" category="paragraph">使用「mis」和「cimcli」命令進行儲存管理與驗證。例如：</block>
+  <block id="b8ca31c01cc1a6d0446db847d321d69c" category="list-text">在SMI-S Provider儲存庫、資料庫或快取中新增或移除儲存控制器或SVM。</block>
+  <block id="9eebce0fe03ad70a0bd38b7bf717aa4c" category="list-text">在SMI-S Provider快取中重新整理儲存控制器或SVM。</block>
+  <block id="c7d2575a0531ec33051a023bfcb528cf" category="list-text">驗證儲存控制器或SVM管理。</block>
+  <block id="121aa0de0e266ad9a4f71cea2ba24acf" category="paragraph">使用SCVMM GUI進行SCVMM探索作業。</block>
+  <block id="1bb62e6dbd0bcfe63e855c7bb68036cc" category="paragraph">本機系統管理員群組的網域使用者</block>
+  <block id="4bdbe6703036d4c9363434dad6b08903" category="paragraph">本機系統管理員群組的本機使用者</block>
+  <block id="2e09e7802834c77d27ce8920437facd6" category="paragraph">內建網域管理員使用者</block>
+  <block id="90bebd40a6b0aeac280c5fadbedc23a5" category="paragraph">內建本機系統管理員使用者</block>
+  <block id="737b21fcc807855c6e50bf70f766a2a0" category="paragraph">使用者群組的網域使用者</block>
+  <block id="6d45eff2b4537ef85ec9601c26eedfd0" category="paragraph">使用者群組的本機使用者</block>
+  <block id="471dfba4af2601f46dd9de136cc68c1e" category="paragraph">如果您在Windows主機上有SMI-S Provider並變更任何「Administrator」使用者名稱、則必須登出系統、然後重新登入。SMI-S Windows服務在此期間會繼承驗證、因此在系統管理員登出再重新登入之前、無法辨識對認證資料所做的任何變更。</block>
+  <block id="27c5899c7f7c11410721efccbf3a8f48" category="summary">您可以使用SI命令來管理儲存系統、並顯示有關CIM物件管理員的資訊。</block>
+  <block id="337c6d03c71e412eabb31031c965b155" category="paragraph">您可以使用「mis」命令來管理儲存系統、並顯示有關CIM物件管理員的資訊。</block>
+  <block id="7ed05529165de8dd21dd5335d6583157" category="paragraph">您可以使用「-help'」選項來取得「mis」命令的說明。</block>
+  <block id="289ef019924b7013900809be97f4d115" category="list-text">*中小企業的「-help*」</block>
+  <block id="d495f1ffa8481764d22093a114f61296" category="paragraph">顯示命令摘要。</block>
+  <block id="05feeefaeda5694102081bacc2705690" category="list-text">*中小企業的「輔助」範例*</block>
+  <block id="5b6431d35a9c3d0995ce988f0b570b34" category="paragraph">顯示使用範例。</block>
+  <block id="d2b8ae3b0159d7c9e176b2a9f01c43a5" category="list-text">* SMIS `-help_子 命令_`*</block>
+  <block id="302a77012450f9d81c51deeec5a10fd5" category="paragraph">顯示指定子命令的說明。</block>
+  <block id="2e0328b56b7df525664960879f95f5d1" category="paragraph">SMI工具的預設逾時值為180秒。</block>
+  <block id="4dd620f035497b4c26fd3db7a737531e" category="summary">SMI-S Provider會ONTAP 對儲存系統進行SONTAPI（ONTAPI）呼叫。根據預設、ONTAPI逾時時間為300秒。您可以將逾時設定為60到300秒之間的值。</block>
+  <block id="2968f0fa1a0d4ef15b62ef7173cea84f" category="doc">指定ONTAPI逾時值</block>
+  <block id="48c7c41b72e1d678923ce3571aa65b2d" category="list-title">步驟</block>
+  <block id="c23ac41b72372a7f3c20cb975800351a" category="list-text">使用新的逾時值（以秒為單位）建立名為「ONTAPI_timeout_SEC」的系統或使用者環境變數。</block>
+  <block id="d75bbf95db11e5456ff088adc74cf683" category="summary">「SI命名空間」命令會列出CIMOM的登錄命名空間。</block>
+  <block id="493501184a8d3a037d64ec48d949f535" category="doc">SI命名空間</block>
+  <block id="1467d24f125021abfcc1130828b1ade9" category="paragraph">「mis命名空間」命令會列出CIMOM的登錄命名空間。</block>
+  <block id="4f069805909c8ccacabb7c24b45deb05" category="list-text">Windows：「C：\Program Files（x86）\NetApp\SMI\PEGUS\bin」</block>
+  <block id="f3ccba9faf98a36122387d46ef40de77" category="paragraph">命令"mis命名空間"及其縮寫輸出：</block>
+  <block id="5e2b9472b02f4f2b851fb3977ff17b84" category="summary">您必須擁有SMI-S Provider的FlexClone授權、才能建立LUN複製。</block>
+  <block id="df08bacfdfa0f59296d2b2a817363f77" category="doc">SMI-S Provider中使用的Clone技術</block>
+  <block id="510d66d307c0496d6ba81658c7a5b619" category="paragraph">SMI-S Provider僅使用FlexClone技術在該儲存系統上建立LUN複製。如果您沒有FlexClone授權、SMI-S Provider不會使用LUN Clone技術產生複本、因此會產生下列錯誤訊息：</block>
+  <block id="d1da6127cf9130c3e6cbddab213daefb" category="paragraph">「儲存系統上未啟用FlexClone授權。</block>
+  <block id="ddd332cc6425680fe389737022cab8af" category="paragraph">如果您有使用LUN複製技術建立的LUN複製、Data ONTAP 而將此版本升級至7.3.1或更新版本、則無法使用SMI-S Provider來分割這些複製。必須由儲存系統管理員管理。</block>
+  <block id="ce12ed3777878dc751489d09e13cb3e8" category="summary">如果您遇到NetApp SMI-S Provider問題、應使用收到的任何錯誤訊息來協助疑難排解。</block>
+  <block id="180678484046c8a3ab98f0203e6e9339" category="summary">「SI啟動器」命令會顯示儲存系統的Fibre Channel和iSCSI連接埠資訊。</block>
+  <block id="16ff291e6d6d13f763ca86e4e8eb8ba4" category="doc">SI啟動器</block>
+  <block id="1587d4e99e358031eaea1724b454fbaa" category="paragraph">「mis啟動器」命令會顯示儲存系統的光纖通道和iSCSI連接埠資訊。</block>
+  <block id="676405883234ee0a42883953471df3fa" category="paragraph">「mis initiator（啟動器））”命令及其縮寫輸出：</block>
+  <block id="f39d1a39fc0a0e5513a2c05bd34a0f7e" category="summary">依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系統取得資訊。您可以使用「SI重新整理」命令手動重新整理特定的儲存系統。</block>
+  <block id="7503a9cf231b36274482a1a1cb7865aa" category="doc">SMIS重新整理</block>
+  <block id="5d97149f962e031041e77009bc0a4e59" category="paragraph">依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系統取得資訊。您可以使用「mis refresh」命令手動重新整理特定的儲存系統。</block>
+  <block id="9a615249527c86774ee60394f1de01ef" category="paragraph">「重新整理_storage、system、ip_」</block>
+  <block id="4f83d07fa2f72d87eb94f8decfc3feb6" category="list-text">「*」「*」「*」「_storage」「system」「ip_*」</block>
+  <block id="78e5b58b72164e4963a654d0c6d9ddae" category="paragraph">重新整理特定的儲存系統。</block>
+  <block id="b4f1fdb71abf5ae7ab189aabe2cc6068" category="paragraph">「mis refresh'命令及其輸出：</block>
+  <block id="c7e3ba666a2f84cc0cf01f10a8dd110d" category="summary">NetApp SMI-S Provider使用透過HTTPS和服務位置傳輸協定（SLp）的CI-XML編碼。</block>
+  <block id="5f679677ad933bf6dbfb7a4ea7cbe348" category="doc">NetApp SMI-S Provider傳輸協定</block>
+  <block id="8c41eec09b97759e1f05ced5c48f938d" category="list-text">*透過HTTPS *進行CI-XML編碼</block>
+  <block id="671231622b5198a3c9cab2694fb3db1f" category="paragraph">在啟用Web的企業管理（WBEM）管理用戶端和CIMOM伺服器之間交換資訊的傳輸協定。透過HTTPS的CIM-XML編碼會使用CIM傳輸協定做為有效負載、而HTTPS則作為傳輸。也支援HTTP。</block>
+  <block id="809f9effc42a2255e739eac5634eb1f7" category="list-text">* SLP*</block>
+  <block id="17c0a045d5a0558e3dcdadc5941a7ecb" category="paragraph">偵測LAN內的WBEM服務的探索傳輸協定。</block>
+  <block id="cae8cb812f6ca7ff0b4fffd3fee9e6ac" category="summary">您可以使用CIMUser命令來新增、刪除及列出CIM伺服器使用者、以及管理他們的密碼。</block>
+  <block id="b5bbdbd9dee3d1247c9c2eb9b98ef095" category="doc">CIM使用者命令</block>
+  <block id="fbff7af17f480cbd21f54875668b8a27" category="paragraph">您可以使用「CIMUser」命令來新增、刪除及列出CIM伺服器使用者、以及管理他們的密碼。</block>
+  <block id="6c3b97a71e1400ae3b3467be3cac370f" category="summary">如果啟用追蹤、預設追蹤檔案大小上限為100 MB。您可以設定環境變數PEGON_TRAD_file_SIZE來增加或減少追蹤檔案的最大大小。追蹤檔案大小的值可以是10 MB到2 GB。</block>
+  <block id="9f1963dfe2dc39ab67d177a1091ce4fd" category="doc">指定追蹤檔案大小</block>
+  <block id="7de0f9996cd3a1414618bcd879f4ad6a" category="paragraph">如果啟用追蹤、預設追蹤檔案大小上限為100 MB。您可以設定環境變數「PEGAS_TRAD_file_Size'」來增加或減少追蹤檔案大小上限。追蹤檔案大小的值可以是10 MB到2 GB。</block>
+  <block id="ab2e0ea406258cacfcd0b914a05e1f05" category="list-text">建立名為「PEGUS_TRAD_file_SIZE」的系統或使用者環境變數、並以位元組為單位建立新的追蹤檔案大小。</block>
+  <block id="b4832e1f800ff884553b38f2524e32dd" category="paragraph">_Windows文件_有更多關於建立環境變數的資訊。</block>
+  <block id="cca585701df6f93e0f1325f6f499e5f5" category="summary">SMI cimserver命令會啟動、停止、重新啟動或取得CIM伺服器的狀態。</block>
+  <block id="539dd095e3626609596c19bb68975d4b" category="doc">SMI cimserver</block>
+  <block id="63ce1cdf8f985b7dac88e1164a97a0b7" category="paragraph">「mis cimserver」命令會啟動、停止、重新啟動或取得CIM伺服器的狀態。</block>
+  <block id="5a5e2ea5a2afb6a0676da3eebd28949f" category="paragraph">"mis cimserver"</block>
+  <block id="170363bebc0d578ed9e2e3f36b801efd" category="paragraph">「{* start*|* stop *|* start*|* STATUS*｝」</block>
+  <block id="c1c6041919f05fc514a14999b56de47c" category="list-text">*開始*</block>
+  <block id="90f4ddc942b1044393e89f486cd3a453" category="paragraph">啟動CIM伺服器。</block>
+  <block id="32c782efd785a5f2274071338f7345dd" category="list-text">*停止*</block>
+  <block id="b9c33a774f7af05771c2ccb241a4b340" category="paragraph">停止CIM伺服器。</block>
+  <block id="3a78eb520041f9ba7469ccbe33fb92a6" category="list-text">*重新啟動*</block>
+  <block id="2404e95dd016724f713868519e1ef7ce" category="paragraph">重新啟動CIM伺服器。</block>
+  <block id="ca405589dcd974768e24cc65b8a0eb5f" category="list-text">*狀態*</block>
+  <block id="e3e3ed21d218d78f0b06fa5e0fad5c74" category="paragraph">取得CIM伺服器的狀態。</block>
+  <block id="80feca2aef5bfe7af61ecef2104515dc" category="summary">瞭解NetApp SMI-S Provider所管理的系統數量上限、有助於瞭解其效能能力。</block>
+  <block id="8df995b0877455c8e157e1650dc377d4" category="doc">NetApp SMI-S Provider規模調整與效能</block>
+  <block id="98bc8ee199ee6b2e16fe0a72065bc977" category="paragraph">*規模調整*</block>
+  <block id="7b5949a309ff956607ccd7a05549a643" category="paragraph">NetApp SMI-S Provider最多可管理叢集Data ONTAP 式支援中的下列物件數量：</block>
+  <block id="be3aa891f1e256500ac418272b5eba57" category="list-text">100部儲存虛擬機器（SVM）（無指示）</block>
+  <block id="6d566731c48802fe3821e33a4c29bfb3" category="list-text">10部儲存虛擬機器（含指示）</block>
+  <block id="5e21a9906ddd54cf24a9de122b49eeb1" category="list-text">1、500個LUN（每FlexVol 個動態磁碟區）</block>
+  <block id="aa8573942cd1ed77a581b629e3ba2237" category="list-text">200個CIFS檔案共用（每FlexVol 個流通量）</block>
+  <block id="ee001510f4b124ecdffc864a0edba76b" category="paragraph">如果FlexVol 該功能同時包含qtree和Volume、則qtree會顯示為目錄。刪除磁碟區時、請小心不要意外刪除qtree。</block>
+  <block id="b398798c87974373edd5b73dfab3f17f" category="paragraph">*效能注意事項*</block>
+  <block id="9e610f9507134287d0d568bdb80b8571" category="paragraph">對於使用5000 FlexVol 個實體磁碟區或300、000個Snapshot複本的組態、您可能會遇到下列「cimcli」命令的效能問題：</block>
+  <block id="85a8c1b8c7516ef09e21236cc0d93c18" category="list-text">《cimcli ei ONTAP_Snapshot -n root/ONTAP》</block>
+  <block id="7d32bfbdae2be0b0adf753b53b3e22b2" category="list-text">「cimcli ei ONTAP_SnapshotBasedOnFlexVol -n root/ONTAP」</block>
+  <block id="007a98733bd428042445fb37fbf65c12" category="list-text">《cimcli ei ONTAP_StorageVolume Stats -n root/ONTAP》</block>
+  <block id="855fc18e477e5e46b721d02214086805" category="paragraph">互通性對照表工具IMT （VMware、Interoperability Matrix Tool）包含有關規模調整與效能的最新資訊。</block>
+  <block id="7db03bcd1252d3fa4d71f3f8e29b2598" category="summary">SMI crsp命令說明NetApp SMI-S Provider支援的已登錄CIM子設定檔、包括NetApp SMI-S Provider子設定檔。</block>
+  <block id="b5bb2f5a9485d0416f2f19fb6737effd" category="doc">SMI系統</block>
+  <block id="db8f341d1b161950274e0d2006fee127" category="paragraph">「mis crsp」命令說明NetApp SMI-S Provider支援的已登錄CIM子設定檔、包括NetApp SMI-S Provider子設定檔。</block>
+  <block id="1d8e4598ce16f8b7b28609e34b9e7847" category="paragraph">「mis crsp命令及其縮寫輸出：</block>
+  <block id="b886cf1c3a6918153903f50d9cd8b0c0" category="summary">SMI-S Provider使用符合SMI-S v1.7的設定檔和子設定檔。如需SMI-S v1.7的相關資訊、請參閱SNIA：技術標準與軟體頁面。</block>
+  <block id="ee4bd44ef670d8bf5a572249fcb21352" category="doc">SMI-S設定檔</block>
+  <block id="1867e4a765d502c76e2b022504c37d92" category="doc">連線遭拒</block>
+  <block id="920b035c5ab2970e46128a7f6cc797c7" category="paragraph">「連線遭拒」</block>
+  <block id="57347b2e0c66cf6ffb2c25aac5a87de9" category="paragraph">尚未啟動CIM伺服器。</block>
+  <block id="bd70cb560e9ec26601210f1e704aeb59" category="paragraph">瀏覽至安裝NetApp SMI-S Provider的目錄中的「bin」目錄、然後輸入下列命令、確認已啟動CIM伺服器：</block>
+  <block id="1c69ee2e288e61e1354a1d861818c578" category="paragraph">「mis cimserver Status」</block>
+  <block id="f1b3104927a39ddfe1ceaf661f5f4d7d" category="paragraph">如果未執行CIM伺服器、請輸入下列命令：</block>
+  <block id="155f23a4622d9e88b8c1a5c1526d3e64" category="paragraph">"mis cimserver start"</block>
+  <block id="ed67849ee15b777c5b7b016e5e4edb51" category="summary">slptool findsrvs命令會尋找在網路上執行的WBEM服務。</block>
+  <block id="c1a36cc2047b34255648f6b817e6b410" category="doc">slptool findsrvs</block>
+  <block id="bc02f9666a54c5705e9d339c88ac2f1d" category="paragraph">"shlptool findsrvs"命令可查找在網絡上運行的WBEM服務。</block>
+  <block id="e82b24b843a7ce5035507ad1d1431751" category="paragraph">"lptool findsrvs _service_"</block>
+  <block id="2d790894df6a0ea67608206684cfd014" category="paragraph">「shlptool findsrvs」命令及其輸出：</block>
+  <block id="7355cc449407ca50aff22e50da5ca918" category="summary">SMI config show命令會列出目前的CIM伺服器組態資訊。</block>
+  <block id="7e83e52e854ff8058176500bc4ad34d0" category="doc">顯示SMI組態</block>
+  <block id="2648540719848b041df79e729eb23829" category="paragraph">「mis config show」命令會列出目前的CIM伺服器組態資訊。</block>
+  <block id="7ebbcaa199bd513217c822dd7063d75b" category="paragraph">「組態顯示」</block>
+  <block id="64c64b170c567596739e79f28df4a5e8" category="paragraph">「mis config show（組態顯示）”及其輸出：</block>
+  <block id="e14a9944fe8690b0f4a896ee4dd1b1bc" category="summary">NetApp SMI-S Provider支援執行Data ONTAP 32個版本的叢集平台。ONTAP</block>
+  <block id="6ac98480cf75c6dae666143ef19e1b44" category="doc">支援的叢集平台</block>
+  <block id="62861fc78ada9051faca6fd4990e1665" category="paragraph">若要讓NetApp SMI-S Provider建立儲存磁碟區（LUN）的複本、您必須在儲存系統上安裝FlexClone授權。</block>
+  <block id="39a815a66b6abb4cbca8976fc7695c9e" category="paragraph">NetApp SMI-S Provider支援下列平台：</block>
+  <block id="6b2c2280811e36eb16c24d5aa7a083b0" category="list-text">系統FAS</block>
+  <block id="e5c7df601f61f29bd5487de4001b15d8" category="list-text">V系列儲存系統</block>
+  <block id="591f96ef7fe1cdb42aa58f385466c717" category="summary">提供有關NetApp SMI-S Provider 5.2.6軟體的功能、限制和已知問題的資訊。</block>
+  <block id="336d68bc1f4a7a4dd4d6826a8c11877e" category="doc">NetApp SMI-S Provider版本說明</block>
+  <block id="6e3b9e20f7f45cc7004fb8412900830e" category="paragraph">。<block ref="b5aeaaea80149eaf6be32e7995332412" category="inline-link-rx"></block> 說明新功能、升級附註、修正問題、已知限制及已知問題。</block>
+  <block id="9ac41c88ece6b96843a1b79c4d90e485" category="summary">在設定SMI-S Provider之前、您必須先將至少一個儲存系統新增至CIMOM儲存庫、然後確認儲存系統運作正常。</block>
+  <block id="bd53ec5cd43766d7fb689c1a791c5cf4" category="doc">驗證儲存系統是否正常運作</block>
+  <block id="178a83ef87ae379b593fe5d535c2408d" category="list-text">將至少一個儲存系統新增至CIMOM儲存庫：</block>
+  <block id="13f4b66abe59fdd7c2ae2f2cc038140e" category="cell">若要新增儲存系統...</block>
+  <block id="aad95273f4e1ccb563059e89127b7019" category="cell">輸入此命令...</block>
+  <block id="44c460b31e2379511ec9316d2f7dae1f" category="paragraph">供應商與儲存系統之間的HTTP連線</block>
+  <block id="21e085eda3a6ce6d2ee15663cd7a6e15" category="paragraph">提供者與儲存系統之間的HTTPS連線</block>
+  <block id="ab917ed1621e00b0ef3b3b92e8263840" category="list-text">驗證下列命令的輸出：</block>
+  <block id="7c95a1437ab1b741ae454d68a17469a2" category="cell">對於此命令...</block>
+  <block id="c6e117c59a31d82cacc4fe50361a2535" category="cell">確認...</block>
+  <block id="4a3fca40fa5a1c3b4515f86bb09c53e3" category="paragraph">《名單》</block>
+  <block id="f7529153df2f5d15ed8b4487207eee8f" category="paragraph">項目數量符合所管理的儲存系統數量。</block>
+  <block id="58357c37cc78c70c07e8c5863f03916e" category="paragraph">'磁碟機'</block>
+  <block id="80ee4c619fb95a9a45de8aba9471b13e" category="paragraph">磁碟數量符合所有儲存系統上的磁碟總數。</block>
+  <block id="98100d818063c0b408a160edd4ada15c" category="paragraph">' LUN錯誤'</block>
+  <block id="3df0dcf43356ca981e055ea44ce890bb" category="paragraph">LUN數量與所有儲存系統上的LUN總數相符。</block>
+  <block id="9d3252d8eb7b2dda525b61eaa4b4b280" category="paragraph">ONTAP的數量與所有儲存系統上的集合體總數相符。</block>
+  <block id="692fc4e2c1fc79807c8600f51a03ed82" category="paragraph">磁碟區數量符合所有儲存系統上的磁碟區總數。</block>
+  <block id="1cedcb17c92a3535c2610261b466714a" category="summary">您可以管理SMI-S Provider的進階設定、例如指定SMI-S快取重新整理時間間隔、ONTAPI逾時、以及每個訊息服務佇列的最大執行緒數。</block>
+  <block id="ef23db5e5a3a16df609d1db8b2ff882c" category="summary">您可以編輯slp.conf組態檔、以管理服務位置傳輸協定精靈（slpd）服務。</block>
+  <block id="e1cd17773638b5c6ba6a33ec0efa8bed" category="doc">指定slp組態選項</block>
+  <block id="c520045e753333a3e19361a8bcc5accb" category="paragraph">您可以編輯「slp.conf"組態檔、以管理服務位置傳輸協定精靈（slpd）服務。</block>
+  <block id="9184b8f3aad09d0dfd024d22eb2c70e4" category="doc">儲存資源池（Volume）的總託管空間差異</block>
+  <block id="cef45fe00693880d7c9e967f4584427a" category="paragraph">如果您使用的是其他儲存管理工具（例如FilerView）、您可能會發現儲存資源池（Volume）的受管理空間總量與SMI-S Provider所傳回的大小不同。</block>
+  <block id="956ed70b442d136dd2a48113d0e2fa43" category="paragraph">發生這種差異的原因是SMI-S Provider所傳回的大小包含WAFL 了「參考」和「Snapshot保留」、而FilerView和其他工具則只顯示可用空間、WAFL 不包括「參考資訊」和「Snapshot保留」。</block>
+  <block id="027c004b3be4f739c5a453592337c7da" category="paragraph">這是預期的行為、沒有修正行動。</block>
+  <block id="98b75b1855a58db6fc5fc919ae7581df" category="summary">SMI version命令會顯示NetApp SMI-S Provider的版本。</block>
+  <block id="c2c12b46946042a5bfafc346500e9c6b" category="doc">SI版本</block>
+  <block id="96f117305cce12a9a31c4596adf8ab21" category="paragraph">「mis version」命令會顯示NetApp SMI-S Provider的版本。</block>
+  <block id="e230a22a7483625764443d5c5092c438" category="paragraph">"版本錯誤"</block>
+  <block id="ae4e335dc900c8ff8a6d3fdb715fd988" category="paragraph">「mis version（錯誤版本）”命令及其輸出：</block>
+  <block id="483fa710d6223ec73718131f768d782a" category="doc">主機代理存取登ID（ID：26263）</block>
+  <block id="607e31cb929ef6a163ec4dbf21bfdbee" category="paragraph">"Registration of storage provider _SMIs_provider_machine_ for user_name_ fAILED from _SCVMM __（machine）_ fAILED felled with error codes HostAgent AccessDenied.指定儲存探索的有效供應商、連接埠和使用者認證資料。ID：26263</block>
+  <block id="1e1e7d06673c88d70b37bc5092141ba6" category="paragraph">如果在SCVMM中指定使用者連線至SMI-S Provider、但不是SMIS信任存放區的一部分、就會出現此訊息。</block>
+  <block id="21cfb63a3f6a7a3d0031a76216b98271" category="paragraph">若要啟用SCVMM與SMI-S Provider之間的通訊、必須使用「CIMUser」命令、將有效的CIM使用者（本機系統管理員使用者或本機系統管理員群組的網域使用者）新增至SMIS信任存放區。</block>
+  <block id="161701d31e909a77707f021b655fa91a" category="paragraph">使用「CIM-S Provider」命令「CIM-S Provider」、將本機系統管理員使用者（SMI-S Provider機器上）新增至CIM伺服器資料庫：「CIUser -A -u _admin user_-w _password_」。然後您必須使用該管理使用者、才能將NetApp SMI-S Provider新增至SCVMM。</block>
+  <block id="a12ab6105e92354ffa8bc9958ebd1630" category="paragraph">如果網域控制器驗證網域使用者的時間過長、您必須在SMI-S Provider機器上使用本機系統管理員使用者。</block>
+  <block id="bb97fad3a386d6d7da3985a0b72f83e2" category="paragraph">如果錯誤持續發生、您可以在SMI-S Provider中停用驗證。</block>
+  <block id="42c81e79f364b151f80c02c552b5850d" category="summary">您必須先安裝SMI-S Provider軟體、並驗證初始組態、才能使用SMI-S Provider來管理及監控儲存系統。</block>
+  <block id="ab3ccb0be518e752d20f706d36d252c9" category="doc">部署工作流程</block>
+  <block id="04c2ee750a71bee087a7164fa9418c8b" category="image-alt">SMI的供應商工作流程</block>
+  <block id="8b8f7a3fe80ec6809a6d7650b0c7c24d" category="summary">您可以使用SMI-S Provider來啟動、停止及重新啟動CIM伺服器、並檢閱其狀態。</block>
+  <block id="43f62f4fcd25e84fe3c71ae26b3895e8" category="doc">管理CIM伺服器</block>
+  <block id="e7f5bbb3cb7dc49bcf9ed09a2435962b" category="paragraph">啟動CIM伺服器</block>
+  <block id="5d722f7333fadffef8f0041288f4cf16" category="paragraph">‘* SMI cimserver start*’</block>
+  <block id="ef00631749cee8b26ab2ea7b9d141dc5" category="paragraph">輸入命令後、每三分鐘會顯示一則狀態訊息。如果嘗試連絡CIM伺服器失敗、則會再嘗試五次連絡伺服器。</block>
+  <block id="4fcf80c62f9d0bd2a896099093b4fdd4" category="paragraph">停止CIM伺服器</block>
+  <block id="52a8b399a084de299d36d25c33d2d385" category="paragraph">‘* SMI cimserver stop *’</block>
+  <block id="11b0836ed815207757dccb62e2b8583f" category="paragraph">重新啟動CIM伺服器</block>
+  <block id="b1f04ce13ca7549919bf754db3d289d0" category="paragraph">檢視CIM伺服器狀態</block>
+  <block id="cd8b1d5e9b71ac8ad5a91871792b628e" category="summary">您可以視需要解除安裝SMI-S Provider。例如、視現有安裝的版本而定、您可能需要先解除安裝現有的SMI-S Provider安裝、才能安裝最新版本。</block>
+  <block id="cb47c060d13b844bbad88867706d53e9" category="doc">從Windows主機解除安裝NetApp SMI-S Provider</block>
+  <block id="761c55faa74d365f19b35d0246718c76" category="paragraph">如果您打算解除安裝SMI-S Provider並想要全新重新安裝、則必須手動刪除來自CIM伺服器的所有內容。</block>
+  <block id="738fec68f2c0323ebece5138b2290be2" category="paragraph">如果您不想要全新重新安裝、SMI-S Provider會在解除安裝後保留組態、使用者及其他資料庫檔案。</block>
+  <block id="4de0a229b09daf73d106e4499b5eab63" category="list-text">使用Windows「新增/移除程式」公用程式、從Windows主機解除安裝NetApp SMI-S Provider。</block>
+  <block id="cdc5bec35b6b527de3bb89d808a6b920" category="doc">伺服器沒有回應</block>
+  <block id="7b3163c824f7a65178f51c1d770a6dcf" category="paragraph">查詢時、伺服器沒有回應。</block>
+  <block id="b0f666288ecdd5fb35524a7351e9770b" category="paragraph">此問題發生於未將儲存系統新增至CIMOM儲存庫的情況。</block>
+  <block id="cfbe94ce24390f967f038c2a8a4f3eb9" category="paragraph">輸入下列命令以驗證是否已新增儲存系統：</block>
+  <block id="c71b0ed70c00ba663f567339f428950f" category="paragraph">如果未列出儲存系統、請輸入下列命令新增儲存系統：</block>
+  <block id="e13e3bccf278bd5d68b7b6d9a515143c" category="paragraph">'新增_storage？sys storage？sys儲存設備_sys使用者儲存設備_sys _pwd_</block>
+  <block id="db348a1845bc8863a15226d1296f5943" category="summary">NetApp SMI-S Provider可讓您更輕鬆地管理及監控儲存系統、以及管理儲存系統的LUN和磁碟區。</block>
+  <block id="a6a30f6fc1ea5086f1f6a22630def76e" category="doc">使用NetApp SMI-S Provider</block>
+  <block id="df0ce33f18f070a6ddb1ef19fb303e98" category="paragraph">您可以使用NetApp SMI-S Provider、使用System Center 2016 - Virtual Machine Manager或System Center 2016 - Virtual Machine Manager來管理儲存控制器。</block>
+  <block id="c95a373760253d51b1cf803ea80f5ddf" category="summary">若要使用NetApp SMI-S Provider、您必須擁有必要的授權。</block>
+  <block id="085f5df3ea322139c5a71aed9fd908cd" category="doc">必要的授權</block>
+  <block id="69b6c0623415c79e8aa2a026499ac1b6" category="paragraph">NetApp SMI-S Provider需要下列授權：</block>
+  <block id="db23482f99b63c4ef9cf1643a9ae9106" category="list-text">在儲存系統上建立LUN時、需要FCP、iSCSI或兩者的FCP和iSCSI授權。</block>
+  <block id="65c1894015ea81f45bb83087acb7b218" category="list-text">在支援ONTAP 的功能區儲存系統上建立檔案共用時、需要CIFS授權。</block>
+  <block id="8c9c3d3838f74f32786ae4b71a80bd0a" category="list-text">需要FlexClone授權、才能在執行支援ONTAP 的版本的叢集式儲存系統上建立LUN複製。</block>
+  <block id="5bd3f03785e49f0f092f2bf6dbe62ea2" category="doc">載入共用程式庫時可能發生錯誤</block>
+  <block id="051be6f17b1853fd1a87bd720d73057b" category="list-text">*訊息*</block>
+  <block id="38ef4b7ecaa487ef2bde97774ea59f55" category="paragraph">「載入共享程式庫時發生錯誤：libssl.so 1.1.0：無法開啟共享的物件檔案：沒有此類檔案或目錄。</block>
+  <block id="8b11f32a54f16340f5c60cee225aad48" category="paragraph">"mis cimserver"狀態顯示cimserver正在正常運行，但所有其他的"usr/NetApp/SMIs/pagus/bin/cim"命令都顯示各種故障訊息。</block>
+  <block id="792bce0a2470411b2f4a407fe625d8dc" category="paragraph">例如、執行「cimserver」時、您可能會收到「cimserver not running」訊息、或者您可能會收到訊息「/usr/neta/SMIs/pagus/bin/ cimcli：symbol LOOKUP錯誤：/user/SMIs/pagus/bin/cimcli：未定義符號：_ZN7pus16StringConvertion21timalkcli執行「kimalkcli」時、請執行「kim64To64Toint64Rcli」。這些範例並非全包式的。</block>
+  <block id="d244e47c8474d383d7a5d714e98cb1bf" category="paragraph">當「LD_LIBRARY_PATH'環境未設定至安裝目錄時、會出現此訊息（及類似訊息）。</block>
+  <block id="5ae7ad3dc9474323c80b449e3123ec91" category="paragraph">輸入下列命令之一、將「LD_LIBRARY_PATH]環境變數設定為安裝目錄：</block>
+  <block id="ca58ccb134c33eb9f401d3d5c3cc6d5d" category="paragraph">「匯出LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/NetApp/SMIs/PEGS/Lib」</block>
+  <block id="0f98c6be5bd8d1cf4b80b32c02a49dc9" category="paragraph">「etenv LD_LIBRAR_PATH=$LD_LIBRARY_PATH:/usr/NetApp/SMIs/PEGS/Lib」</block>
+  <block id="b63859616bf4963acbb60c0cabb4528f" category="summary">SMI-S Provider會建立具體工作、以追蹤非同步作業的進度。您可以將具體的工作壽命從預設的60分鐘（3、600秒）增加到86400秒（24小時）。</block>
+  <block id="ea3d70e9595d4ee05b280a184ac5c0d0" category="doc">指定具體的工作壽命值</block>
+  <block id="623fa90bf914edcce9c18224c813f24b" category="paragraph">SMI-S Provider會建立_具體 工作_來追蹤非同步作業的進度。您可以將具體的工作壽命從預設的60分鐘（3、600秒）增加到86400秒（24小時）。</block>
+  <block id="34b088d8aaeb78497d2307819db65f09" category="list-text">使用新的生命週期值（以秒為單位）建立名為「job_lete_SEC」的系統或使用者環境變數。</block>
+  <block id="cacc10f2bbbb96e6d2a0d9b4aef02b69" category="summary">如果啟用追蹤、預設會儲存七個追蹤檔。如果需要儲存更多追蹤檔、您可以設定環境變數PEGAS_TRACE_file_NUM來增加儲存的追蹤檔數量上限。如果您增加所儲存的追蹤檔案數目上限、則必須確保系統的硬碟空間足以容納追蹤檔案。</block>
+  <block id="28b9df3d45d41cf4deb33c545836d2a7" category="doc">指定儲存的追蹤檔案數目</block>
+  <block id="03ef8ba810aaf28989881c22a0a0d0b4" category="paragraph">如果啟用追蹤、預設會儲存七個追蹤檔。如果需要儲存更多追蹤檔、您可以設定環境變數「PEGAS_TRACE_file_NUM」來增加儲存的追蹤檔數量上限。如果您增加所儲存的追蹤檔案數目上限、則必須確保系統的硬碟空間足以容納追蹤檔案。</block>
+  <block id="cbef04286048616acf9addb6a24f4812" category="paragraph">如果啟用追蹤、追蹤資訊會寫入「cimserver.TRC」檔案。追蹤檔案會旋轉。當「cimserver.TRC」達到最大追蹤檔案大小時、其內容會移至「cimserver.TRC」檔案。依預設、「n」是介於0到5之間的值。如果您需要儲存更多追蹤檔、請增加「_n_」的值。</block>
+  <block id="c471bf926d3a641ea8147672e9dd849f" category="list-text">使用新儲存的追蹤檔數建立名為「PEGAS_TRACE_file_NUM」的系統或使用者環境變數。</block>
+  <block id="7e58f3c32490291520a1a61221da598d" category="doc">檔案管理器退貨：ONTAP 沒有回應的元素</block>
+  <block id="6e2039d962c6e75488fd40f9c951c19a" category="paragraph">「Filer退貨：ONTAP 沒有反應的元素」。</block>
+  <block id="e229a1324a21093601dc13ac94ed1e4b" category="paragraph">當ONTAPI API逾時時時、就會出現此訊息。預設的ONTAPI API逾時時間為60秒、在某些情況下可能太短。</block>
+  <block id="520c461e0dad01779322190a189497d5" category="paragraph">設定環境變數「ONTAPI_timeout_SEC」、然後重新啟動SMI-S Provider、將ONTAPI API逾時變更為大於60秒的值。</block>
+  <block id="a3d25add89b8980f0ab7eb839ce0c21c" category="summary">依預設、SMI-S Provider會每五分鐘（300秒）自動從儲存系統擷取資訊。您可以將自動快取重新整理時間間隔（cache_refresh_SEC環境變數）設定為300到86400秒（24小時）之間的值。</block>
+  <block id="cb133ba4694b5daaf3efb667d2e4f11e" category="doc">指定SMI-S Provider自動快取重新整理時間間隔</block>
+  <block id="59ebdf80b065afdee9fe6b7b1dd2163a" category="paragraph">依預設、SMI-S Provider會每五分鐘（300秒）自動從儲存系統擷取資訊。您可以將自動快取重新整理時間間隔（「cache_refresh_SEC」環境變數）設定為300到86400秒（24小時）的值。</block>
+  <block id="6c233061bc3fcebe40737b3922df01fc" category="paragraph">如果您想要隨時手動重新整理儲存系統的狀態、可以使用「mis refresh」命令。</block>
+  <block id="52d24ea635523b1c941f31f4a8c111e2" category="list-text">使用新的重新整理時間間隔值（以秒為單位）、建立名為「cache_refresh_SEC」的系統或使用者環境變數。</block>
+  <block id="e3ce7c8c3021c118f3dfe9d75afa6298" category="summary">NetApp SMI-S Provider包含三個元件、可讓您管理及監控儲存系統：CIOM、供應商物件及儲存庫。</block>
+  <block id="e6282555dbe26beec21e6f94534905cb" category="doc">NetApp SMI-S Provider元件</block>
+  <block id="8512ff4c63fa0cb1d46797308e63207a" category="list-text">* CIIMOM*</block>
+  <block id="c53e4b32a007cea3eaa5f9d5a584715c" category="paragraph">這是NetApp SMI-S Provider的基礎。CIMOM會收集、驗證及驗證每個應用程式要求、然後回應應用程式。它會叫用適當的供應商來處理每個要求、成為每個要求的處理通道。</block>
+  <block id="8a40db527a57c944b52c2561d0af6e10" category="list-text">*提供者物件*</block>
+  <block id="986f0ce9f55be91d5e813f0f836d88d8" category="paragraph">當主機向SMI-S Provider發出命令或查詢時、CIMOM會載入共用程式庫物件、啟動該物件以處理要求、並將產生的資訊傳回主機。</block>
+  <block id="2c96e436c5e94803429d2f4e4d88dbbe" category="paragraph">Windows主機使用的是DLL物件。</block>
+  <block id="fc40b7fff3f4b2fa5c40de69bea91ed4" category="list-text">*儲存庫*</block>
+  <block id="827530584f2cab62a19560ffb2b26ad2" category="paragraph">CIMOM使用平面檔案資料庫作為儲存庫。它會儲存在CIM層級所需的持續資料。</block>
+  <block id="e38d94f7236a9cd1aa0f08ef175b7ae8" category="summary">您必須先確認Windows主機符合最低硬體需求、才能安裝NetApp SMI-S Provider。</block>
+  <block id="47dee50ad0138b8f5ca70e40e86e6c04" category="doc">硬體需求</block>
+  <block id="3c02a379965ab0dfcd77b1c484450433" category="cell">硬體</block>
+  <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="cell">需求</block>
+  <block id="4789f23283b3a61f858b641a1bef19a3" category="paragraph">記憶體</block>
+  <block id="7d4da39aca0b1169b071f2ece726e556" category="list-text">4 GB RAM（最低）</block>
+  <block id="ada14ec0a3b00b29e7277c85d56c4c7f" category="list-text">8 GB RAM（建議）</block>
+  <block id="1a293e95d688041d801d7d1b909552e0" category="paragraph">磁碟空間</block>
+  <block id="0be26e07039553a01cfe68a859c33da7" category="list-text">1 GB（最低）</block>
+  <block id="379e19dfc4d216d9c5bdeca782d70bdb" category="list-text">4 GB（建議）</block>
+  <block id="e4b6c8b6dd56698332d99eab0c90a8b8" category="paragraph">啟用記錄和追蹤需要額外的磁碟空間、最多1 GB、視記錄和追蹤檔案旋轉設定而定。</block>
+  <block id="b88815f1d93e640a9cdb707e48bc455e" category="paragraph">您必須有100 MB的暫用磁碟空間可供安裝。</block>
+  <block id="2b55387dd066c5bac646ac61543d152d" category="paragraph">CPU</block>
+  <block id="63408377049cbbaa1bc998e2029a1bc3" category="list-text">雙核心2.0 GHz（最低）</block>
+  <block id="220470fc2859d320a88f1acb91fd5bcf" category="list-text">四核心2.0 GHz（建議）</block>
+  <block id="80ebd8dee32968bebb7d5a51679db8f5" category="doc">SMI-S Provider在Windows中當機</block>
+  <block id="342fd6c29fdd9dd514e7fd4690cbc90d" category="paragraph">SMI-S Provider在Windows中當機。</block>
+  <block id="0a2c3bdd5983f50c1522b87fa95d6fef" category="paragraph">發生此問題的原因有很多種、記錄在當機時產生的檔案中。</block>
+  <block id="d49bf7e76461d91a9a1388d385c1a69f" category="paragraph">重新啟動供應商、並將下列資訊傳送給技術支援部門以進行進一步分析：</block>
+  <block id="10d1916e04da5c4fe60b5810d0316af6" category="list-text">從「C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGUS\logs」目錄中傾印檔案</block>
+  <block id="6071cace65e5d652f39bce9199d4447d" category="list-text">記錄檔來自「C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGUS\logs」目錄</block>
+  <block id="9f07400d8d3b856c5d45db70d4c187e4" category="list-text">從「C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGUS\ECMUSES\TRACE」目錄追蹤檔案</block>
+  <block id="c591b8621288fd3a42bf9fc261c5cb47" category="paragraph">追蹤檔中也會出現類似下列的訊息：</block>
+  <block id="ba4c6b5dc5d2d22d4113efc5fd6db700" category="paragraph">「2013年5月23日20：46：36.874資訊cimserver：createMindump：SMI-S Agent當機、嘗試產生傾印檔案」</block>
+  <block id="ca5d7f0d97eb2429c595e8fc571625c0" category="paragraph">《2013年5月23日20：46：37.14資訊cimserver：createMinDump：將處理序轉儲至C：\Program Files（x86）\NetApp\SMI\PEGAS\logs\SMI-S agent-8be55da-2011_05_23-20_46_36.dmp》</block>
+  <block id="cf02a49a7c0c924dc2fbcbe6d9a21d40" category="list-text">文件'vrsion.txt'和'cimserver_current.conf'來自'C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGONGUS'目錄</block>
+  <block id="f4136acb3cb5d0efffc517c067ddfd6c" category="summary">您可以指定要追蹤的元件、追蹤目標及追蹤層級。或者、如果您不想使用預設的追蹤檔名稱和位置、也可以變更追蹤檔的名稱和位置。</block>
+  <block id="c56ac5615b54a034084151ae64ce2648" category="doc">追蹤設定值</block>
+  <block id="177643ab3b04ebf5d0c59fd7d5ce1e52" category="paragraph">您可以設定下列追蹤設定：</block>
+  <block id="ca31708947b7a9d9d3e205034380e659" category="list-text">*追蹤元件*</block>
+  <block id="dd8d96da95aeda2ea76e411b375aa419" category="paragraph">指定要追蹤的元件。依預設、會追蹤所有元件。</block>
+  <block id="18a9761aec25dba515ae85f826ba45be" category="list-text">*追蹤設施*</block>
+  <block id="c0ed662a462e53ee3dc5e9a3f59072fa" category="paragraph">指定要寫入追蹤訊息的目標：</block>
+  <block id="0b27918290ff5323bea1e3b78a9cf04e" category="list-text">檔案</block>
+  <block id="91b59054872fd819c6f8a005a9507a52" category="paragraph">這是預設值、指定追蹤訊息會寫入至由traceFilePath組態選項指定的檔案。</block>
+  <block id="ce0be71e33226e4c1db2bcea5959f16b" category="list-text">記錄</block>
+  <block id="99f369be41de16f4b1457018698a0e87" category="paragraph">指定追蹤訊息會寫入cimserver_standard記錄檔。</block>
+  <block id="dc47307dece74cd322e998a57978a883" category="list-text">*追蹤檔案路徑*</block>
+  <block id="eca98d7b844a9964bf8aa81d75cf8c39" category="paragraph">指定追蹤檔的位置。依預設、追蹤檔名為「cimserver.TRC」、位於「追蹤」目錄中。</block>
+  <block id="65b3bdf4bded79705083dd0a5e442bec" category="list-text">*追蹤層級*</block>
+  <block id="2678809354815b115b9512e885316712" category="paragraph">指定追蹤層級。依預設、追蹤功能會停用。</block>
+  <block id="412d3edf40f0c308f135062e22bad182" category="cell">追蹤層級</block>
+  <block id="c1645ee98e4d773b5771954889751442" category="cell">追蹤寫入的訊息</block>
+  <block id="cfcd208495d565ef66e7dff9f98764da" category="paragraph">0</block>
+  <block id="f032b99bdb9615b56db1f4c47adcc7dc" category="paragraph">追蹤功能已停用。</block>
+  <block id="c4ca4238a0b923820dcc509a6f75849b" category="paragraph">1.</block>
+  <block id="d431b26f03a69fefba310058f556e828" category="paragraph">重度訊息和記錄訊息。</block>
+  <block id="c81e728d9d4c2f636f067f89cc14862c" category="paragraph">2.</block>
+  <block id="15570c8bdd6b5da683835309706ca4fe" category="paragraph">基本流程追蹤訊息（低資料詳細度）</block>
+  <block id="eccbc87e4b5ce2fe28308fd9f2a7baf3" category="paragraph">3.</block>
+  <block id="ee70015bab4c58cf0f3881a21b665ff8" category="paragraph">功能間邏輯流程（中度資料詳細資料）</block>
+  <block id="a87ff679a2f3e71d9181a67b7542122c" category="paragraph">4.</block>
+  <block id="252a5d2c10241ca715834e346795020e" category="paragraph">高資料詳細度</block>
+  <block id="e4da3b7fbbce2345d7772b0674a318d5" category="paragraph">5.</block>
+  <block id="3760243c0ec28bcb0e1a0c201dd5d0db" category="paragraph">高資料詳細度+方法進出</block>
+  <block id="111bb0fad8beadbe3d12694d63ed1d33" category="sidebar">NetApp SMI-S Provider文件</block>
+  <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">版本資訊</block>
+  <block id="72f7ffffe5d6a7aaa530f33b20be146d" category="sidebar">NetApp SMI-S Provider概述</block>
+  <block id="27677c533249219197c5933410713055" category="sidebar">準備部署</block>
+  <block id="f212745ed87111d0afe9888395028611" category="sidebar">安裝NetApp SMI-S Provider</block>
+  <block id="2e0159cabf1d9d05d9cd06544df6da2c" category="sidebar">解除安裝NetApp SMI-S Provider</block>
+  <block id="10060a4df357cacb148a72137b446457" category="sidebar">預先組態驗證</block>
+  <block id="f51fe4d0964c954ad5985711bf99725b" category="sidebar">管理CIM伺服器使用者</block>
+  <block id="9e0aba46893674ba3cb911499d0aa445" category="sidebar">管理記錄與追蹤</block>
+  <block id="f16f70c449d9f0048b9a3659fcb12389" category="sidebar">指定追蹤設定</block>
+  <block id="64dcf446a7778f30264ca7a94586a6e1" category="sidebar">管理SMI-S Provider進階設定</block>
+  <block id="a4e7df51fcc906ed686e7249a8c9dbf6" category="sidebar">管理SLP</block>
+  <block id="6a38d5667ddfdd47d4e489f85f431cd1" category="sidebar">CIMOM命令</block>
+  <block id="36368c8058877b609a51ba50239f980e" category="sidebar">SMI-S Provider命令</block>
+  <block id="f367b7dd9d33500bed829af817d25418" category="sidebar">slp命令</block>
+  <block id="ce7b7453e7d182fcfcfa37f70a3827c2" category="sidebar">SMI-S Provider疑難排解</block>
+</blocks>

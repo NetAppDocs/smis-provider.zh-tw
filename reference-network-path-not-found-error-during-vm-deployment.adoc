@@ -1,0 +1,33 @@
+---
+permalink: reference-network-path-not-found-error-during-vm-deployment.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 找不到網路路徑
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *訊息*
++
+「找不到網路路徑」
+
+* *說明*
++
+此訊息反映DNS問題、當主機在DNS伺服器上沒有記錄時、在SMB共用區上部署VM時會發生此問題。
+
++
+一般而言、網域DNS伺服器在網域中設定新主機時、應在24至48小時內自動更新主機記錄。不過、此更新並不一定會自動進行。
+
+* *修正行動*
++
+** 如果您是網域管理員、請手動更新DNS主機記錄。
+** 如果您不是網域管理員、請更新主機檔案（「C：\Windows\System32\drivers\etc\hosts」）。
++
+主機檔案沒有副檔名（`.txt'）。
+
+
+
+

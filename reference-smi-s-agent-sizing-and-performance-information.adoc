@@ -1,0 +1,37 @@
+---
+permalink: reference-smi-s-agent-sizing-and-performance-information.html 
+sidebar: sidebar 
+keywords: maximum, systems, netapp smi-s provider, help, understand, performance, capability 
+summary: 瞭解NetApp SMI-S Provider所管理的系統數量上限、有助於瞭解其效能能力。 
+---
+= NetApp SMI-S Provider規模調整與效能
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+瞭解NetApp SMI-S Provider所管理的系統數量上限、有助於瞭解其效能能力。
+
+*規模調整*
+
+NetApp SMI-S Provider最多可管理叢集Data ONTAP 式支援中的下列物件數量：
+
+* 100部儲存虛擬機器（SVM）（無指示）
+* 10部儲存虛擬機器（含指示）
+* 1、500個LUN（每FlexVol 個動態磁碟區）
+* 200個CIFS檔案共用（每FlexVol 個流通量）
+
+
+如果FlexVol 該功能同時包含qtree和Volume、則qtree會顯示為目錄。刪除磁碟區時、請小心不要意外刪除qtree。
+
+*效能注意事項*
+
+對於使用5000 FlexVol 個實體磁碟區或300、000個Snapshot複本的組態、您可能會遇到下列「cimcli」命令的效能問題：
+
+* 《cimcli ei ONTAP_Snapshot -n root/ONTAP》
+* 「cimcli ei ONTAP_SnapshotBasedOnFlexVol -n root/ONTAP」
+* 《cimcli ei ONTAP_StorageVolume Stats -n root/ONTAP》
+
+
+互通性對照表工具IMT （VMware、Interoperability Matrix Tool）包含有關規模調整與效能的最新資訊。

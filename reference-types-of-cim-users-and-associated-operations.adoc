@@ -1,0 +1,81 @@
+---
+permalink: reference-types-of-cim-users-and-associated-operations.html 
+sidebar: sidebar 
+keywords: smi-s provider, various types, control, access 
+summary: 使用SMI-S Provider時、您可以指派不同類型的使用者給使用者、以控制其對CIM伺服器的存取。 
+---
+= 類型的CIM使用者及相關作業
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+使用SMI-S Provider時、您可以指派不同類型的使用者給使用者、以控制其對CIM伺服器的存取。
+
+從本版本開始、網域使用者可以修改SMI-S Provider使用者資料庫及其他組態設定、做為本機系統管理員群組的網域使用者。
+
+下表列出支援的CIM伺服器使用者、以及每種類型可以執行的作業。
+
+[cols="2*"]
+|===
+| 使用者類型 | 營運 
+
+
+ a| 
+系統管理員群組的網域管理員
+ a| 
+SMI-S Provider組態和使用者管理、使用「cimconfig」和「CIMUser」命令。例如：
+
+* 在SMI-S Provider的信任存放區中新增或移除使用者。
+* 啟用、停用或變更記錄層級和追蹤組態。
+* 在SMI-S Provider中啟用或停用驗證引擎。
+
+
+使用「mis」和「cimcli」命令進行儲存管理與驗證。例如：
+
+* 在SMI-S Provider儲存庫、資料庫或快取中新增或移除儲存控制器或SVM。
+* 在SMI-S Provider快取中重新整理儲存控制器或SVM。
+* 驗證儲存控制器或SVM管理。
+
+
+使用SCVMM GUI進行SCVMM探索作業。
+
+
+
+ a| 
+本機系統管理員群組的網域使用者
+
+
+
+ a| 
+本機系統管理員群組的本機使用者
+
+
+
+ a| 
+內建網域管理員使用者
+
+
+
+ a| 
+內建本機系統管理員使用者
+
+
+
+ a| 
+使用者群組的網域使用者
+ a| 
+使用SCVMM GUI進行SCVMM探索作業。
+
+
+
+ a| 
+使用者群組的本機使用者
+
+|===
+[NOTE]
+====
+如果您在Windows主機上有SMI-S Provider並變更任何「Administrator」使用者名稱、則必須登出系統、然後重新登入。SMI-S Windows服務在此期間會繼承驗證、因此在系統管理員登出再重新登入之前、無法辨識對認證資料所做的任何變更。
+
+====

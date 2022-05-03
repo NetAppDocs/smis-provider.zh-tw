@@ -1,0 +1,93 @@
+---
+permalink: task-manage-cimom-configuration-settings.html 
+sidebar: sidebar 
+keywords: smi-s provider, to manage, cimom configuration, enable, disable, http, https, port numbers 
+summary: 您可以使用SMI-S Provider來管理CIMOM組態、例如啟用或停用HTTP和HTTPS連線、以及變更HTTP和HTTPS連接埠號碼。預設會啟用HTTP連線、讓用戶端無需使用SSL加密即可連線至CIM伺服器。 
+---
+= 管理CIMOM組態設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用SMI-S Provider來管理CIMOM組態、例如啟用或停用HTTP和HTTPS連線、以及變更HTTP和HTTPS連接埠號碼。預設會啟用HTTP連線、讓用戶端無需使用SSL加密即可連線至CIM伺服器。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+如果您的環境需要加密的流量往返於CIM伺服器、您必須先停用HTTP連線、然後確認已啟用用於該CIM伺服器的HTTPS連線。
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 請完成下列其中一項動作：
++
+[cols="3*"]
+|===
+| 行動 | 命令 | 其他資訊 
+
+
+ a| 
+啟用HTTP連線
+ a| 
+"*cimconfig -s enableHttpConnection=true -p*
+ a| 
+不適用
+
+
+
+ a| 
+停用HTTP連線
+ a| 
+Check Alignment of PHs>"*cimconfig -s enableHttpConnection=假-p*
+ a| 
+不適用
+
+
+
+ a| 
+啟用HTTPS連線
+ a| 
+"*cimconfig -s enablehttps Connection=true -p*
+ a| 
+不適用
+
+
+
+ a| 
+停用HTTPS連線
+ a| 
+"*cimconfig -s enableHttpsConnection=false -p*
+ a| 
+不適用
+
+
+
+ a| 
+修改HTTP連接埠號碼
+ a| 
+"*cimconfig -s http Port=_new_port_number_-p*
+ a| 
+根據預設、HTTP連接埠號碼為5988。例如、如果您想要將其變更為5555、您可以輸入下列命令：
+
+"*cimconfig -s http Port=5555 -p*
+
+
+
+ a| 
+修改HTTPS連接埠號碼
+ a| 
+"*cimconfig -s https連接埠=_new_port_number_-p*
+ a| 
+根據預設、HTTP連接埠號碼為5989。例如、如果您想要將其變更為5556、請輸入下列命令：
+
+"*cimconfig -s https Port=5556 -p*
+
+|===
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

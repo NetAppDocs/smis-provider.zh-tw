@@ -1,0 +1,38 @@
+---
+permalink: reference-logging-levels.html 
+sidebar: sidebar 
+keywords: messages, specify, logged 
+summary: 您可以指定記錄的訊息類型（例如、您只想記錄嚴重的系統訊息）。 
+---
+= 記錄層級
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以指定記錄的訊息類型（例如、您只想記錄嚴重的系統訊息）。
+
+您可以將記錄層級設定為下列其中一項：
+
+* *追蹤*
++
+將追蹤訊息儲存在cimserver_standard記錄檔中。
+
+* *資訊*
++
+記錄所有（資訊、警告、嚴重和致命）系統訊息。
+
+* *警告*
++
+記錄警告、嚴重和嚴重的系統訊息。
+
+* *嚴重*
++
+記錄嚴重和嚴重的系統訊息
+
+* *致命*
++
+僅記錄嚴重系統訊息。
+
+

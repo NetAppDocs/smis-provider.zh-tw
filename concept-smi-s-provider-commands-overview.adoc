@@ -1,0 +1,32 @@
+---
+permalink: concept-smi-s-provider-commands-overview.html 
+sidebar: sidebar 
+keywords: smis, commands, manage, storage, system, display, cim object manager 
+summary: 您可以使用SI命令來管理儲存系統、並顯示有關CIM物件管理員的資訊。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用「mis」命令來管理儲存系統、並顯示有關CIM物件管理員的資訊。
+
+您可以使用「-help'」選項來取得「mis」命令的說明。
+
+* *中小企業的「-help*」
++
+顯示命令摘要。
+
+* *中小企業的「輔助」範例*
++
+顯示使用範例。
+
+* * SMIS `-help_子 命令_`*
++
+顯示指定子命令的說明。
+
+
+
+SMI工具的預設逾時值為180秒。

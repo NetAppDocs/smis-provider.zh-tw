@@ -1,0 +1,18 @@
+---
+permalink: concept-how-smi-s-provider-interacts-with-a-host.html 
+sidebar: sidebar 
+keywords: client, application, discover, cimom server, shared objects, device specific api 
+summary: 當主機上的用戶端應用程式使用slp（透過HTTP的CIM-XML編碼）探索CIMOM伺服器時、用戶端接著會查詢CIMOM是否有共用物件（以CIM語言建模的物件）。CIMOM會使用裝置專屬的API來載入共用物件、並查詢儲存系統以取得所要求的資訊。 
+---
+= NetApp SMI-S Provider如何與主機互動
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+當主機上的用戶端應用程式使用slp（透過HTTP的CIM-XML編碼）探索CIMOM伺服器時、用戶端接著會查詢CIMOM是否有共用物件（以CIM語言建模的物件）。CIMOM會使用裝置專屬的API來載入共用物件、並查詢儲存系統以取得所要求的資訊。
+
+下圖顯示當SMI-S Provider收到查詢或命令時、NetApp SMI-S Provider如何與WBEM管理用戶端互動。
+
+image::../media/smi_s_agent_and_host_interaction.gif[SMI的代理程式與主機互動]

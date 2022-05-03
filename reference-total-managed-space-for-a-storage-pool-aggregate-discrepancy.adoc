@@ -1,0 +1,25 @@
+---
+permalink: reference-total-managed-space-for-a-storage-pool-aggregate-discrepancy.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 儲存資源池（Volume）的總託管空間差異
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *問題*
++
+如果您使用的是其他儲存管理工具（例如FilerView）、您可能會發現儲存資源池（Volume）的受管理空間總量與SMI-S Provider所傳回的大小不同。
+
+* *原因*
++
+發生這種差異的原因是SMI-S Provider所傳回的大小包含WAFL 了「參考」和「Snapshot保留」、而FilerView和其他工具則只顯示可用空間、WAFL 不包括「參考資訊」和「Snapshot保留」。
+
+* *修正行動*
++
+這是預期的行為、沒有修正行動。
+
+

@@ -1,0 +1,61 @@
+---
+permalink: task-specify-trace-settings.html 
+sidebar: sidebar 
+keywords: trace, enable, important, gathering, information, troubleshooting, performance, impact 
+summary: 啟用追蹤功能對於收集疑難排解資訊非常重要。不過、啟用追蹤功能可能會影響效能、因此請仔細考慮必須追蹤的項目、以及啟用追蹤功能所需的時間。 
+---
+= 指定追蹤設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+啟用追蹤功能對於收集疑難排解資訊非常重要。不過、啟用追蹤功能可能會影響效能、因此請仔細考慮必須追蹤的項目、以及啟用追蹤功能所需的時間。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 視情況指定各種追蹤設定：
++
+[cols="2*"]
+|===
+| 行動 | 命令 
+
+
+ a| 
+指定要追蹤的元件
+ a| 
+Check Alignment of PHs>"*cimconfig -s traceComponents=_Components_-p*"
+
+
+
+ a| 
+指定追蹤功能
+ a| 
+Check Alignment of PHs>"*cimconfig -s traceFacility =_Facility _-p*
+
+
+
+ a| 
+指定追蹤檔的位置
+ a| 
+Check Alignment of PHs>"*cimconfig -s traceFilePath=_path_name_-p*
+
+
+
+ a| 
+指定追蹤層級
+ a| 
+Check Alignment of PHs>"*cimconfig -s tracelevel=_level_-p*
+
+|===
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

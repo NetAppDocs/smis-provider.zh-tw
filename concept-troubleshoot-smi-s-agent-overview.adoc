@@ -1,0 +1,14 @@
+---
+permalink: concept-troubleshoot-smi-s-agent-overview.html 
+sidebar: sidebar 
+keywords: encountering, problem, netapp smi-s provider, error message, troubleshooting 
+summary: 如果您遇到NetApp SMI-S Provider問題、應使用收到的任何錯誤訊息來協助疑難排解。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+如果您遇到NetApp SMI-S Provider問題、應使用收到的任何錯誤訊息來協助疑難排解。

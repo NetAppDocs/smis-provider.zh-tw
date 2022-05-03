@@ -1,0 +1,35 @@
+---
+permalink: reference-hostagentaccessdenied-error-id-26263.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 主機代理存取登ID（ID：26263）
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+
+
+== 訊息
+
+"Registration of storage provider _SMIs_provider_machine_ for user_name_ fAILED from _SCVMM __（machine）_ fAILED felled with error codes HostAgent AccessDenied.指定儲存探索的有效供應商、連接埠和使用者認證資料。ID：26263
+
+
+
+== 說明
+
+如果在SCVMM中指定使用者連線至SMI-S Provider、但不是SMIS信任存放區的一部分、就會出現此訊息。
+
+若要啟用SCVMM與SMI-S Provider之間的通訊、必須使用「CIMUser」命令、將有效的CIM使用者（本機系統管理員使用者或本機系統管理員群組的網域使用者）新增至SMIS信任存放區。
+
+
+
+== 修正行動
+
+使用「CIM-S Provider」命令「CIM-S Provider」、將本機系統管理員使用者（SMI-S Provider機器上）新增至CIM伺服器資料庫：「CIUser -A -u _admin user_-w _password_」。然後您必須使用該管理使用者、才能將NetApp SMI-S Provider新增至SCVMM。
+
+如果網域控制器驗證網域使用者的時間過長、您必須在SMI-S Provider機器上使用本機系統管理員使用者。
+
+如果錯誤持續發生、您可以在SMI-S Provider中停用驗證。

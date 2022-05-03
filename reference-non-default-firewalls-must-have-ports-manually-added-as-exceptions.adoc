@@ -1,0 +1,30 @@
+---
+permalink: reference-non-default-firewalls-must-have-ports-manually-added-as-exceptions.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= 非預設防火牆必須手動將連接埠新增為例外狀況
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *問題*
++
+如果您使用的防火牆不是預設的Windows防火牆、可能會遇到下列問題：
+
++
+** SMI-S Provider無法與移除的SMI-S用戶端通訊。
+** SMI-S用戶端無法接收SMI-S Provider的指示。
+
+
+* *原因*
++
+如果您使用預設Windows防火牆以外的防火牆、而不先手動新增必要的連接埠做為例外狀況、就會發生此問題。
+
+* *修正行動*
++
+將連接埠（427、5988和5989）新增為防火牆的例外項目。
+
+

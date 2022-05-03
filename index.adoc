@@ -1,0 +1,15 @@
+---
+permalink: index.html 
+sidebar: sidebar 
+keywords: netapp smi-s provider, documentation, installation, command based interface, netapp storage system 
+summary: 說明如何安裝及管理NetApp SMI-S Provider、這是偵測及管理NetApp儲存系統的命令型介面。 
+---
+= NetApp SMI-S Provider文件
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+歡迎使用NetApp SMI-S Provider資訊庫。您可在此找到NetApp SMI-S Provider軟體的文件、包括如何安裝及管理NetApp SMI-S Provider、這是偵測及管理NetApp儲存系統的命令型介面。
+
+如需舊版NetApp SMI-S Provider的文件、請參閱 https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62215["NetApp 支援網站"^]。

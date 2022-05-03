@@ -1,0 +1,41 @@
+---
+permalink: reference-smis-delete.html 
+sidebar: sidebar 
+keywords: smis debate, command, storage system 
+summary: 「SI刪除」命令會刪除儲存系統。 
+---
+= 刪除SI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis DELETE」命令會刪除儲存系統。
+
+'刪除錯誤'
+
+儲存系統
+
+[-t {* http *|* https *｝]
+
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+系統管理員（Windows）
+
+.參數
+* ？
++
+您要新增之儲存系統的名稱或IP位址
+
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+刪除標示mgt-1的儲存系統：
+
+‘* SI刪除mgt-1*’
+
+如果未顯示錯誤訊息、表示儲存系統已成功刪除。

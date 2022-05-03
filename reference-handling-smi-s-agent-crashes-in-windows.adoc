@@ -1,0 +1,41 @@
+---
+permalink: reference-handling-smi-s-agent-crashes-in-windows.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= SMI-S Provider在Windows中當機
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *問題*
++
+SMI-S Provider在Windows中當機。
+
+* *原因*
++
+發生此問題的原因有很多種、記錄在當機時產生的檔案中。
+
+* *修正行動*
++
+重新啟動供應商、並將下列資訊傳送給技術支援部門以進行進一步分析：
+
++
+** 從「C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGUS\logs」目錄中傾印檔案
+** 記錄檔來自「C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGUS\logs」目錄
+** 從「C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGUS\ECMUSES\TRACE」目錄追蹤檔案
++
+追蹤檔中也會出現類似下列的訊息：
+
++
+「2013年5月23日20：46：36.874資訊cimserver：createMindump：SMI-S Agent當機、嘗試產生傾印檔案」
+
++
+《2013年5月23日20：46：37.14資訊cimserver：createMinDump：將處理序轉儲至C：\Program Files（x86）\NetApp\SMI\PEGAS\logs\SMI-S agent-8be55da-2011_05_23-20_46_36.dmp》
+
+** 文件'vrsion.txt'和'cimserver_current.conf'來自'C:\Program Files（x86）\NetApp\SMI\PEGUS\PEGONGUS'目錄
+
+
+

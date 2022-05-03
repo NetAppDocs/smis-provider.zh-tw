@@ -1,0 +1,55 @@
+---
+permalink: reference-supported-operating-systems.html 
+sidebar: sidebar 
+keywords: installing, smi-s provider, verify, windows, host, operating systems 
+summary: 安裝SMI-S Provider之前、您必須確認Windows主機執行的是支援的作業系統。 
+---
+= 支援的作業系統版本
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+:pp: &#43;&#43;
+
+
+[role="lead"]
+安裝SMI-S Provider之前、您必須確認Windows主機執行的是支援的作業系統。
+
+[cols="3*"]
+|===
+| 作業系統 | 支援的版本 | 必要的用戶端軟體 
+
+
+ a| 
+Windows
+ a| 
+* Microsoft Windows Server 2016
+* Microsoft Windows Server 2019
+
+ a| 
+Microsoft Visual C｛pp｝2010執行時間程式庫會在SMI-S Provider安裝期間自動安裝。若要避免與執行時間程式庫相關的潛在問題、您必須安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。從下列位置： http://www.microsoft.com[]
+
+|===
+
+
+== SCVMM 2016 ur 2.1需求
+
+需要System Center Virtual Machine Manager（SCVMM）2016更新彙總套件（ur）2.1、才能使用NetApp SMI-S Provider 5.2.4及更新版本來管理NetApp檔案伺服器。
+
+如果沒有這份報告、SCVMM 2016會針對NetApp檔案伺服器中現有的檔案共用、將「Total Capacity（總容量）」和「Available Capacity（可用容量）」選項的值顯示為「* 0 GB*」。
+
+若要執行SMI-S Provider、供應商主機必須符合下列規格：
+
+* 供應商主機無法用於裝載Hyper-V節點。
+* SCVMM不得在供應商主機上執行。
+* 供應商主機不得執行記憶體密集的其他程式。
+* 供應商主機不得執行任何其他廠商的SMI-S供應商。
+
+
+支援下列Hypervisor：
+
+* Microsoft Windows Server 2016 Hyper-V
+* VMware ESX 5.0
+* VMware ESX 5.1
+* VMware ESX 5.5
+* VMware ESX 6.0
+

@@ -1,0 +1,14 @@
+---
+permalink: concept-specify-slp-configuration-options.html 
+sidebar: sidebar 
+keywords: editing, slp.conf, configuration, file, manage, service location protocol daemon, service 
+summary: 您可以編輯slp.conf組態檔、以管理服務位置傳輸協定精靈（slpd）服務。 
+---
+= 指定slp組態選項
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以編輯「slp.conf"組態檔、以管理服務位置傳輸協定精靈（slpd）服務。

@@ -1,0 +1,14 @@
+---
+permalink: concept-cim-user-commands.html 
+sidebar: sidebar 
+keywords: cimuser, command, add, delete, list, cim server, manage, password 
+summary: 您可以使用CIMUser命令來新增、刪除及列出CIM伺服器使用者、以及管理他們的密碼。 
+---
+= CIM使用者命令
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以使用「CIMUser」命令來新增、刪除及列出CIM伺服器使用者、以及管理他們的密碼。

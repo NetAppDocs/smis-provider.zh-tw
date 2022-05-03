@@ -1,0 +1,26 @@
+---
+permalink: concept-preconfiguration-task-overview.html 
+sidebar: sidebar 
+keywords: smi-s provider, first time, validate, preliminary, configuration 
+summary: 首次使用SMI-S Provider之前、您必須先驗證初始組態。 
+---
+= 總覽
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+首次使用SMI-S Provider之前、您必須先驗證初始組態。
+
+使用SMI-S Provider之前、請先執行下列工作：
+
+. 從NetApp SMI-S Provider驗證是否已啟動CIM伺服器。
+. 新增一個CIM伺服器使用者。
+. 為SMI-S Provider至少新增一個儲存系統、以驗證儲存系統的管理。
+. *選用：*產生CIOM的自我簽署憑證。
+
+
+依預設、SMI-S Provider會啟用驗證。
+
+成功執行此驗證之後、您就可以開始使用NetApp SMI-S Provider來管理儲存系統。

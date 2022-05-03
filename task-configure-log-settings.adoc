@@ -1,0 +1,53 @@
+---
+permalink: task-configure-log-settings.html 
+sidebar: sidebar 
+keywords: system message, directory, netapp si-s provider, cim server log 
+summary: 根據預設、所有系統訊息都會記錄下來。此外、根據預設、系統訊息記錄檔位於安裝NetApp SMI-S Provider的記錄目錄中。您可以變更寫入至CIM伺服器記錄的系統訊息位置和層級。例如、您可以選擇將記錄儲存在指定的目錄中、而且只有致命的系統訊息會寫入到CIM伺服器記錄中。 
+---
+= 設定記錄設定
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+根據預設、所有系統訊息都會記錄下來。此外、根據預設、系統訊息記錄位於安裝NetApp SMI-S Provider的目錄中的「logs」目錄中。您可以變更寫入至CIM伺服器記錄的系統訊息位置和層級。例如、您可以選擇將記錄儲存在指定的目錄中、而且只有致命的系統訊息會寫入到CIM伺服器記錄中。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 請完成下列其中一項動作：
++
+[cols="3*"]
+|===
+| 行動 | 命令 | 其他資訊 
+
+
+ a| 
+變更系統訊息記錄層級
+ a| 
+"*cimconfig -s loglevel=_new_log_level_-p*
+ a| 
+例如、如果您想要將記錄層級變更為「information」、您可以輸入以下命令：+'*cimconfig -s loglevel=information -p*
+
+
+
+ a| 
+變更系統訊息記錄目錄
+ a| 
+Check Alignment of PHs>"*cimconfig -s logdir=new_log_directory-p*。如果"_new_log_directory_"包含空格，則必須用引號（"_new log directory_"）括起來。
+ a| 
+例如、如果您想要將記錄目錄變更為「sherverlogs」、您可以輸入下列命令：
+
+Check Alignment of PHs>"*cimconfig -s logdir=serverlogs -p*
+
+|===
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

@@ -1,0 +1,53 @@
+---
+permalink: reference-smis-volumes.html 
+sidebar: sidebar 
+keywords: smis volume, command, list, traditional, storage systems 
+summary: 「SI Volume」命令會列出儲存系統的傳統和彈性磁碟區。 
+---
+= SI磁碟區
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+「mis volume」命令會列出儲存系統的傳統和彈性磁碟區。
+
+'磁碟區'
+
+[-t {* http *|* https *｝]
+
+[NOTE]
+====
+若要使用叢集Data ONTAP 式的功能、您必須使用「資源池」命令、而非使用「資源池」命令。
+
+====
+「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
+
+具有有效使用者名稱和密碼的使用者
+
+.參數
+* 「*」[-t｛http | https｝]*
++
+要使用的傳輸協定：HTTPS（預設）或HTTP
+
+
+
+「mis volume（磁碟區）”命令及其縮寫輸出：
+
+[listing]
+----
+smis volumes
+ONTAP_LogicalDisk.CreationClassName="ONTAP_LogicalDisk",DeviceID="d46de7f0-3925-
+11df-8516-00a0980558ea",SystemCreationClassName="ONTAP_StorageSystem",SystemName
+="ONTAP:0084259609"
+ONTAP_LogicalDisk.CreationClassName="ONTAP_LogicalDisk",DeviceID="397cd140-3a45-
+11df-8516-00a0980558ea",SystemCreationClassName="ONTAP_StorageSystem",SystemName
+="ONTAP:0084259609"
+ONTAP_LogicalDisk.CreationClassName="ONTAP_LogicalDisk",DeviceID="69c472c0-4b27-
+11df-8517-00a0980558ea",SystemCreationClassName="ONTAP_StorageSystem",SystemName
+="ONTAP:0084259609"
+ONTAP_LogicalDisk.CreationClassName="ONTAP_LogicalDisk",DeviceID="6c7ea0b0-3927-
+11df-8516-00a0980558ea",SystemCreationClassName="ONTAP_StorageSystem",SystemName
+="ONTAP:0084259609"
+----

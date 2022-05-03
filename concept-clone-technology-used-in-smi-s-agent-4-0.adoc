@@ -1,0 +1,20 @@
+---
+permalink: concept-clone-technology-used-in-smi-s-agent-4-0.html 
+sidebar: sidebar 
+keywords: flexclone, license, smi-s provider, create, lun clones 
+summary: 您必須擁有SMI-S Provider的FlexClone授權、才能建立LUN複製。 
+---
+= SMI-S Provider中使用的Clone技術
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您必須擁有SMI-S Provider的FlexClone授權、才能建立LUN複製。
+
+SMI-S Provider僅使用FlexClone技術在該儲存系統上建立LUN複製。如果您沒有FlexClone授權、SMI-S Provider不會使用LUN Clone技術產生複本、因此會產生下列錯誤訊息：
+
+「儲存系統上未啟用FlexClone授權。
+
+如果您有使用LUN複製技術建立的LUN複製、Data ONTAP 而將此版本升級至7.3.1或更新版本、則無法使用SMI-S Provider來分割這些複製。必須由儲存系統管理員管理。

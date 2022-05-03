@@ -1,0 +1,33 @@
+---
+permalink: task-specify-the-smi-s-agent-cache-refresh-interval.html 
+sidebar: sidebar 
+keywords: smi-s provider, automatic, retrieves, information, storage systems, 300 sec, cache, refresh 
+summary: 依預設、SMI-S Provider會每五分鐘（300秒）自動從儲存系統擷取資訊。您可以將自動快取重新整理時間間隔（cache_refresh_SEC環境變數）設定為300到86400秒（24小時）之間的值。 
+---
+= 指定SMI-S Provider自動快取重新整理時間間隔
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+依預設、SMI-S Provider會每五分鐘（300秒）自動從儲存系統擷取資訊。您可以將自動快取重新整理時間間隔（「cache_refresh_SEC」環境變數）設定為300到86400秒（24小時）的值。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+如果您想要隨時手動重新整理儲存系統的狀態、可以使用「mis refresh」命令。
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 使用新的重新整理時間間隔值（以秒為單位）、建立名為「cache_refresh_SEC」的系統或使用者環境變數。
++
+如需建立環境變數的相關資訊、請參閱Windows文件。
+
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

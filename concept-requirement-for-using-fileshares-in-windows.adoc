@@ -1,0 +1,24 @@
+---
+permalink: concept-requirement-for-using-fileshares-in-windows.html 
+sidebar: sidebar 
+keywords: netApp smis-s provider, fileshare, ntfs-only volume 
+summary: 在Windows上使用檔案共用區（CIFS共用區）時、建立檔案共用區的磁碟區必須是僅限NTFS的磁碟區。 
+---
+= 在Windows上使用檔案資源的需求
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+在Windows上使用檔案共用區（CIFS共用區）時、建立檔案共用區的磁碟區必須是僅限NTFS的磁碟區。
+
+如果您想要建立檔案網格並在Windows上使用、則建立檔案網格的磁碟區必須是僅限NTFS的磁碟區。這是為了避免存取檔案共享的認證資料發生問題。
+
+在System Center 2016 Virtual Machine Manager（SCVMM）中、您只能在NTFS專屬磁碟區上建立的檔案資源上建立虛擬機器（VM）。不支援混合式和UNIX型磁碟區。
+
+
+
+== 建立要用於CIFS共用和SCVMM的磁碟區
+
+建立要用於CIFS共用和System Center Virtual Machine Manager（SCVMM）的磁碟區時、磁碟區必須為NTFS類型。若要使用NTFS建立磁碟區、請輸入下列命令：「_vol create -vserver <vserver_name>-volume <volage_name>-Aggregate <aggreg_name>-size<volVolume _Size>-security-style ntfs_」

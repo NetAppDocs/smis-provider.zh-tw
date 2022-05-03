@@ -1,0 +1,30 @@
+---
+permalink: task-enable-indications-in-smi-s-agent.html 
+sidebar: sidebar 
+keywords: netApp smi-s provider, lifecycle, disable, default, indication 
+summary: 警示、檔案系統配額和生命週期指示預設為停用。您可以將環境變數PEGAS_disable_in適應 設為假、以啟用這些指示。 
+---
+= 啟用SMI-S Provider中的指示
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+警示、檔案系統配額和生命週期指示預設為停用。您可以將環境變數「PEGASUS_disable_適應 症」設定為「假」、以啟用這些指示。
+
+.開始之前
+* 您必須已擁有系統管理員的登入認證。
+* 您必須已以系統管理員身分登入主機系統。
+
+
+當「PEGASUS_disable_適應 症」設定為「假」時、NetApp SMI-S Provider會啟用警示（「ONTAP_Alert Indexing」）、檔案系統配額（「ONTAP_FSQuotaIndexing」）和生命週期指示。
+
+.步驟
+. 存取NetApp SMI-S Provider。
+. 將「PEGASUS_disable_適應 症」環境變數設為「假」。
+. 重新啟動CIM伺服器：
++
+‘* SMI cimserver REALT*’
+
+

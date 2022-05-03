@@ -1,0 +1,16 @@
+---
+permalink: concept-confirm-visibility-of-important-objects.html 
+sidebar: sidebar 
+keywords: manage, storage, system, confirm, important, logic, physical, object, netapp smis-s provider 
+summary: 新增託管儲存系統之後、您應該確認可以在NetApp SMI-S Provider中看到所有重要的邏輯和實體物件。 
+---
+= 確認重要物件的可見度
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+新增託管儲存系統之後、您應該確認可以在NetApp SMI-S Provider中看到所有重要的邏輯和實體物件。
+
+您可以使用「mis」命令查看NetApp SMI-S Provider CIMOM儲存庫中的物件。例如、使用「mis list」來顯示新增的儲存系統、並使用「mis LUNs」來顯示LUN資訊。

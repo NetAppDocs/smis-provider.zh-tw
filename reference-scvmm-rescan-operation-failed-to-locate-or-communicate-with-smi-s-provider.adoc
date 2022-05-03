@@ -1,0 +1,27 @@
+---
+permalink: reference-scvmm-rescan-operation-failed-to-locate-or-communicate-with-smi-s-provider.html 
+sidebar: sidebar 
+keywords: troubleshooting, issue, encounter 
+summary: NetApp SMI-S Provider遇到的問題。 
+---
+= SCVMM重新掃描作業無法找到SMI-S Provider或與其通訊
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+* *問題*
++
+在極少數情況下、SCVMM無法找到SMI-S Provider。
+
+* *原因*
++
+如果使用新的GPO更新安全性基礎架構、就可能發生此問題。當SMI-S Provider主機重新開機後生效時、SCVMM主機可能不信任SMI-S Provider或主機。
+
+* *修正行動*
++
+.. 解除安裝SMI-S Provider、然後重新安裝。
+.. 在SCVMM中執行SMI-S Provider的重新掃描作業。
+
+
+

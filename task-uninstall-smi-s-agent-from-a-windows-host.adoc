@@ -1,0 +1,23 @@
+---
+permalink: task-uninstall-smi-s-agent-from-a-windows-host.html 
+sidebar: sidebar 
+keywords: uninstall, smi-s provider, version, exiting, installation, uninstall, latest version 
+summary: 您可以視需要解除安裝SMI-S Provider。例如、視現有安裝的版本而定、您可能需要先解除安裝現有的SMI-S Provider安裝、才能安裝最新版本。 
+---
+= 從Windows主機解除安裝NetApp SMI-S Provider
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+您可以視需要解除安裝SMI-S Provider。例如、視現有安裝的版本而定、您可能需要先解除安裝現有的SMI-S Provider安裝、才能安裝最新版本。
+
+如果您打算解除安裝SMI-S Provider並想要全新重新安裝、則必須手動刪除來自CIM伺服器的所有內容。
+
+如果您不想要全新重新安裝、SMI-S Provider會在解除安裝後保留組態、使用者及其他資料庫檔案。
+
+.步驟
+. 以系統管理員身分登入。
+. 使用Windows「新增/移除程式」公用程式、從Windows主機解除安裝NetApp SMI-S Provider。
+
