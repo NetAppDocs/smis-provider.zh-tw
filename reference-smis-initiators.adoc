@@ -13,12 +13,15 @@ summary: 「SI啟動器」命令會顯示儲存系統的Fibre Channel和iSCSI連
 [role="lead"]
 「mis啟動器」命令會顯示儲存系統的光纖通道和iSCSI連接埠資訊。
 
+.語法
 SI啟動器
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -28,6 +31,7 @@ SI啟動器
 
 
 
+.範例
 「mis initiator（啟動器））”命令及其縮寫輸出：
 
 [listing]

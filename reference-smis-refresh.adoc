@@ -13,12 +13,15 @@ summary: 依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系
 [role="lead"]
 依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系統取得資訊。您可以使用「mis refresh」命令手動重新整理特定的儲存系統。
 
+.語法
 「重新整理_storage、system、ip_」
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -32,6 +35,7 @@ summary: 依預設、SMI-S Provider每60分鐘（3、600秒）自動從儲存系
 
 
 
+.範例
 「mis refresh'命令及其輸出：
 
 [listing]

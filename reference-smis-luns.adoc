@@ -13,12 +13,15 @@ summary: 「SI LUN」命令會顯示儲存系統的LUN資訊。
 [role="lead"]
 「mis LUNs」命令會顯示儲存系統的LUN資訊。
 
+.語法
 SI LUN
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -28,6 +31,7 @@ SI LUN
 
 
 
+.範例
 命令"mis LUN"及其縮寫輸出：
 
 [listing]

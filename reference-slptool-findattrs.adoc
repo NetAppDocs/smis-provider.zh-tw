@@ -13,10 +13,13 @@ summary: slptool findattrs命令會尋找在網路上執行的WBEM屬性。
 [role="lead"]
 "shlpsetool findattrs"命令會尋找在網路上執行的WBEM屬性。
 
+.語法
 "lpsetool findattrs _service_"
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -26,6 +29,7 @@ summary: slptool findattrs命令會尋找在網路上執行的WBEM屬性。
 
 
 
+.範例
 "shlpsetool findattrs"命令及其縮寫輸出：
 
 [listing]

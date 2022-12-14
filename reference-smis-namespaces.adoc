@@ -13,15 +13,18 @@ summary: 「SI命名空間」命令會列出CIMOM的登錄命名空間。
 [role="lead"]
 「mis命名空間」命令會列出CIMOM的登錄命名空間。
 
+.語法
 SI命名空間
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
 * Windows：「C：\Program Files（x86）\NetApp\SMI\PEGUS\bin」
 
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -31,6 +34,7 @@ SI命名空間
 
 
 
+.範例
 命令"mis命名空間"及其縮寫輸出：
 
 [listing]

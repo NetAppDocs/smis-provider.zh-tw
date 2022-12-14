@@ -13,14 +13,18 @@ summary: SMI slpd命令會啟動或停止slp精靈。
 [role="lead"]
 "mis slpd"命令會啟動或停止slp精靈。
 
+.語法
 《Mis slpd》
 
 「{*start*|* stop *｝」
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
+.範例
 啟動slp精靈：
 
 [listing]

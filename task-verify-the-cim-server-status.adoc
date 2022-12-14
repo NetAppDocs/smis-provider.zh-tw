@@ -13,6 +13,7 @@ summary: 安裝NetApp SMI-S Provider之後、您必須確認在存取SMI-S Provi
 [role="lead"]
 安裝NetApp SMI-S Provider之後、您必須確認在存取SMI-S Provider之後、自動啟動了CIM伺服器。
 
+.開始之前
 您必須已擁有系統管理員的登入認證。
 
 .步驟

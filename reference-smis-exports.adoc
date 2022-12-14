@@ -13,10 +13,13 @@ summary: 「SI匯出」命令會顯示儲存系統的網路附加儲存設備（
 [role="lead"]
 「mis exports」（匯出）命令會顯示儲存系統的網路附加儲存設備（NAS）匯出。
 
+.語法
 SMI匯出「-t {* http *|* https *｝」
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -26,6 +29,7 @@ SMI匯出「-t {* http *|* https *｝」
 
 
 
+.範例
 「mis exports（匯出）”命令及其輸出：
 
 [listing]

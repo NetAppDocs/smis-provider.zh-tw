@@ -13,10 +13,13 @@ summary: slptool findsrvs命令會尋找在網路上執行的WBEM服務。
 [role="lead"]
 "shlptool findsrvs"命令可查找在網絡上運行的WBEM服務。
 
+.語法
 "lptool findsrvs _service_"
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -26,6 +29,7 @@ summary: slptool findsrvs命令會尋找在網路上執行的WBEM服務。
 
 
 
+.範例
 「shlptool findsrvs」命令及其輸出：
 
 [listing]

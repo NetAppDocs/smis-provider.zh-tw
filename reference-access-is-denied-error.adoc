@@ -10,6 +10,7 @@ summary: NetApp SMI-S Provider遇到的問題。
 :imagesdir: ./media/
 
 
+[role="lead"]
 * *訊息*
 +
 「存取遭拒。

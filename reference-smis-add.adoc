@@ -13,6 +13,7 @@ summary: SI add命令可將具有HTTP連線的儲存系統新增至您的組態�
 [role="lead"]
 「mis add」命令會將具有HTTP連線的儲存系統新增至您的組態、以便您管理及監控裝置。除非有必要、否則您應該使用「sis addSecure」而非「sis add」。
 
+.語法
 "新增"
 
 ？？"_storage（儲存設備）_sys storage（儲存設備）_sys_user_"+"-t｛* http *|* https *｝""
@@ -22,8 +23,10 @@ summary: SI add命令可將具有HTTP連線的儲存系統新增至您的組態�
 使用美國以外語言的作業系統英文版無法使用「add」命令。
 
 ====
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
 .參數
@@ -61,6 +64,7 @@ summary: SI add命令可將具有HTTP連線的儲存系統新增至您的組態�
 
 在停用SSL加密連線之前、您應該先考量環境的安全需求。
 
+.範例
 透過HTTP使用IP位址10.32.1.4的IPV4新增儲存系統：
 
 [listing]
@@ -69,6 +73,7 @@ smis add 10.32.1.4 user2
 ----
 此時會出現一則確認訊息、指出儲存系統已成功新增。如果發生錯誤、會出現錯誤訊息。
 
+.範例
 使用IPv6 over HTTP新增儲存系統：
 
 [listing]
@@ -78,6 +83,7 @@ smis add 1001:2::3:4 user2
 ----
 此時會出現一則確認訊息、指出儲存系統已成功新增。如果發生錯誤、會出現錯誤訊息。
 
+.範例
 在非英文系統上、透過HTTP新增IP位址為10.32.1.4的儲存系統：
 
 [listing]

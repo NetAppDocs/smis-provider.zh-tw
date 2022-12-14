@@ -13,12 +13,15 @@ summary: SMI類命令列出有關指定類或所有類的信息。
 [role="lead"]
 "mis class"命令會列出指定類別或所有類別的相關資訊。
 
+.語法
 "等級錯誤"
 
 {* Niall*|{* ei*|* ni*|* gi*|* gC*｝_class_name_}[-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -56,6 +59,7 @@ CIMOM支援的名稱空間
 
 
 
+.範例
 命令"mis class"及其縮寫輸出：
 
 [listing]

@@ -893,4 +893,9 @@
   <block id="36368c8058877b609a51ba50239f980e" category="sidebar">SMI-S Provider命令</block>
   <block id="f367b7dd9d33500bed829af817d25418" category="sidebar">slp命令</block>
   <block id="ce7b7453e7d182fcfcfa37f70a3827c2" category="sidebar">SMI-S Provider疑難排解</block>
+  <block id="bbe48fb854ea022537208eeeff822f91" category="paragraph-title">關於這項工作</block>
+  <block id="92e9d6227d5534e7afc27a11179c808e" category="paragraph-title">語法</block>
+  <block id="ce5bf551379459c1c61d2a204061c455" category="paragraph-title">位置</block>
+  <block id="916e2ff82dbb18426a464d80b54d1291" category="paragraph-title">權限層級</block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="paragraph-title">範例</block>
 </blocks>

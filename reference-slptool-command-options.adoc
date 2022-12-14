@@ -13,10 +13,13 @@ summary: 您可以將這些選項與slptool命令搭配使用。
 [role="lead"]
 您可以使用「shlptool」命令來顯示有關WBEM服務的資訊。
 
+.語法
 「lpdool [選項]_子 命令_」
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
 .選項

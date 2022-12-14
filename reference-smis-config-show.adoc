@@ -13,12 +13,16 @@ summary: SMI config show命令會列出目前的CIM伺服器組態資訊。
 [role="lead"]
 「mis config show」命令會列出目前的CIM伺服器組態資訊。
 
+.語法
 「組態顯示」
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
+.範例
 「mis config show（組態顯示）”及其輸出：
 
 [listing]

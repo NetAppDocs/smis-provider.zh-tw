@@ -13,6 +13,7 @@ summary: 「SI Volume」命令會列出儲存系統的傳統和彈性磁碟區�
 [role="lead"]
 「mis volume」命令會列出儲存系統的傳統和彈性磁碟區。
 
+.語法
 '磁碟區'
 
 [-t {* http *|* https *｝]
@@ -22,8 +23,10 @@ summary: 「SI Volume」命令會列出儲存系統的傳統和彈性磁碟區�
 若要使用叢集Data ONTAP 式的功能、您必須使用「資源池」命令、而非使用「資源池」命令。
 
 ====
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -33,6 +36,7 @@ summary: 「SI Volume」命令會列出儲存系統的傳統和彈性磁碟區�
 
 
 
+.範例
 「mis volume（磁碟區）”命令及其縮寫輸出：
 
 [listing]

@@ -13,8 +13,10 @@ summary: SLP.conf組態檔提供其他選項、可讓您管理服務位置傳輸
 [role="lead"]
 「slp.conf"組態檔提供其他選項、可讓您管理服務位置傳輸協定精靈（slpd）伺服器。
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\cfg/」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 
@@ -44,6 +46,7 @@ summary: SLP.conf組態檔提供其他選項、可讓您管理服務位置傳輸
 
 
 
+.範例
 以下是"shlp.conf"組態檔的簡短範例：
 
 [listing]

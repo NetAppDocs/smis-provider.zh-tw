@@ -13,12 +13,15 @@ summary: SMI version命令會顯示NetApp SMI-S Provider的版本。
 [role="lead"]
 「mis version」命令會顯示NetApp SMI-S Provider的版本。
 
+.語法
 "版本錯誤"
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -28,6 +31,7 @@ summary: SMI version命令會顯示NetApp SMI-S Provider的版本。
 
 
 
+.範例
 「mis version（錯誤版本）”命令及其輸出：
 
 [listing]

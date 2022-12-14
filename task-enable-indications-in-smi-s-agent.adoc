@@ -18,6 +18,7 @@ summary: 警示、檔案系統配額和生命週期指示預設為停用。您�
 * 您必須已以系統管理員身分登入主機系統。
 
 
+.關於這項工作
 當「PEGASUS_disable_適應 症」設定為「假」時、NetApp SMI-S Provider會啟用警示（「ONTAP_Alert Indexing」）、檔案系統配額（「ONTAP_FSQuotaIndexing」）和生命週期指示。
 
 .步驟

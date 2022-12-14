@@ -13,14 +13,17 @@ summary: 「SI刪除」命令會刪除儲存系統。
 [role="lead"]
 「mis DELETE」命令會刪除儲存系統。
 
+.語法
 '刪除錯誤'
 
 儲存系統
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
 .參數
@@ -34,6 +37,7 @@ summary: 「SI刪除」命令會刪除儲存系統。
 
 
 
+.範例
 刪除標示mgt-1的儲存系統：
 
 ‘* SI刪除mgt-1*’

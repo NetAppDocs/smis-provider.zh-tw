@@ -13,12 +13,14 @@ summary: '您可以安裝NetApp SMI-S Provider軟體、以便管理執行Data ON
 [role="lead"]
 您可以安裝NetApp SMI-S Provider軟體、以便管理執行Data ONTAP 支援的儲存系統。不過、您無法還原或降級至舊版。根據預設、NetApp SMI-S Provider軟體會安裝在「C:\Program Files（x86）\NetApp\SMI\PEGUSEs」目錄中。
 
+.開始之前
 您必須已擁有下列認證與軟體：
 
 * Windows系統管理員帳戶的登入認證
 * NetApp SMI-S Provider軟體套件
 
 
+.關於這項工作
 安裝程序的結果是、CIMOM服務（在Service Control Manager中稱為「NetApp SMI-S Provider」）和SLp精靈（在Service Control Manager中稱為「Service Location Protocol」（服務位置通訊協定））會以自動服務的形式執行、即使在主機重新開機後也會自動啟動。
 
 此安裝程序反映全新安裝。

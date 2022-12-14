@@ -13,10 +13,13 @@ summary: SMI CICIMOM命令說明了CIM物件管理程式。
 [role="lead"]
 「mis CIMOM」命令說明了CIM物件管理程式。
 
+.語法
 SMI CIMIMOM[-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -26,6 +29,7 @@ SMI CIMIMOM[-t {* http *|* https *｝]
 
 
 
+.範例
 「mis CIMOM指令及其輸出：
 
 [listing]

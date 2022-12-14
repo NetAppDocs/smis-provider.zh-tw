@@ -13,12 +13,15 @@ summary: 「Thesmis disks」命令會顯示儲存系統的磁碟資訊。僅當�
 [role="lead"]
 'mis disks'命令顯示儲存系統的磁碟資訊。「Mis disks」（磁碟機）僅適用於Data ONTAP 搭配使用VMware 7-Mode控制器的情況。
 
+.語法
 SMI磁碟
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -28,6 +31,7 @@ SMI磁碟
 
 
 
+.範例
 命令"mis disks"及其縮寫輸出：
 
 [listing]

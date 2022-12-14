@@ -13,12 +13,15 @@ summary: SMI cimserver命令會啟動、停止、重新啟動或取得CIM伺服�
 [role="lead"]
 「mis cimserver」命令會啟動、停止、重新啟動或取得CIM伺服器的狀態。
 
+.語法
 "mis cimserver"
 
 「{* start*|* stop *|* start*|* STATUS*｝」
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
 .參數

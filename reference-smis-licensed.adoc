@@ -13,12 +13,15 @@ summary: SMI授權命令會列出儲存系統的授權功能。
 [role="lead"]
 「mis licensed」命令會列出儲存系統的授權功能。
 
+.語法
 已授權的SI
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -28,6 +31,7 @@ summary: SMI授權命令會列出儲存系統的授權功能。
 
 
 
+.範例
 「已授權的指令及其縮寫輸出：
 
 [listing]

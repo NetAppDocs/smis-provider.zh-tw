@@ -10,6 +10,7 @@ summary: NetApp SMI-S Provider遇到的問題。
 :imagesdir: ./media/
 
 
+[role="lead"]
 * *訊息*
 +
 「載入共享程式庫時發生錯誤：libssl.so 1.1.0：無法開啟共享的物件檔案：沒有此類檔案或目錄。

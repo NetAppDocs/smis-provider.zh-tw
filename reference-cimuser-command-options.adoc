@@ -13,10 +13,13 @@ summary: 您可以使用CIMUser選項來新增、移除、修改及列出CIM伺�
 [role="lead"]
 您可以使用「CIMUser」命令來新增、移除、刪除、修改及列出CIM伺服器使用者、以及管理他們的密碼。
 
+.語法
 「CIMUser _options_」
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
 .選項
@@ -58,6 +61,7 @@ summary: 您可以使用CIMUser選項來新增、移除、修改及列出CIM伺�
 
 
 
+.範例
 使用密碼1建立名為Sydney的CIM使用者：
 
 [listing]

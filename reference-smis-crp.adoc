@@ -13,12 +13,15 @@ summary: SMI CRP命令說明NetApp SMI-S Provider支援的已登錄CIM的設定�
 [role="lead"]
 「mis crp」命令說明NetApp SMI-S Provider支援的已登錄CIM設定檔、包括NetApp SMI-S Provider設定檔。
 
+.語法
 SMI CRP
 
 [-t {* http *|* https *｝]
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 具有有效使用者名稱和密碼的使用者
 
 .參數
@@ -28,6 +31,7 @@ SMI CRP
 
 
 
+.範例
 「mis crp（錯誤CRP）指令及其輸出：
 
 [listing]

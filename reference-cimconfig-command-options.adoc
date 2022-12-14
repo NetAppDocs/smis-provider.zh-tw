@@ -13,10 +13,13 @@ summary: 您可以使用cimconfig命令來管理CIMOM組態設定。輸入cimcon
 [role="lead"]
 您可以使用「cimconfig」命令來設定CIMOM設定、例如啟用和停用HTTP和HTTPS、以及變更HTTP和HTTPS連接埠號碼。輸入「cimconfig」命令或為NetApp SMI-S Provider組態值建立環境變數之後、您必須使用「mis cimserver restart」命令重新啟動CIM伺服器。
 
+.語法
 "cimconfig _options_"
 
+.位置
 「C：\Program Files（x86）\NetApp\SMI\PEGUS\Bin」
 
+.權限層級
 系統管理員（Windows）
 
 .選項
@@ -58,6 +61,7 @@ summary: 您可以使用cimconfig命令來管理CIMOM組態設定。輸入cimcon
 
 
 
+.範例
 將記錄檔大小上限變更為15000 KB：
 
 [listing]
