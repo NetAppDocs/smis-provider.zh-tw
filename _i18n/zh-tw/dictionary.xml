@@ -898,4 +898,17 @@
   <block id="ce5bf551379459c1c61d2a204061c455" category="paragraph-title">位置</block>
   <block id="916e2ff82dbb18426a464d80b54d1291" category="paragraph-title">權限層級</block>
   <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="paragraph-title">範例</block>
+  <block id="89eb3b2b1c7ee55693e8de7ba82e5ba4" category="inline-link-macro"><block ref="89eb3b2b1c7ee55693e8de7ba82e5ba4" category="inline-link-rx"></block></block>
+  <block id="4ddf9c5810fe4ae35f51468822c93f0c" category="list-text">下載<block ref="4bd6c476c5b1e91f1c5d5e856487a8d8" prefix=" " category="inline-code"></block> 檔案位於下列位置： <block ref="00e6c9d6bfee51757d5adaf602913f5e" category="inline-link-macro-rx"></block></block>
+  <block id="3ff2de46a7ece27a30e661ad1988c771" category="list-text">移動<block ref="4bd6c476c5b1e91f1c5d5e856487a8d8" prefix=" " category="inline-code"></block> 檔案至 bin 目錄：</block>
+  <block id="7ae46c19e55ff9fda2e83b7aa2f37cfd" category="paragraph"><block ref="e79d8293df85193c0ee44bf19eeef913" prefix="" category="inline-code"></block></block>
+  <block id="6d6d95d710fafdcc96679d6a097b8aa2" category="list-text">設定<block ref="301205747f130a819164fb49d391c084" prefix=" " category="inline-code"></block> 環境變數至的位置<block ref="4bd6c476c5b1e91f1c5d5e856487a8d8" prefix=" " category="inline-code"></block> 檔案：</block>
+  <block id="9ab83c2678d2d7ec7c82f6059b6c243f" category="paragraph"><block ref="239f106b6730f6e4049528822b40b2f2" prefix="" category="inline-code"></block></block>
+  <block id="a70427dd387d91471ce1de93827b4166" category="paragraph">這只會在目前命令提示字元工作階段期間設定環境變數。如果您想要永久設定環境變數、可以使用下列其中一個選項：</block>
+  <block id="0f42925200380f73e8af02ef03ac37f7" category="list-text">瀏覽至 * 內容 &gt; 環境變數 * 、並更新 * 系統 * 下的變數。</block>
+  <block id="1f3b7d1decea3abd87b7cca70fb2504a" category="list-text">使用命令提示字元來永久設定變數：</block>
+  <block id="00dc48c3880b7c2bd0337d8b3bef7a25" category="paragraph"><block ref="55fe4eb88b475075b1f715a663e5d475" prefix="" category="inline-code"></block>。</block>
+  <block id="5940103c9703f3197b9db75e060cdcbc" category="paragraph">當您開啟新的命令提示字元工作階段時、就會設定此變數。</block>
+  <block id="5d46f0ef9c5d5b1b112b901048bd8b85" category="list-text">瀏覽至<block ref="0a36b8ad7af6adf0c1d5daa0a3240994" prefix=" " category="inline-code"></block> 目錄：</block>
+  <block id="82e1f4ca9abf9652748d9a698fc051c7" category="paragraph"><block ref="a9bf600e3f42bfde86bd479b9fcaec63" prefix="" category="inline-code"></block></block>
 </blocks>

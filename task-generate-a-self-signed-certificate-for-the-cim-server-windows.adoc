@@ -19,6 +19,33 @@ summary: 根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安
 
 
 .步驟
+. 下載 `openssl.cnf` 檔案位於下列位置： link:http://web.mit.edu/crypto/openssl.cnf["http://web.mit.edu/crypto/openssl.cnf"^]
+. 移動 `openssl.cnf` 檔案至 bin 目錄：
++
+`*%PEGASUS_HOME%\bin\openssl.cnf*`
+
+. 設定 `OPENSSL_CONF` 環境變數至的位置 `openssl.cnf` 檔案：
++
+`*C:\ >set OPENSSL_CONF=%PEGASUS_HOME%\bin\openssl.cnf*`
+
++
+這只會在目前命令提示字元工作階段期間設定環境變數。如果您想要永久設定環境變數、可以使用下列其中一個選項：
+
++
+** 瀏覽至 * 內容 > 環境變數 * 、並更新 * 系統 * 下的變數。
+** 使用命令提示字元來永久設定變數：
++
+`*setx OPENSSL_CONF “%PEGASUS_HOME%\bin\openssl.cnf*`。
+
++
+當您開啟新的命令提示字元工作階段時、就會設定此變數。
+
+
+
+. 瀏覽至 `%PEGASUS_HOME%\bin` 目錄：
++
+`*C:\cd %pegasus_home%\bin*`
+
 . 產生私密金鑰：
 +
 「* openssl genrsa -out cimom.key 2048*」
