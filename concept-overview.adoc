@@ -2,7 +2,7 @@
 permalink: concept-overview.html 
 sidebar: sidebar 
 keywords: smis-s provider, enable, manage, storage, systems, lun, volumes, cimom configuration, cim server settings 
-summary: NetApp SMI-S Provider 5.2.5可讓您管理及監控儲存系統、以及管理儲存系統的LUN和磁碟區、CIMOM組態設定和CIM伺服器使用者。 
+summary: NetApp SMI-S Provider 5.2.7可讓您管理及監控儲存系統、以及管理儲存系統的LUN和磁碟區、CIMOM組態設定和CIM伺服器使用者。 
 ---
 = 總覽
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: NetApp SMI-S Provider 5.2.5可讓您管理及監控儲存系統、以�
 
 
 [role="lead"]
-NetApp SMI-S Provider 5.2.5可讓您管理及監控儲存系統、以及管理儲存系統的LUN和磁碟區、CIMOM組態設定和CIM伺服器使用者。
+NetApp SMI-S Provider 5.2.7可讓您管理及監控儲存系統、以及管理儲存系統的LUN和磁碟區、CIMOM組態設定和CIM伺服器使用者。
 
 NetApp SMI-S Provider是以命令為基礎的介面、可偵測及管理執行ONTAP 支援程式的平台。SMI-S Provider使用Web型企業管理（WBEM）傳輸協定、可讓您管理、監控及報告儲存元素。
 

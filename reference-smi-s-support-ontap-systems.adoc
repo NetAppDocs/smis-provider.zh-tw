@@ -1,0 +1,20 @@
+---
+permalink: reference-supported-platforms.html 
+sidebar: sidebar 
+keywords: netApp smi-s provider, cluster, platforms, support for ONTAP systems 
+summary: NetApp SMI-S Provider 支援執行 ONTAP 9 及更新版本的叢集平台。 
+---
+= NetApp SMI-S Provider 支援 ONTAP 系統
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp SMI-S Provider 支援執行 ONTAP 9 及更新版本的叢集平台。
+
+若要讓NetApp SMI-S Provider建立儲存磁碟區（LUN）的複本、您必須在儲存系統上安裝FlexClone授權。
+
+NetApp SMI-S Provider 支援 FAS 系統。
+
+NetApp SMI-S Provider 不支援 ASA 系統。

@@ -1,0 +1,8 @@
+---
+permalink: reference-data-ontap-smi-s-agent-components.html 
+redirect: smis-provider/reference-ontap-smi-s-agent-components.html 
+---
+= 
+:allow-uri-read: 
+
+

@@ -16,10 +16,10 @@ summary: NetApp SMI-S Provider遇到的問題。
 
 * *說明*
 +
-當ONTAPI API逾時時時、就會出現此訊息。預設的ONTAPI API逾時時間為60秒、在某些情況下可能太短。
+當 ONTAP API 呼叫逾時時，就會出現此訊息。預設的 ONTAP API 呼叫逾時為 60 秒，在某些情況下可能太短。
 
 * *修正行動*
 +
-設定環境變數「ONTAPI_timeout_SEC」、然後重新啟動SMI-S Provider、將ONTAPI API逾時變更為大於60秒的值。
+設定環境變數，將 ONTAP API 呼叫逾時變更為大於 60 秒的值 `ONTAPI_TIMEOUT_SEC`，然後重新啟動 SMI-S Provider 。
 
 

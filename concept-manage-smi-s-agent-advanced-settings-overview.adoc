@@ -1,8 +1,8 @@
 ---
 permalink: concept-manage-smi-s-agent-advanced-settings-overview.html 
 sidebar: sidebar 
-keywords: manage, advance, smi-s provider, smis-s cache, refresh, interval, ontapi, timeout, thread, service, queue 
-summary: 您可以管理SMI-S Provider的進階設定、例如指定SMI-S快取重新整理時間間隔、ONTAPI逾時、以及每個訊息服務佇列的最大執行緒數。 
+keywords: manage, advance, smi-s provider, smis-s cache, refresh, interval, ontap API call, timeout, thread, service, queue 
+summary: 您可以管理 SMI-S Provider 的進階設定，例如指定 SMI-S 快取重新整理間隔， ONTAP API 呼叫逾時，以及每個訊息服務佇列的最大執行緒數。 
 ---
 = 總覽
 :allow-uri-read: 
@@ -11,4 +11,4 @@ summary: 您可以管理SMI-S Provider的進階設定、例如指定SMI-S快取�
 
 
 [role="lead"]
-您可以管理SMI-S Provider的進階設定、例如指定SMI-S快取重新整理時間間隔、ONTAPI逾時、以及每個訊息服務佇列的最大執行緒數。
+您可以管理 SMI-S Provider 的進階設定，例如指定 SMI-S 快取重新整理間隔， ONTAP API 呼叫逾時，以及每個訊息服務佇列的最大執行緒數。

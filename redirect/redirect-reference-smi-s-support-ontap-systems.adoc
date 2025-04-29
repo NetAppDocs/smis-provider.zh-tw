@@ -1,0 +1,8 @@
+---
+permalink: reference-supported-platforms.html 
+redirect: smis-provider/reference-smi-s-support-ontap-systems.html 
+---
+= 
+:allow-uri-read: 
+
+

@@ -17,4 +17,4 @@ SMI-S Provider僅使用FlexClone技術在該儲存系統上建立LUN複製。如
 
 「儲存系統上未啟用FlexClone授權。
 
-如果您有使用LUN複製技術建立的LUN複製、Data ONTAP 而將此版本升級至7.3.1或更新版本、則無法使用SMI-S Provider來分割這些複製。必須由儲存系統管理員管理。
+如果您有使用 LUN 複製技術建立的 LUN 複本，然後 ONTAP 版本升級至 7.3.1 或更新版本，則無法使用 SMI-S Provider 分割這些複本。必須由儲存系統管理員管理。

@@ -28,9 +28,9 @@ summary: NetApp SMI-S Provider遇到的問題。
 
 . 在每台主機上、將每個儲存系統的IP位址新增至iSCSI啟動器應用程式。
 . 如有需要、請在每個儲存系統上、針對每個主機建立一個獨特的igroup、並從對應的主機建立適當的iSCSI節點名稱。
-. 針對每部連線Data ONTAP 至物件的主機、開啟MPIO應用程式並新增下列硬體ID：
+. 針對每部連線至 ONTAP 的主機電腦，開啟 MPIO 應用程式，然後新增下列硬體 ID ：
 +
-** 對於叢集Data ONTAP 式的實體、請輸入「* NetApp LUN C-Mode*」。
+** 對於 ONTAP ，請輸入 `*NETAPP LUN C-Mode*`。
 
 
 . 重新啟動主機。

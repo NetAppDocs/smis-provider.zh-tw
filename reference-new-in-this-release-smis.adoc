@@ -1,21 +1,22 @@
 ---
 permalink: reference-new-in-this-release-smis.html 
 sidebar: sidebar 
-keywords: new, release 
-summary: 此版本的新功能 
+keywords: 'new, release, new in this release, what"s new' 
+summary: 5.2.7 的新功能 
 ---
-= 此版本的新功能
+= 5.2.7 的新功能
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
-* SMI-S Provider 5.2.5沒有可用的升級路徑。
-* 您必須將SMI-S Provider 5.2.5部署為新安裝。
+* SMI-S Provider 5.2.7沒有可用的升級路徑。
+* 您必須將SMI-S Provider 5.2.7部署為新安裝。
+* 此版本的 SMI-S 供應商不支援使用 Azure Site Recovery 進行 SnapMirror 管理。
 
 
-*適用於Windows使用者：*
+* 適用於 Windows 使用者 *
 
 * 此版本與Windows Server 2012或System Center Virtual Machine Manager（SCVMM）2012不相容。
-* SMI-S Provider 5.2.5支援Windows Server 2016、Windows Server 2019、SCVMM 2016和SCVMM 2019。
+* SMI-S Provider 5.2.7 支援 Windows Server 2025 ， Windows Server 2022 ， Windows Server 2019 ， Windows Server 2016 ， SCVMM 2025 ， SCVMM 2022 ， SCVMM 2019 和 SCVMM 2016 。
 

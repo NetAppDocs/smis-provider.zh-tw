@@ -15,10 +15,11 @@ summary: 瞭解NetApp SMI-S Provider所管理的系統數量上限、有助於�
 
 *規模調整*
 
-NetApp SMI-S Provider最多可管理叢集Data ONTAP 式支援中的下列物件數量：
+NetApp SMI-S Provider 可在 ONTAP 中管理最多下列數量的物件：
 
-* 100部儲存虛擬機器（SVM）（無指示）
-* 10部儲存虛擬機器（含指示）
+* 30 部儲存虛擬機器（ SVM ） 
+* 100 個 SVM （無指示）
+* 10 個 SVM （含指示）
 * 1、500個LUN（每FlexVol 個動態磁碟區）
 * 200個CIFS檔案共用（每FlexVol 個流通量）
 

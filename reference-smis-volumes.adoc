@@ -20,7 +20,7 @@ summary: 「SI Volume」命令會列出儲存系統的傳統和彈性磁碟區�
 
 [NOTE]
 ====
-若要使用叢集Data ONTAP 式的功能、您必須使用「資源池」命令、而非使用「資源池」命令。
+對於 ONTAP ，您必須使用 `smis pools`命令而非 `smis volumes`命令。
 
 ====
 .位置

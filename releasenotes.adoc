@@ -2,7 +2,7 @@
 permalink: releasenotes.html 
 sidebar: sidebar 
 keywords: netapp smi-s provider, relnotes, limitations, fixes, known issues 
-summary: 提供有關NetApp SMI-S Provider 5.2.6軟體的功能、限制和已知問題的資訊。 
+summary: 提供有關NetApp SMI-S Provider 5.2.7軟體的功能、限制和已知問題的資訊。 
 ---
 = NetApp SMI-S Provider版本說明
 :allow-uri-read: 
@@ -10,4 +10,4 @@ summary: 提供有關NetApp SMI-S Provider 5.2.6軟體的功能、限制和已�
 :imagesdir: ./media/
 
 
-。 https://library.netapp.com/ecm/ecm_download_file/ECMLP2862930["NetApp SMI-S Provider版本說明"^] 說明新功能、升級附註、修正問題、已知限制及已知問題。
+ https://library.netapp.com/ecm/ecm_download_file/ECMLP3344664["NetApp SMI-S Provider版本說明"^]說明新功能，升級注意事項，修正問題，已知限制及已知問題。

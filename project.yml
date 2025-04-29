@@ -20,13 +20,13 @@ sidebar:
     - title: 此版本的新功能
       url: "/reference-new-in-this-release-smis.html"
     - title: 使用NetApp SMI-S Provider
-      url: "/reference-uses-of-data-ontap-smi-s-agent.html"
+      url: "/reference-uses-of-ontap-smi-s-agent.html"
     - title: NetApp SMI-S Provider規模調整與效能
       url: "/reference-smi-s-agent-sizing-and-performance-information.html"
     - title: NetApp SMI-S Provider元件
-      url: "/reference-data-ontap-smi-s-agent-components.html"
+      url: "/reference-ontap-smi-s-agent-components.html"
     - title: NetApp SMI-S Provider傳輸協定
-      url: "/reference-data-ontap-smi-s-agent-protocols.html"
+      url: "/reference-ontap-smi-s-agent-protocols.html"
     - title: NetApp SMI-S Provider如何與主機互動
       url: "/concept-how-smi-s-provider-interacts-with-a-host.html"
     - title: SMI-S設定檔
@@ -43,8 +43,8 @@ sidebar:
       url: "/reference-hardware-requirements.html"
     - title: 必要的授權
       url: "/reference-required-licenses.html"
-    - title: 支援的叢集平台
-      url: "/reference-supported-platforms.html"
+    - title: NetApp SMI-S Provider 支援 ONTAP 系統
+      url: "/reference-smi-s-support-ontap-systems.html"
     - title: 下載NetApp SMI-S Provider軟體套件
       url: "/task-download-smi-s-provider.html"
   - title: 安裝NetApp SMI-S Provider
@@ -110,8 +110,8 @@ sidebar:
       url: "/task-specify-the-smi-s-agent-cache-refresh-interval.html"
     - title: 指定具體的工作壽命值
       url: "/task-specify-the-concrete-job-lifetime-value.html"
-    - title: 指定ONTAPI逾時值
-      url: "/task-specify-the-ontapi-timeout-value.html"
+    - title: 指定 ONTAP API 呼叫逾時值
+      url: "/task-specify-the-ontap-api-call-timeout-value.html"
     - title: 指定每個訊息服務佇列的執行緒數目上限
       url: "/task-specify-the-maximum-number-of-threads-per-message-service-queue.html"
     - title: 啟用或停用NetApp SMI-S Provider驗證
@@ -242,4 +242,4 @@ sidebar:
     - title: SCVMM重新掃描作業無法找到SMI-S Provider或與其通訊
       url: "/reference-scvmm-rescan-operation-failed-to-locate-or-communicate-with-smi-s-provider.html"
   - title: 法律聲明
-    url: "/reference-legal-notices.html"
+    url: "/legal-notices.html"

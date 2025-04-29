@@ -1,17 +1,17 @@
 ---
 permalink: task-specify-the-ontapi-timeout-value.html 
 sidebar: sidebar 
-keywords: smi-s provider, ontap api, calls, storage systems, ontapi, default, 300 sec 
-summary: SMI-S Provider會ONTAP 對儲存系統進行SONTAPI（ONTAPI）呼叫。根據預設、ONTAPI逾時時間為300秒。您可以將逾時設定為60到300秒之間的值。 
+keywords: smi-s provider, ontap api, calls, storage systems, default, 300 sec 
+summary: SMI-S Provider 可將 ONTAP API 呼叫至儲存系統。根據預設， ONTAP API 呼叫逾時為 300 秒。您可以將逾時設定為60到300秒之間的值。 
 ---
-= 指定ONTAPI逾時值
+= 指定 ONTAP API 呼叫逾時值
 :allow-uri-read: 
 :icons: font
 :imagesdir: ./media/
 
 
 [role="lead"]
-SMI-S Provider會ONTAP 對儲存系統進行SONTAPI（ONTAPI）呼叫。根據預設、ONTAPI逾時時間為300秒。您可以將逾時設定為60到300秒之間的值。
+SMI-S Provider 可將 ONTAP API 呼叫至儲存系統。根據預設， ONTAP API 呼叫逾時為 300 秒。您可以將逾時設定為60到300秒之間的值。
 
 .開始之前
 * 您必須已擁有系統管理員的登入認證。

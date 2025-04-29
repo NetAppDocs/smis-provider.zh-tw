@@ -24,6 +24,8 @@ Windows
  a| 
 * Microsoft Windows Server 2016
 * Microsoft Windows Server 2019
+* Microsoft Windows Server 2022
+* Microsoft Windows Server 2025
 
  a| 
 Microsoft Visual C｛pp｝2010執行時間程式庫會在SMI-S Provider安裝期間自動安裝。若要避免與執行時間程式庫相關的潛在問題、您必須安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。從下列位置： http://www.microsoft.com[]
@@ -31,11 +33,11 @@ Microsoft Visual C｛pp｝2010執行時間程式庫會在SMI-S Provider安裝期
 |===
 
 
-== SCVMM 2016 ur 2.1需求
+== SCVMM UR 2.1 要求
 
-需要System Center Virtual Machine Manager（SCVMM）2016更新彙總套件（ur）2.1、才能使用NetApp SMI-S Provider 5.2.4及更新版本來管理NetApp檔案伺服器。
+使用 NetApp SMI-S Provider 5.2.7 及更新版本管理 NetApp 檔案伺服器時，需要 System Center Virtual Machine Manager （ SCVMM ）更新彙總套件（ UR ） 2.1 。
 
-如果沒有這份報告、SCVMM 2016會針對NetApp檔案伺服器中現有的檔案共用、將「Total Capacity（總容量）」和「Available Capacity（可用容量）」選項的值顯示為「* 0 GB*」。
+若沒有此版本， SCVMM （ 2016 ， 2019 ， 2022 或 2025 版）會顯示 NetApp 檔案伺服器中現有檔案共用的和 `Available Capacity`選項 `*0 GB*`值 `Total Capacity`。
 
 若要執行SMI-S Provider、供應商主機必須符合下列規格：
 

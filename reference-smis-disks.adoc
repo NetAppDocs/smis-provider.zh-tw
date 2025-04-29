@@ -2,7 +2,7 @@
 permalink: reference-smis-disks.html 
 sidebar: sidebar 
 keywords: thesmis, disk, command, display, information, storage, systems 
-summary: 「Thesmis disks」命令會顯示儲存系統的磁碟資訊。僅當與Data ONTAP VMware 7-Mode控制器搭配使用時、SI磁碟才會運作。 
+summary: SMI 磁碟命令會顯示儲存系統的磁碟資訊。僅當與 ONTAP 7-Mode 控制器搭配使用時， SMI 磁碟才會運作。 
 ---
 = SMI磁碟
 :allow-uri-read: 
@@ -11,7 +11,7 @@ summary: 「Thesmis disks」命令會顯示儲存系統的磁碟資訊。僅當�
 
 
 [role="lead"]
-'mis disks'命令顯示儲存系統的磁碟資訊。「Mis disks」（磁碟機）僅適用於Data ONTAP 搭配使用VMware 7-Mode控制器的情況。
+此命令會 `smis disks`顯示儲存系統的磁碟資訊。此 `smis disks`命令僅在 ONTAP 7-Mode 控制器上受支援。
 
 .語法
 SMI磁碟
