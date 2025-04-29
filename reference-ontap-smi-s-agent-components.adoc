@@ -1,5 +1,5 @@
 ---
-permalink: reference-data-ontap-smi-s-agent-components.html 
+permalink: reference-ontap-smi-s-agent-components.html 
 sidebar: sidebar 
 keywords: smi-s provider 
 summary: NetApp SMI-S Provider包含三個元件、可讓您管理及監控儲存系統：CIOM、供應商物件及儲存庫。 
