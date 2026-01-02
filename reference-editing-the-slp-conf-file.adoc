@@ -25,7 +25,7 @@ summary: SLP.conf組態檔提供其他選項、可讓您管理服務位置傳輸
 
 使用「slp.conf]組態檔、您可以變更主機接聽的SLP要求介面數量、以及主機用於多點傳送的IP位址數量。
 
-使用文字編輯器開啟「shlp.conf"。
+使用文字編輯器打開 `slp.conf` 文件。
 
 .參數
 * *「介面」*
@@ -51,7 +51,6 @@ summary: SLP.conf組態檔提供其他選項、可讓您管理服務位置傳輸
 
 [listing]
 ----
-
 ################################################################
 # OpenSLP configuration file
 # Format and contents conform to specification in IETF RFC 2614 so

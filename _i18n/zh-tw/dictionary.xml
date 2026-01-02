@@ -115,7 +115,6 @@
   <block id="d09e7ed0d3d5bcf9b4d891eb75068566" category="paragraph">「C：\Program Files（x86）\NetApp\SMI\PEGUS\cfg/」</block>
   <block id="b5a7adde1af5c87d7fd797b6245c2a39" category="section-title">說明</block>
   <block id="c27013a5a91be7a7f811990b4c345c0c" category="paragraph">使用「slp.conf]組態檔、您可以變更主機接聽的SLP要求介面數量、以及主機用於多點傳送的IP位址數量。</block>
-  <block id="8a89bc88abd7f83c0aa84b1d5d0d605d" category="paragraph">使用文字編輯器開啟「shlp.conf"。</block>
   <block id="a49a968397d3eea3b27de92643158cbc" category="list-text">*「介面」*</block>
   <block id="e14a37b48112f37a804ec03c140c064a" category="paragraph">指定主機可接聽的最大IP位址數、以利處理slp要求。</block>
   <block id="8423702607bab52f36dd74e369cc82b7" category="list-text">*《最後文件》*</block>
@@ -194,18 +193,8 @@
   <block id="aea23489ce3aa9b6406ebb28e0cda430" category="paragraph">Windows</block>
   <block id="74dd40aa9a6635d79204e610e8324c38" category="list-text">Microsoft Windows Server 2016</block>
   <block id="1ee2c5253c485a81cfff8c8e3e23a23f" category="list-text">Microsoft Windows Server 2019</block>
-  <block id="89ff2866e74db001ea07e0b7fdde9ac5" category="paragraph">Microsoft Visual C｛pp｝2010執行時間程式庫會在SMI-S Provider安裝期間自動安裝。若要避免與執行時間程式庫相關的潛在問題、您必須安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。從下列位置：<block ref="b7a41ff45868862feefaef480db2df7e" category="inline-link-rx"></block></block>
   <block id="05dbd63393cf525e41d034d5de449c98" category="paragraph">若要執行SMI-S Provider、供應商主機必須符合下列規格：</block>
-  <block id="fd72eadfdaeb4e69b5477af765434a93" category="list-text">供應商主機無法用於裝載Hyper-V節點。</block>
-  <block id="b74c30689c8afa829d128cf3e62d6817" category="list-text">SCVMM不得在供應商主機上執行。</block>
   <block id="b821588d84782d0b1d55c19cfdb5b9b4" category="list-text">供應商主機不得執行記憶體密集的其他程式。</block>
-  <block id="e7a61d9bf7f995d12bec06e5dc826433" category="list-text">供應商主機不得執行任何其他廠商的SMI-S供應商。</block>
-  <block id="9e6a91e446af633c638f982317104862" category="paragraph">支援下列Hypervisor：</block>
-  <block id="aac0de225be44800bd6bac76c5eb4a63" category="list-text">Microsoft Windows Server 2016 Hyper-V</block>
-  <block id="be90425df543f66a8660032f3bec11ea" category="list-text">VMware ESX 5.0</block>
-  <block id="ced23abf6261326792853710d17c1e64" category="list-text">VMware ESX 5.1</block>
-  <block id="1c34588d8157e46be3e3ed89163e2d36" category="list-text">VMware ESX 5.5</block>
-  <block id="c3b86f2f3b5685e4fd42669ba402e8d2" category="list-text">VMware ESX 6.0</block>
   <block id="fe419fa3a5c24e1ad318d60e15e01d31" category="summary">SMI CRP命令說明NetApp SMI-S Provider支援的已登錄CIM的設定檔、包括NetApp SMI-S Provider設定檔。</block>
   <block id="3511331323e2467f659c7701860dfcce" category="doc">SMI CRP</block>
   <block id="dfc5700a5f8a123c6cb251019e112215" category="paragraph">「mis crp」命令說明NetApp SMI-S Provider支援的已登錄CIM設定檔、包括NetApp SMI-S Provider設定檔。</block>
@@ -908,9 +897,6 @@
   <block id="efad0d1809b94075c94937353c4001ef" category="paragraph">對於 ONTAP ，您必須使用<block ref="9f0928f5c491149e0d68d561ecf558bc" prefix=" " category="inline-code"></block>命令而非<block ref="0f44b667bbfb5498165b4f0f5ca52339" prefix=" " category="inline-code"></block>命令。</block>
   <block id="6ed0120f37738e825d889dcb299d9251" category="list-text">Microsoft Windows Server 2022</block>
   <block id="6e6b7efb9f9c24d5ca212d65430689fd" category="list-text">Microsoft Windows Server 2025</block>
-  <block id="fcebb93ad5cad2ad8092153d77893f24" category="section-title">SCVMM UR 2.1 要求</block>
-  <block id="a66b176f80a3f93d31be0edb241f3215" category="paragraph">使用 NetApp SMI-S Provider 5.2.7 及更新版本管理 NetApp 檔案伺服器時，需要 System Center Virtual Machine Manager （ SCVMM ）更新彙總套件（ UR ） 2.1 。</block>
-  <block id="77e677c64c1986dc2a8a1c9afdb930e8" category="paragraph">若沒有此版本， SCVMM （ 2016 ， 2019 ， 2022 或 2025 版）會顯示 NetApp 檔案伺服器中現有檔案共用的和<block ref="6af63b14f64f6cb255988d8fde2e0437" prefix=" " category="inline-code"></block>選項<block ref="5406f75e1620d4c00bc95d050311cd8a" prefix=" " category="inline-code"></block>值<block ref="207e174801113bba5afa048ccd3450bf" prefix=" " category="inline-code"></block>。</block>
   <block id="9794792e794e863d0bd2afdc0bc7a283" category="paragraph">您可以使用 NetApp SMI-S Provider 來管理使用 System Center 2016 ， 2019 ， 2022 和 2025 的儲存控制器。</block>
   <block id="60f804573e049a0f18647ca5ddadf79f" category="list-text">針對每部連線至 ONTAP 的主機電腦，開啟 MPIO 應用程式，然後新增下列硬體 ID ：</block>
   <block id="bfdf270b33cb3dc13957bd36fee69058" category="list-text">對於 ONTAP ，請輸入<block ref="ade191b1004522550d83e818f2d7139d" prefix=" " category="inline-code"></block>。</block>
@@ -920,4 +906,11 @@
   <block id="a29f0f75cbf44d12b1fb98ed37473297" category="paragraph">您可以安裝 NetApp SMI-S Provider 軟體，以便管理執行 ONTAP 的儲存系統。不過、您無法還原或降級至舊版。根據預設， NetApp SMI-S Provider 軟體會安裝在目錄中<block ref="e93eb95a4a6d54999769913bf79a69c9" prefix=" " category="inline-code"></block>。</block>
   <block id="738fc2618ae3cc77b3d364faaf5e4b42" category="summary">SMI-S Provider 可將 ONTAP API 呼叫至儲存系統。根據預設， ONTAP API 呼叫逾時為 300 秒。您可以將逾時設定為60到300秒之間的值。</block>
   <block id="7162b9fa7c706619cc067c40bb9d383b" category="doc">指定 ONTAP API 呼叫逾時值</block>
+  <block id="2a5f6638ef24c976e6df1a332e199b6f" category="paragraph">使用文字編輯器打開<block ref="cd8fa2e8a9ca8395c90e6d05c6dd4df4" prefix=" " category="inline-code"></block> 文件。</block>
+  <block id="4d93c7f951ee9893244700500c246604" category="paragraph">我們建議您將 SMI-S Provider 安裝在其專用的 Windows 虛擬機器 (VM) 上。此虛擬機器可以位於同一網域中，以便進行安全且方便的管理。</block>
+  <block id="9822409bbabbad1f2c0e3d15465983b3" category="paragraph">在 SMI-S 提供者安裝過程中，會自動安裝 Microsoft Visual C{pp} 2010 執行階段程式庫。為避免與執行時間程式庫相關的潛在問題，您必須從下列位置安裝 Microsoft Visual C++ 2010 可再發行元件套件 (x86)：<block ref="b7a41ff45868862feefaef480db2df7e" category="inline-link-rx"></block></block>
+  <block id="78d9d7434c061e2d05638600805e10c2" category="section-title">確保提供商主機符合規格</block>
+  <block id="7455ebb8e235fe565c33132298dc9ae2" category="list-text">此提供者不能直接安裝在 Hyper-V 節點上。或者，您可以將其安裝在 Hyper-V 虛擬機器上。</block>
+  <block id="76e285f066350a12e27bc3bc52c6ac1b" category="list-text">System Center Virtual Machine Manager (SCVMM) 不得在提供者主機上執行。</block>
+  <block id="cf25bf52de5fb16cb01c369f194fa595" category="list-text">提供者主機不得執行來自任何其他供應商的 SMI-S 提供者。</block>
 </blocks>

@@ -12,6 +12,8 @@ summary: 安裝SMI-S Provider之前、您必須確認Windows主機執行的是�
 
 
 [role="lead"]
+我們建議您將 SMI-S Provider 安裝在其專用的 Windows 虛擬機器 (VM) 上。此虛擬機器可以位於同一網域中，以便進行安全且方便的管理。
+
 安裝SMI-S Provider之前、您必須確認Windows主機執行的是支援的作業系統。
 
 [cols="3*"]
@@ -22,36 +24,23 @@ summary: 安裝SMI-S Provider之前、您必須確認Windows主機執行的是�
  a| 
 Windows
  a| 
-* Microsoft Windows Server 2016
-* Microsoft Windows Server 2019
-* Microsoft Windows Server 2022
 * Microsoft Windows Server 2025
+* Microsoft Windows Server 2022
+* Microsoft Windows Server 2019
+* Microsoft Windows Server 2016
 
  a| 
-Microsoft Visual C｛pp｝2010執行時間程式庫會在SMI-S Provider安裝期間自動安裝。若要避免與執行時間程式庫相關的潛在問題、您必須安裝Microsoft Visual C｛pp｝2010可轉散發套件（x86）。從下列位置： http://www.microsoft.com[]
+在 SMI-S 提供者安裝過程中，會自動安裝 Microsoft Visual C{pp} 2010 執行階段程式庫。為避免與執行時間程式庫相關的潛在問題，您必須從下列位置安裝 Microsoft Visual C++ 2010 可再發行元件套件 (x86)： http://www.microsoft.com[]
 
 |===
 
 
-== SCVMM UR 2.1 要求
-
-使用 NetApp SMI-S Provider 5.2.7 及更新版本管理 NetApp 檔案伺服器時，需要 System Center Virtual Machine Manager （ SCVMM ）更新彙總套件（ UR ） 2.1 。
-
-若沒有此版本， SCVMM （ 2016 ， 2019 ， 2022 或 2025 版）會顯示 NetApp 檔案伺服器中現有檔案共用的和 `Available Capacity`選項 `*0 GB*`值 `Total Capacity`。
+== 確保提供商主機符合規格
 
 若要執行SMI-S Provider、供應商主機必須符合下列規格：
 
-* 供應商主機無法用於裝載Hyper-V節點。
-* SCVMM不得在供應商主機上執行。
+* 此提供者不能直接安裝在 Hyper-V 節點上。或者，您可以將其安裝在 Hyper-V 虛擬機器上。
+* System Center Virtual Machine Manager (SCVMM) 不得在提供者主機上執行。
 * 供應商主機不得執行記憶體密集的其他程式。
-* 供應商主機不得執行任何其他廠商的SMI-S供應商。
-
-
-支援下列Hypervisor：
-
-* Microsoft Windows Server 2016 Hyper-V
-* VMware ESX 5.0
-* VMware ESX 5.1
-* VMware ESX 5.5
-* VMware ESX 6.0
+* 提供者主機不得執行來自任何其他供應商的 SMI-S 提供者。
 
