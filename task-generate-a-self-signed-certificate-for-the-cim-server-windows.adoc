@@ -11,11 +11,15 @@ summary: 根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安
 
 
 [role="lead"]
-根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在「PEGASGUSS」目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。
+預設情況下，CIM 伺服器啟用 SSL 身份驗證。在 SMI-S 提供者安裝過程中，會將 CIM 伺服器的自簽名憑證安裝到系統中。 `pegasus` 目錄。您需要產生自己的自簽名證書，而不是使用預設證書。
+
+
+CAUTION: 安裝 SMI-S 提供者時，預設安裝的自簽名憑證已過時。因此，在 System Center Virtual Machine Manager (SCVMM) 的「新增儲存設備」中，與 SMI-S 提供者的 SSL 連線失敗。您需要為 CIM 伺服器產生自簽章證書，然後重新啟動 SMI-S 提供者服務。更多信息，請參閱 link:https://kb.netapp.com/data-mgmt/SMI-S/SMI-S_Issues/CSMIS-3["NetApp知識庫文章：“CSMIS-3： NetApp SMI-S Provider 5.2.7 中的 cimom.cert 在安裝時已過期。”"^]
 
 .開始之前
 * 您必須已以系統管理員身分登入。
 * 您必須已存取SMI-S Provider。
+* 您必須在 Windows 主機上下載並安裝 OpenSSL。
 
 
 .步驟
@@ -63,6 +67,10 @@ summary: 根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安
 您可以提供憑證有效的不同天數。
 
 . 將「CIMOM.key」和「CIMOM.CERT」檔案複製到「PEGASGUSE」目錄（Windows：「C:\Program Files（x86）\NetApp\SMI\PEGUSE'）。
+. 重新啟動 SMI-S 提供程式服務：
++
+"mis cimserver重新啟動"
+
 
 
 

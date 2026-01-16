@@ -172,7 +172,6 @@
   <block id="16aba3c6b0ae11e31224bc8fb95fe52f" category="paragraph">使用密碼1建立名為Sydney的CIM使用者：</block>
   <block id="5df91904e284b02eadf3bef23d5a41d4" category="summary">根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在pus目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。</block>
   <block id="706bd7f5dc0fd11f32957fcfe95a1d86" category="doc">為CIM伺服器產生自我簽署的憑證</block>
-  <block id="ddf96c0ef94c04177aac4c565af47742" category="paragraph">根據預設、會為CIM伺服器啟用SSL驗證。在SMI-S Provider安裝期間、會在「PEGASGUSS」目錄中安裝自簽署的CIM伺服器憑證。您可以產生自己的自我簽署憑證、並使用該憑證、而非預設憑證。</block>
   <block id="704fb07605281ded06af349fa2c6a42e" category="list-text">您必須已存取SMI-S Provider。</block>
   <block id="ce1605c578adffb355881da427936cf6" category="list-text">產生私密金鑰：</block>
   <block id="ee01244ad0458fc0bceca3ca21a19bcf" category="paragraph">「* openssl genrsa -out cimom.key 2048*」</block>
@@ -913,4 +912,9 @@
   <block id="7455ebb8e235fe565c33132298dc9ae2" category="list-text">此提供者不能直接安裝在 Hyper-V 節點上。或者，您可以將其安裝在 Hyper-V 虛擬機器上。</block>
   <block id="76e285f066350a12e27bc3bc52c6ac1b" category="list-text">System Center Virtual Machine Manager (SCVMM) 不得在提供者主機上執行。</block>
   <block id="cf25bf52de5fb16cb01c369f194fa595" category="list-text">提供者主機不得執行來自任何其他供應商的 SMI-S 提供者。</block>
+  <block id="84168690f051a56e2cb7f4e07041531d" category="paragraph">預設情況下，CIM 伺服器啟用 SSL 身份驗證。在 SMI-S 提供者安裝過程中，會將 CIM 伺服器的自簽名憑證安裝到系統中。<block ref="3015ca4f270b6938b27c95863174a8db" prefix=" " category="inline-code"></block> 目錄。您需要產生自己的自簽名證書，而不是使用預設證書。</block>
+  <block id="6395062fd7cc0c18b923c77707428ae7" category="inline-link-macro">NetApp知識庫文章：“CSMIS-3： NetApp SMI-S Provider 5.2.7 中的 cimom.cert 在安裝時已過期。”</block>
+  <block id="e8dfaf98cdbd392a09efaa9768cab219" category="admonition">安裝 SMI-S 提供者時，預設安裝的自簽名憑證已過時。因此，在 System Center Virtual Machine Manager (SCVMM) 的「新增儲存設備」中，與 SMI-S 提供者的 SSL 連線失敗。您需要為 CIM 伺服器產生自簽章證書，然後重新啟動 SMI-S 提供者服務。更多信息，請參閱 <block ref="6b2d7bc4026d64afffa89af6ebec1110" category="inline-link-macro-rx"></block></block>
+  <block id="cc2ad876e77ac64c0d4f8e5e89900549" category="list-text">您必須在 Windows 主機上下載並安裝 OpenSSL。</block>
+  <block id="c104915e9f0d8e0313edcca7765f005e" category="list-text">重新啟動 SMI-S 提供程式服務：</block>
 </blocks>
