@@ -17,7 +17,7 @@ NetApp SMI-S Provider是以命令為基礎的介面、可偵測及管理執行ON
 
 NetApp SMI-S Provider遵循由兩個組織標準化的架構：
 
-* http://www.dmtf.org/home["分散式管理綜合小組（Distributed Management Task Force、簡稱DMT）"^]
+* http://www.dmtf.org["分散式管理綜合小組（Distributed Management Task Force、簡稱DMT）"^]
 * http://www.snia.org/home["儲存網路產業協會（SNIA）"^]
 
 

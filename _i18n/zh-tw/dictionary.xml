@@ -389,7 +389,6 @@
   <block id="c79b9638e429df89a219f67e64877677" category="paragraph">NetApp SMI-S Provider是以命令為基礎的介面、可偵測及管理執行ONTAP 支援程式的平台。SMI-S Provider使用Web型企業管理（WBEM）傳輸協定、可讓您管理、監控及報告儲存元素。</block>
   <block id="a316d32069744858b73bc2472339bb1d" category="paragraph">NetApp SMI-S Provider遵循由兩個組織標準化的架構：</block>
   <block id="ffb373b0246b03d37058c9917311f9ba" category="inline-link">分散式管理綜合小組（Distributed Management Task Force、簡稱DMT）</block>
-  <block id="3196a1e76b7eb51b7ff2baa784e99b4f" category="list-text"><block ref="3196a1e76b7eb51b7ff2baa784e99b4f" category="inline-link-rx"></block></block>
   <block id="b3973a38d43f2f1fe906a50cc9911f34" category="inline-link">儲存網路產業協會（SNIA）</block>
   <block id="6406ef7be2956ab22d718f61a164ac48" category="list-text"><block ref="6406ef7be2956ab22d718f61a164ac48" category="inline-link-rx"></block></block>
   <block id="6409b577d21cd98c3caae687888555d6" category="paragraph">SMI-S Provider以單一物件導向模式取代多種託管物件模型、傳輸協定和傳輸、適用於儲存網路中的所有元件。</block>
@@ -917,4 +916,5 @@
   <block id="e8dfaf98cdbd392a09efaa9768cab219" category="admonition">安裝 SMI-S 提供者時，預設安裝的自簽名憑證已過時。因此，在 System Center Virtual Machine Manager (SCVMM) 的「新增儲存設備」中，與 SMI-S 提供者的 SSL 連線失敗。您需要為 CIM 伺服器產生自簽章證書，然後重新啟動 SMI-S 提供者服務。更多信息，請參閱 <block ref="6b2d7bc4026d64afffa89af6ebec1110" category="inline-link-macro-rx"></block></block>
   <block id="cc2ad876e77ac64c0d4f8e5e89900549" category="list-text">您必須在 Windows 主機上下載並安裝 OpenSSL。</block>
   <block id="c104915e9f0d8e0313edcca7765f005e" category="list-text">重新啟動 SMI-S 提供程式服務：</block>
+  <block id="fa623328d311ec4315ab82a9a7303cbe" category="list-text"><block ref="fa623328d311ec4315ab82a9a7303cbe" category="inline-link-rx"></block></block>
 </blocks>
